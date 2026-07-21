@@ -12,22 +12,22 @@ const canAnimate = !motionQuery.matches;
 
 const focusData = {
   human: {
-    kicker: "Human Lens",
-    title: "从用户需求识别进入设计问题",
-    text: "从真实使用经验中提炼问题，让设计判断有依据。",
-    methods: ["理解需求", "识别问题", "形成判断"]
+    kicker: "RESEARCH LOGIC",
+    title: "研究路径逻辑",
+    text: "我的研究围绕“问题如何被识别、变量如何被提取、设计如何被验证”逐步推进。农业机械研究强调产品形态与感知评价，循环家具研究强调用户需求与服务系统，医疗共享研究强调多主体信息关系与原型验证。三类项目共同构成由产品形态、产品服务系统到复杂信息系统的研究递进。",
+    methods: ["产品形态评价", "用户需求转译", "服务系统建模", "信息交互验证"]
   },
   machine: {
-    kicker: "Machine Lens",
-    title: "把产品、服务和界面拆成可推导的设计变量",
-    text: "把形态、界面、触点和流程整理为可比较的设计变量。",
-    methods: ["整理变量", "推导方案", "组织系统"]
+    kicker: "RESEARCH LOGIC",
+    title: "研究路径逻辑",
+    text: "我的研究围绕“问题如何被识别、变量如何被提取、设计如何被验证”逐步推进。农业机械研究强调产品形态与感知评价，循环家具研究强调用户需求与服务系统，医疗共享研究强调多主体信息关系与原型验证。三类项目共同构成由产品形态、产品服务系统到复杂信息系统的研究递进。",
+    methods: ["产品形态评价", "用户需求转译", "服务系统建模", "信息交互验证"]
   },
   context: {
-    kicker: "Context Lens",
-    title: "在真实约束中验证设计是否成立",
-    text: "回到真实情境，检查方案边界和设计判断是否成立。",
-    methods: ["回到场景", "检验边界", "优化方案"]
+    kicker: "RESEARCH LOGIC",
+    title: "研究路径逻辑",
+    text: "我的研究围绕“问题如何被识别、变量如何被提取、设计如何被验证”逐步推进。农业机械研究强调产品形态与感知评价，循环家具研究强调用户需求与服务系统，医疗共享研究强调多主体信息关系与原型验证。三类项目共同构成由产品形态、产品服务系统到复杂信息系统的研究递进。",
+    methods: ["产品形态评价", "用户需求转译", "服务系统建模", "信息交互验证"]
   }
 };
 
@@ -51,6 +51,11 @@ const methodData = {
     kicker: "Method Layer 04",
     title: "原型验证",
     text: "回到场景中检验方案是否回应问题。"
+  },
+  collab: {
+    kicker: "Method Layer 05",
+    title: "智能装备人智协同",
+    text: "面向博士阶段，继续研究复杂场景中的智能装备协同机制。"
   }
 };
 
@@ -283,8 +288,8 @@ function updateChrome() {
   scrollProgress.style.width = `${Math.max(0, Math.min(1, progress)) * 100}%`;
 
   let current = "top";
-  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 6) {
-    current = "contact";
+  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 6 && sections.length) {
+    current = sections[sections.length - 1].dataset.section || sections[sections.length - 1].id;
   }
   for (const section of sections) {
     if (current !== "contact" && section.getBoundingClientRect().top < window.innerHeight * 0.45) {
@@ -316,19 +321,30 @@ function swapContent(panel, update) {
 function updateFocusPanel(key) {
   const data = focusData[key];
   swapContent(document.querySelector(".cockpit-panel"), () => {
-    document.querySelector("#focus-kicker").textContent = data.kicker;
-    document.querySelector("#focus-title").textContent = data.title;
-    document.querySelector("#focus-text").textContent = data.text;
-    document.querySelector("#focus-methods").innerHTML = data.methods.map((method) => `<span>${method}</span>`).join("");
+    const kicker = document.querySelector("#focus-kicker");
+    const title = document.querySelector("#focus-title");
+    const text = document.querySelector("#focus-text");
+    const methods = document.querySelector("#focus-methods");
+    if (!kicker || !title || !text || !methods || !data) return;
+    kicker.textContent = data.kicker;
+    title.textContent = data.title;
+    text.textContent = data.text;
+    methods.innerHTML = data.methods.map((method) => `<span>${method}</span>`).join("");
   });
 }
 
 function updateMethodPanel(key) {
   const data = methodData[key];
-  swapContent(document.querySelector(".method-detail"), () => {
-    document.querySelector("#method-kicker").textContent = data.kicker;
-    document.querySelector("#method-title").textContent = data.title;
-    document.querySelector("#method-text").textContent = data.text;
+  const panel = document.querySelector(".method-detail");
+  if (!panel || !data) return;
+  swapContent(panel, () => {
+    const kicker = document.querySelector("#method-kicker");
+    const title = document.querySelector("#method-title");
+    const text = document.querySelector("#method-text");
+    if (!kicker || !title || !text) return;
+    kicker.textContent = data.kicker;
+    title.textContent = data.title;
+    text.textContent = data.text;
   });
 }
 
@@ -376,6 +392,15 @@ document.querySelectorAll(".studio-tabs button").forEach((button) => {
   });
 });
 
+document.querySelectorAll(".proposal-tabs button").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".proposal-tabs button").forEach((item) => item.classList.remove("active"));
+    document.querySelectorAll(".proposal-screen").forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+    document.querySelector(`#proposal-${button.dataset.proposal}`).classList.add("active");
+  });
+});
+
 document.querySelectorAll(".studio-gallery button").forEach((button) => {
   button.addEventListener("click", () => openLightbox(Number(button.dataset.page)));
 });
@@ -393,6 +418,11 @@ function initInteractiveSurfaces() {
     ".dossier-grid section",
     ".research-card",
     ".method-card",
+    ".proposal-screen",
+    ".proposal-rq-grid section",
+    ".proposal-flow li",
+    ".proposal-foundation-grid section",
+    ".paper-figure",
     ".studio-gallery button",
     ".page-card",
     ".contact-card"
@@ -474,6 +504,63 @@ function initReaderGestures() {
   }, { passive: false });
 }
 
+function initHeroTypewriter() {
+  const texts = [
+    "2027年设计学博士申请",
+    "智能产品设计研究",
+    "用户研究与系统分析",
+    "量化设计与参数转译",
+    "产品服务系统研究",
+    "复杂场景协同设计"
+  ];
+
+  const target = document.querySelector("[data-hero-typewriter]");
+  if (!target) return;
+  if (target.dataset.typewriterReady === "true") return;
+  target.dataset.typewriterReady = "true";
+
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  const TYPE_SPEED = 95;
+  const DELETE_SPEED = 55;
+  const HOLD_TIME = 1400;
+  const NEXT_DELAY = 260;
+
+  function tick() {
+    const currentText = texts[textIndex];
+
+    if (!isDeleting) {
+      charIndex += 1;
+      target.textContent = currentText.slice(0, charIndex);
+
+      if (charIndex === currentText.length) {
+        isDeleting = true;
+        setTimeout(tick, HOLD_TIME);
+        return;
+      }
+
+      setTimeout(tick, TYPE_SPEED);
+    } else {
+      charIndex -= 1;
+      target.textContent = currentText.slice(0, charIndex);
+
+      if (charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+        setTimeout(tick, NEXT_DELAY);
+        return;
+      }
+
+      setTimeout(tick, DELETE_SPEED);
+    }
+  }
+
+  target.textContent = "";
+  tick();
+}
+
 if (pageScrubber && pageOutput) {
   pageScrubber.addEventListener("input", () => {
     const page = Number(pageScrubber.value);
@@ -518,10 +605,18 @@ window.addEventListener("mousemove", (event) => {
 
 window.addEventListener("scroll", updateChrome, { passive: true });
 window.addEventListener("resize", updateChrome, { passive: true });
+
+const scrollToSection = (target) => {
+  const headerOffset = document.querySelector(".site-header")?.offsetHeight || 68;
+  const top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 24;
+  window.scrollTo({ top, behavior: "auto" });
+};
+
 window.addEventListener("load", () => {
   const target = location.hash ? document.querySelector(location.hash) : null;
   if (target) {
     setTimeout(() => {
+      scrollToSection(target);
       target.querySelectorAll(".reveal").forEach((item) => item.classList.add("visible"));
       updateChrome();
     }, 80);
@@ -535,5 +630,6 @@ applyFilter("all");
 selectReaderPage(1, { scrollThumb: false });
 initInteractiveSurfaces();
 initHeroConsoleGlow();
+initHeroTypewriter();
 initReaderGestures();
 updateChrome();
