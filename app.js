@@ -12,9 +12,9 @@ resetDefaultEntry();
 window.addEventListener("pageshow", resetDefaultEntry);
 
 const topbar = document.querySelector(".topbar");
+const heroSection = document.querySelector(".hero");
 const backTop = document.querySelector(".back-top");
 const cursorLight = document.querySelector(".cursor-light");
-const scrollProgress = document.querySelector(".scroll-progress");
 const navLinks = [...document.querySelectorAll(".nav-links a")];
 const sideLinks = [...document.querySelectorAll(".side-index a")];
 const sections = [...document.querySelectorAll(".viewport-section")];
@@ -257,12 +257,10 @@ function stepReader(direction) {
 }
 
 function updateChrome() {
-  const solid = window.scrollY > 80;
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+  const navBottom = topbar.getBoundingClientRect().bottom;
+  const solid = heroSection ? heroSection.getBoundingClientRect().bottom <= navBottom : window.scrollY > 80;
   topbar.classList.toggle("is-solid", solid);
   backTop.classList.toggle("is-visible", window.scrollY > 650);
-  scrollProgress.style.width = `${Math.max(0, Math.min(1, progress)) * 100}%`;
 
   let current = "top";
   if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 6 && sections.length) {
@@ -273,7 +271,12 @@ function updateChrome() {
       current = section.dataset.section || section.id || "top";
     }
   }
-  navLinks.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${current}`));
+  navLinks.forEach((link) => {
+    const isActive = link.getAttribute("href") === `#${current}`;
+    link.classList.toggle("active", isActive);
+    if (isActive) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
   sideLinks.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${current}`));
   sectionRailLinks.forEach((link) => {
     const isActive = link.dataset.sectionLink === current;
@@ -1072,7 +1075,7 @@ window.addEventListener("scroll", updateChrome, { passive: true });
 window.addEventListener("resize", updateChrome, { passive: true });
 
 const scrollToSection = (target) => {
-  const headerOffset = document.querySelector(".site-header")?.offsetHeight || 68;
+  const headerOffset = topbar?.getBoundingClientRect().bottom || 68;
   const top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 24;
   window.scrollTo({ top, behavior: "auto" });
 };

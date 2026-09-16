@@ -1,0 +1,88 @@
+/* Keep the existing carousel geometry; carry the research palette into reading. */
+#top > #reader {
+  --reader-wash: #f3f7fe;
+  --reader-tint: #dce9ff;
+  --reader-accent: #2257be;
+  --reader-ink: #142a37;
+  --reader-copy: #52616a;
+  --chapter-ink: var(--reader-ink);
+  --chapter-blue: var(--reader-accent);
+  --chapter-muted: var(--reader-copy);
+  background: var(--reader-wash) !important;
+  color: var(--reader-ink);
+  box-shadow: inset 0 1px 0 var(--reader-tint);
+  transition: background-color 400ms ease-out;
+}
+#top > #research[data-desk-case="service"] + #reader {
+  --reader-wash: #f1f8f4;
+  --reader-tint: #ccebdc;
+  --reader-accent: #096d56;
+  --reader-ink: #15382d;
+  --reader-copy: #466456;
+}
+#top > #research[data-desk-case="information"] + #reader {
+  --reader-wash: #f3f4ff;
+  --reader-tint: #e0e4ff;
+  --reader-accent: #4653bd;
+  --reader-ink: #232e53;
+  --reader-copy: #535e80;
+}
+#top > #reader::before,
+#top > #reader::after { content: none !important; display: none !important; }
+
+/* Use the full shared content width, allowing a natural wrap in narrow windows. */
+#top > #reader > .section-heading > p:not(.eyebrow) {
+  max-width: none !important;
+  width: 100%;
+  white-space: normal;
+  text-wrap: pretty;
+}
+
+#reader .carousel-card {
+  background: #fff;
+  border-color: var(--reader-tint);
+  color: var(--reader-ink);
+  box-shadow: 0 24px 60px -14px #223b6126, 0 3px 12px #223b610a;
+}
+#reader .carousel-card::before { background: none; }
+#reader .carousel-card:hover { box-shadow: 0 28px 66px -14px #223b6130, 0 3px 12px #223b610c; }
+#reader .carousel-card figcaption {
+  background: color-mix(in srgb, var(--reader-wash) 52%, white);
+  border-color: var(--reader-tint);
+  color: var(--reader-ink);
+}
+#reader .carousel-card figcaption span,
+#reader .page-card > span { color: var(--reader-accent); }
+#reader .reader-carousel::before { background: radial-gradient(ellipse, #294b7512, transparent 68%); }
+
+#reader .reader-nav {
+  background: #ffffffed;
+  border-color: var(--reader-tint);
+  box-shadow: 0 8px 22px #223b6110;
+}
+#reader .reader-nav::before { color: var(--reader-accent); }
+#reader .reader-nav:hover {
+  background: var(--reader-tint);
+  border-color: var(--reader-accent);
+  box-shadow: 0 10px 26px #223b611a;
+}
+#reader .page-strip { scrollbar-color: var(--reader-tint) transparent; }
+#reader .page-card {
+  background: #fff;
+  border-color: var(--reader-tint);
+  color: var(--reader-ink);
+}
+#reader .page-card img { border-color: var(--reader-tint); }
+#reader .page-card:hover { border-color: var(--reader-accent); box-shadow: 0 6px 18px #223b6110; }
+#reader .page-card.active {
+  background: var(--reader-wash);
+  border-color: var(--reader-accent);
+  box-shadow: 0 0 0 1px var(--reader-accent), 0 7px 20px #223b6114;
+}
+#reader :is(.reader-nav, .carousel-card, .page-card):focus-visible {
+  outline: 2px solid var(--reader-accent);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  #top > #reader { transition: none; }
+}
