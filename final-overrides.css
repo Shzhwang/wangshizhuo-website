@@ -6437,6 +6437,112 @@ html {
   line-height: 1.72 !important;
 }
 
+/* Publication evidence scale: exact units, denser hierarchy, restrained depth */
+.paper-capability-page .evidence-scale-module {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 250, 255, 0.90)),
+    linear-gradient(rgba(18, 104, 217, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 104, 217, 0.028) 1px, transparent 1px) !important;
+  background-size: auto, 48px 48px, 48px 48px !important;
+}
+
+.paper-capability-page .evidence-scale-grid {
+  gap: 14px !important;
+  counter-reset: evidence-card !important;
+}
+
+.paper-capability-page .evidence-scale-grid section {
+  position: relative !important;
+  isolation: isolate !important;
+  min-height: 222px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  padding: 24px 22px 20px !important;
+  border-color: rgba(18, 104, 217, 0.18) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
+  box-shadow: 0 12px 30px rgba(31, 93, 151, 0.055) !important;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1), border-color 320ms ease !important;
+  counter-increment: evidence-card !important;
+}
+
+.paper-capability-page .evidence-scale-grid section::before {
+  content: "0" counter(evidence-card) !important;
+  position: absolute !important;
+  right: 15px !important;
+  top: 10px !important;
+  z-index: -1 !important;
+  color: rgba(18, 104, 217, 0.055) !important;
+  font-size: 54px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: -0.06em !important;
+}
+
+.paper-capability-page .evidence-scale-grid section::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 auto auto 0 !important;
+  width: 54px !important;
+  height: 3px !important;
+  background: var(--paper-blue) !important;
+  opacity: 0.72 !important;
+}
+
+.paper-capability-page .evidence-scale-grid section:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(18, 104, 217, 0.30) !important;
+  box-shadow: 0 18px 34px rgba(31, 93, 151, 0.095) !important;
+}
+
+.paper-capability-page .evidence-scale-grid span {
+  padding-right: 42px !important;
+  color: #173a5d !important;
+  font-size: 14px !important;
+  letter-spacing: 0.02em !important;
+}
+
+.paper-capability-page .evidence-scale-grid strong {
+  min-height: 68px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  margin: 18px 0 10px !important;
+  color: #0968bd !important;
+  font-size: clamp(25px, 1.8vw, 32px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.035em !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+.paper-capability-page .evidence-scale-grid p {
+  margin: 0 !important;
+  color: #3f5c78 !important;
+  font-size: 14px !important;
+  line-height: 1.58 !important;
+}
+
+.paper-capability-page .evidence-scale-grid em {
+  display: block !important;
+  margin-top: auto !important;
+  padding-top: 12px !important;
+  border-top: 1px solid rgba(18, 104, 217, 0.13) !important;
+  color: #0d6ab9 !important;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 760 !important;
+  line-height: 1.45 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper-capability-page .evidence-scale-grid section {
+    transition: none !important;
+  }
+
+  .paper-capability-page .evidence-scale-grid section:hover {
+    transform: none !important;
+  }
+}
+
 .paper-capability-page .paper-flow {
   display: grid !important;
   grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
@@ -6806,6 +6912,21 @@ body.project-process-page,
   background-size: auto, 88px 88px, 88px 88px, auto !important;
 }
 
+/* Publication secondary page: draw the canvas once so the main column does not create a second color layer. */
+body.publication-page.paper-switch-page.paper-capability-page {
+  background:
+    radial-gradient(760px 520px at 6% 2%, rgba(198, 232, 255, 0.72), transparent 64%),
+    linear-gradient(var(--site-light-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--site-light-grid) 1px, transparent 1px),
+    linear-gradient(180deg, var(--site-light-bg), var(--site-light-bg-soft) 72%, #ffffff) !important;
+  background-size: auto, 88px 88px, 88px 88px, auto !important;
+}
+
+body.publication-page.paper-switch-page.paper-capability-page > .publication-main.paper-switch-main {
+  background: transparent !important;
+  background-image: none !important;
+}
+
 .undergraduate-foundation {
   padding-top: clamp(36px, 3.5vw, 58px) !important;
 }
@@ -6933,4 +7054,1595 @@ body.project-process-page .project-panel {
 #proposal .proposal-topic-card .node-e {
   left: 1.5% !important;
   top: 31% !important;
+}
+
+/* Procedural hero illumination: one canvas, multiple boundary-free light beams. */
+.hero .hero-rays {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.94;
+  filter: saturate(1.08);
+  mix-blend-mode: screen;
+  mask-image: none;
+  transform: none;
+  background: transparent;
+  animation: none;
+}
+
+.hero .hero-rays::before,
+.hero .hero-rays::after,
+.hero .hero-rays span {
+  content: none;
+  display: none;
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-rays {
+    animation: none;
+    opacity: 0.94;
+  }
+}
+
+/* Keep the hero summary panel and action row on one exact baseline. */
+.hero > .hero-copy,
+.hero > .hero-console {
+  align-self: end;
+}
+
+.hero .console-head span {
+  text-transform: none;
+}
+
+/* Undergraduate path: balanced card spacing and card-first reveal order. */
+.undergraduate-foundation .foundation-path {
+  opacity: 0;
+  transition: opacity 720ms cubic-bezier(0.22, 1, 0.36, 1) 220ms;
+}
+
+.undergraduate-foundation .foundation-path-wrap:has(.foundation-card.visible) .foundation-path {
+  opacity: 1;
+}
+
+@media (min-width: 981px) {
+  .undergraduate-foundation .foundation-card {
+    width: min(620px, calc(50% - 80px)) !important;
+  }
+
+  .undergraduate-foundation .foundation-card-02 {
+    margin-top: -235px !important;
+  }
+
+  .undergraduate-foundation .foundation-card-03 {
+    margin-top: -228px !important;
+  }
+
+  .undergraduate-foundation .foundation-card-04 {
+    margin-top: -228px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .undergraduate-foundation .foundation-path {
+    opacity: 1;
+    transition: none;
+  }
+}
+
+/* Undergraduate card conclusion marker: refined research finding symbol. */
+.undergraduate-foundation .foundation-note {
+  position: relative;
+  padding-left: 50px;
+}
+
+.undergraduate-foundation .foundation-note::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid rgba(30, 111, 234, 0.38);
+  border-radius: 6px;
+  box-sizing: border-box;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(30, 111, 234, 0.14));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.62),
+    0 1px 2px rgba(21, 91, 177, 0.10);
+}
+
+.undergraduate-foundation .foundation-note::after {
+  content: "";
+  position: absolute;
+  top: 23px;
+  left: 23px;
+  width: 6px;
+  height: 6px;
+  border-radius: 1.5px;
+  background: var(--foundation-blue);
+  box-shadow: 0 0 0 3px rgba(30, 111, 234, 0.10);
+  transform: rotate(45deg);
+}
+
+@media (min-width: 981px) {
+  .hero .kinetic-title span:nth-child(2) {
+    position: relative;
+    top: 5px;
+    font-size: clamp(32px, 4.2vw, 72px);
+  }
+}
+
+/* Research achievements: cohesive two-zone support board. */
+.support-matrix {
+  position: relative;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(250px, 0.92fr) repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  overflow: hidden;
+  margin-top: 104px;
+  border: 1px solid rgba(127, 174, 218, 0.48);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(245, 250, 255, 0.96));
+  box-shadow: 0 4px 8px rgba(52, 103, 154, 0.06);
+  isolation: isolate;
+}
+
+.support-matrix::before {
+  content: none;
+  display: none;
+}
+
+.support-matrix-head {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 15px;
+  min-height: 350px;
+  padding: 40px 36px;
+  border: 0;
+  border-right: 1px solid rgba(111, 163, 211, 0.28);
+  background:
+    radial-gradient(circle at 18% 10%, rgba(255, 255, 255, 0.72), transparent 36%),
+    linear-gradient(155deg, #deefff 0%, #c7e0f6 56%, #afd2ee 100%);
+}
+
+.support-matrix-head::after {
+  content: none;
+  display: none;
+}
+
+.support-matrix-head strong {
+  display: block;
+  margin: 0;
+  max-width: 6em;
+  color: #0b3158;
+  font-size: 29px;
+  font-weight: 850;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+}
+
+.support-matrix-head span {
+  display: block;
+  max-width: 13em;
+  padding: 0;
+  color: #48769e;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+}
+
+.support-matrix > section,
+.dossier-grid .support-matrix > section:nth-child(6) {
+  position: relative;
+  z-index: 1;
+  grid-column: auto;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 31px clamp(24px, 1.8vw, 32px) 30px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: none;
+}
+
+.support-matrix > section:hover {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.support-matrix > section::before {
+  content: none;
+  display: none;
+}
+
+.dossier-grid .support-matrix > section::after,
+.dossier-grid .support-matrix > section.interactive-surface::after {
+  content: none;
+  display: none !important;
+}
+
+.dossier-grid .support-matrix > section:last-child::after {
+  content: none;
+  display: none !important;
+}
+
+.support-matrix > section > span {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 0;
+  color: #0b2d55;
+  font-size: 18px;
+  font-weight: 850;
+  line-height: 1.28;
+  letter-spacing: -0.012em;
+  text-transform: none;
+}
+
+.support-matrix > section > span::before {
+  content: "";
+  display: block;
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: #4d8fca;
+  transform: rotate(45deg);
+}
+
+.support-matrix > section ul,
+.dossier-grid .support-matrix > section:not(:first-child) ul {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  color: #29415e;
+  font-size: 14px;
+  line-height: 1.62;
+}
+
+.support-matrix > section li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.support-matrix > section li::before,
+.support-matrix > section .compact-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.75em;
+  left: 0;
+  width: 6px;
+  height: 2px;
+  border-radius: 99px;
+  background: #5b96ca;
+}
+
+.support-matrix > section li + li,
+.dossier-grid .support-matrix > section:not(:first-child) li + li {
+  margin-top: 8px;
+}
+
+.support-matrix > section:nth-of-type(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.support-matrix > section:nth-of-type(2) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.support-matrix > section:nth-of-type(3) {
+  grid-column: 2 / 4;
+  grid-row: 2;
+  border-top: 1px solid rgba(105, 157, 216, 0.25);
+}
+
+.support-matrix > section:nth-of-type(4) {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.support-matrix > section:nth-of-type(5) {
+  grid-column: 4;
+  grid-row: 2;
+  border-top: 1px solid rgba(105, 157, 216, 0.25);
+}
+
+@media (max-width: 980px) {
+  .support-matrix {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    margin-top: 68px;
+  }
+
+  .support-matrix-head,
+  .support-matrix > section:nth-of-type(1),
+  .support-matrix > section:nth-of-type(2),
+  .support-matrix > section:nth-of-type(3),
+  .support-matrix > section:nth-of-type(4),
+  .support-matrix > section:nth-of-type(5) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .support-matrix-head {
+    min-height: 230px;
+  }
+
+  .support-matrix > section {
+    border-top: 1px solid rgba(105, 157, 216, 0.25);
+  }
+}
+
+/* Evidence ledger polish: remove the stray publication baseline and connect
+   the five supporting categories with one restrained academic evidence axis. */
+.resume-dossier .dossier-grid > section:first-child {
+  border-bottom: 0 !important;
+}
+
+.support-matrix {
+  position: relative;
+}
+
+.support-matrix::before {
+  content: "";
+  display: block !important;
+  position: absolute;
+  z-index: 0;
+  top: 83px;
+  bottom: 45px;
+  left: 5px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(121, 174, 224, 0.08) 0%,
+    rgba(121, 174, 224, 0.58) 13%,
+    rgba(121, 174, 224, 0.58) 87%,
+    rgba(121, 174, 224, 0.08) 100%
+  );
+  pointer-events: none;
+}
+
+.support-matrix-head span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 12px;
+  border: 1px solid rgba(121, 174, 224, 0.24);
+  border-radius: 999px;
+  background: rgba(229, 242, 255, 0.74);
+  color: #4779a7;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.support-matrix > section,
+.dossier-grid .support-matrix > section:nth-child(6),
+.support-matrix > section:nth-of-type(1),
+.support-matrix > section:nth-of-type(2),
+.support-matrix > section:nth-of-type(3),
+.support-matrix > section:nth-of-type(4),
+.support-matrix > section:nth-of-type(5) {
+  position: relative;
+  z-index: 1;
+  padding-left: 34px;
+  border-top: 0;
+  background-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    rgba(121, 174, 224, 0.28) 0%,
+    rgba(121, 174, 224, 0.16) 68%,
+    rgba(121, 174, 224, 0) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: 34px 0;
+  background-size: calc(100% - clamp(70px, 10vw, 154px)) 1px;
+}
+
+.support-matrix > section::before {
+  content: "";
+  display: block !important;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border: 3px solid rgba(247, 251, 255, 0.98);
+  border-radius: 50%;
+  background: #79aee0;
+  box-shadow: 0 0 0 1px rgba(91, 146, 199, 0.28);
+  transform: translateY(-50%);
+}
+
+.dossier-grid .support-matrix > section::after,
+.dossier-grid .support-matrix > section.interactive-surface::after {
+  content: "";
+  display: block !important;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: clamp(34px, 5vw, 86px);
+  left: 34px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(121, 174, 224, 0.28) 0%,
+    rgba(121, 174, 224, 0.16) 68%,
+    rgba(121, 174, 224, 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* Approved academic evidence matrix: one coherent board with quiet table
+   structure, integrated evidence axis, and clearer category hierarchy. */
+.support-matrix {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin-top: 96px;
+  border: 1px solid rgba(121, 174, 224, 0.38);
+  border-radius: 16px;
+  background: rgba(249, 252, 255, 0.84);
+  box-shadow: none;
+}
+
+.support-matrix::before {
+  content: "";
+  display: block !important;
+  position: absolute;
+  z-index: 3;
+  top: 108px;
+  bottom: 46px;
+  left: 27px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(92, 154, 211, 0.12),
+    rgba(92, 154, 211, 0.62) 12%,
+    rgba(92, 154, 211, 0.62) 88%,
+    rgba(92, 154, 211, 0.12)
+  );
+  pointer-events: none;
+}
+
+.support-matrix-head {
+  display: block;
+  min-height: 0;
+  padding: 24px 32px 22px 48px;
+  border: 0;
+  border-bottom: 1px solid rgba(121, 174, 224, 0.30);
+  background:
+    linear-gradient(90deg, rgba(216, 236, 255, 0.88), rgba(241, 248, 255, 0.72) 58%, rgba(249, 252, 255, 0.32));
+}
+
+.support-matrix-head::after,
+.support-matrix-head span {
+  content: none;
+  display: none !important;
+}
+
+.support-matrix-head strong {
+  display: block;
+  max-width: none;
+  color: #0b294b;
+  font-size: 25px;
+  font-weight: 860;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.support-matrix > section,
+.dossier-grid .support-matrix > section:nth-child(6),
+.support-matrix > section:nth-of-type(1),
+.support-matrix > section:nth-of-type(2),
+.support-matrix > section:nth-of-type(3),
+.support-matrix > section:nth-of-type(4),
+.support-matrix > section:nth-of-type(5) {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(230px, 0.24fr) minmax(0, 0.76fr);
+  align-items: stretch;
+  gap: 0;
+  min-height: 88px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(121, 174, 224, 0.22);
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.48);
+  background-image: none;
+  box-shadow: none;
+  transition: background-color 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.support-matrix > section:nth-of-type(odd) {
+  background-color: rgba(237, 247, 255, 0.56);
+}
+
+.support-matrix > section:last-child {
+  border-bottom: 0;
+}
+
+.support-matrix > section:hover {
+  background-color: rgba(225, 241, 255, 0.76);
+  box-shadow: none;
+  transform: none;
+}
+
+.support-matrix > section::before {
+  content: "";
+  display: block !important;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 21px;
+  width: 12px;
+  height: 12px;
+  border: 3px solid rgba(249, 252, 255, 0.98);
+  border-radius: 50%;
+  background: #6da9df;
+  box-shadow: 0 0 0 1px rgba(74, 136, 192, 0.34);
+  transform: translateY(-50%);
+}
+
+.dossier-grid .support-matrix > section::after,
+.dossier-grid .support-matrix > section.interactive-surface::after {
+  content: none;
+  display: none !important;
+}
+
+.support-matrix > section > span {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: 22px 26px 22px 50px;
+  background: linear-gradient(90deg, rgba(218, 237, 255, 0.72), rgba(237, 247, 255, 0.28));
+  color: #10375f;
+  font-size: 17px;
+  font-weight: 850;
+  line-height: 1.4;
+}
+
+.support-matrix > section > span::before {
+  content: none;
+  display: none;
+}
+
+.support-matrix > section ul,
+.dossier-grid .support-matrix > section:not(:first-child) ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  column-gap: 0;
+  row-gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 17px 26px;
+  border-left: 1px solid rgba(121, 174, 224, 0.20);
+  color: #294560;
+  font-size: 14.5px;
+  line-height: 1.62;
+}
+
+.support-matrix > section li {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 5px 24px 5px 16px;
+}
+
+.support-matrix > section li:nth-child(even) {
+  border-left: 1px solid rgba(121, 174, 224, 0.18);
+  padding-left: 32px;
+}
+
+.support-matrix > section li:nth-child(even)::before {
+  left: 16px;
+}
+
+.support-matrix > section li::before,
+.support-matrix > section .compact-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.84em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #6da9df;
+}
+
+.support-matrix > section li + li,
+.dossier-grid .support-matrix > section:not(:first-child) li + li {
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support-matrix > section {
+    transition: none;
+  }
+}
+
+/* Publication detail modules: extend the evidence-scale visual language */
+.paper-capability-page .paper-module:not(.evidence-scale-module) {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(247, 251, 255, 0.94)) !important;
+}
+
+.paper-capability-page .paper-module:not(.evidence-scale-module) > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* 01 Research proposition: paper evidence + analytical reading */
+.paper-capability-page .proposition-module {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 251, 255, 0.95)),
+    linear-gradient(rgba(18, 104, 217, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 104, 217, 0.024) 1px, transparent 1px) !important;
+  background-size: auto, 48px 48px, 48px 48px !important;
+}
+
+.paper-capability-page .proposition-grid {
+  gap: 42px !important;
+}
+
+.paper-capability-page .proposition-grid figure {
+  padding: 12px !important;
+  border-color: rgba(18, 104, 217, 0.16) !important;
+  background: #f7fbff !important;
+}
+
+.paper-capability-page .proposition-grid > div {
+  position: relative !important;
+  padding: 10px 6px 10px 32px !important;
+  border-left: 1px solid rgba(18, 104, 217, 0.18) !important;
+}
+
+.paper-capability-page .proposition-grid > div::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 10px !important;
+  left: -1px !important;
+  width: 1px !important;
+  height: 68px !important;
+  background: #1775c8 !important;
+}
+
+.paper-capability-page .proposition-grid p {
+  margin: 0 !important;
+  color: #385570 !important;
+}
+
+.paper-capability-page .proposition-grid ul {
+  display: grid !important;
+  gap: 8px !important;
+  margin-top: 20px !important;
+}
+
+/* 03 Research design: sequential rail instead of detached pills */
+.paper-capability-page .paper-flow {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 1px !important;
+  overflow: hidden !important;
+  padding: 1px !important;
+  border: 1px solid rgba(18, 104, 217, 0.16) !important;
+  border-radius: 12px !important;
+  background: rgba(18, 104, 217, 0.12) !important;
+  counter-reset: paper-flow-step !important;
+}
+
+.paper-capability-page .paper-flow span {
+  position: relative !important;
+  min-width: 0 !important;
+  min-height: 94px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  padding: 38px 42px 16px 16px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: #173653 !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+  text-align: left !important;
+  white-space: normal !important;
+  counter-increment: paper-flow-step !important;
+  transition: color 300ms ease, background-color 300ms ease, transform 320ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.paper-capability-page .paper-flow span::before {
+  content: "0" counter(paper-flow-step) !important;
+  position: absolute !important;
+  top: 15px !important;
+  left: 16px !important;
+  color: #1775c8 !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+.paper-capability-page .paper-flow span::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 19px !important;
+  right: 16px !important;
+  width: 24px !important;
+  height: 1px !important;
+  background: rgba(18, 104, 217, 0.24) !important;
+  box-shadow: 4px 0 0 -1px #1775c8 !important;
+}
+
+.paper-capability-page .paper-flow span:hover {
+  z-index: 2 !important;
+  color: #0b5fa8 !important;
+  background: #edf7ff !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 04 Research methods: numbered analytical panels */
+.paper-capability-page .method-card-grid {
+  gap: 14px !important;
+  counter-reset: paper-method-card !important;
+}
+
+.paper-capability-page .method-card-grid section {
+  position: relative !important;
+  isolation: isolate !important;
+  min-height: 176px !important;
+  overflow: hidden !important;
+  padding: 26px 24px 22px !important;
+  border-color: rgba(18, 104, 217, 0.17) !important;
+  background: rgba(255, 255, 255, 0.90) !important;
+  counter-increment: paper-method-card !important;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms ease, background-color 300ms ease !important;
+}
+
+.paper-capability-page .method-card-grid section::before {
+  content: "0" counter(paper-method-card) !important;
+  position: absolute !important;
+  top: 12px !important;
+  right: 16px !important;
+  z-index: -1 !important;
+  color: rgba(18, 104, 217, 0.055) !important;
+  font-size: 58px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: -0.06em !important;
+}
+
+.paper-capability-page .method-card-grid section::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 54px !important;
+  height: 3px !important;
+  background: #1775c8 !important;
+  opacity: 0.72 !important;
+}
+
+.paper-capability-page .method-card-grid h5 {
+  min-height: 50px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  margin: 0 64px 14px 0 !important;
+  color: #143a5d !important;
+  font-size: 19px !important;
+  line-height: 1.3 !important;
+  white-space: normal !important;
+}
+
+.paper-capability-page .method-card-grid section:hover {
+  border-color: rgba(18, 104, 217, 0.30) !important;
+  background: #f5faff !important;
+  transform: translateY(-3px) !important;
+}
+
+/* 05 Findings: conclusion ledger with clear reading order */
+.paper-capability-page .finding-list {
+  gap: 10px !important;
+  counter-reset: paper-finding !important;
+}
+
+.paper-capability-page .finding-list p {
+  position: relative !important;
+  min-height: 78px !important;
+  margin: 0 !important;
+  padding: 16px 20px 16px 76px !important;
+  border: 1px solid rgba(18, 104, 217, 0.14) !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.90) !important;
+  counter-increment: paper-finding !important;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms ease, background-color 300ms ease !important;
+}
+
+.paper-capability-page .finding-list p::before {
+  content: "0" counter(paper-finding) !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 20px !important;
+  width: 34px !important;
+  height: 34px !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid rgba(18, 104, 217, 0.20) !important;
+  border-radius: 50% !important;
+  color: #126fd0 !important;
+  background: #eef7ff !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  transform: translateY(-50%) !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+.paper-capability-page .finding-list b {
+  display: block !important;
+  margin-bottom: 3px !important;
+  color: #173a5d !important;
+  font-size: 15px !important;
+}
+
+.paper-capability-page .finding-list p:hover {
+  border-color: rgba(18, 104, 217, 0.28) !important;
+  background: #f4faff !important;
+  transform: translateX(3px) !important;
+}
+
+/* 06 Design translation: explicit research basis to design output mapping */
+.paper-capability-page .translation-grid {
+  gap: 12px !important;
+  counter-reset: paper-translation !important;
+}
+
+.paper-capability-page .translation-grid span {
+  position: relative !important;
+  min-height: 84px !important;
+  display: grid !important;
+  grid-template-columns: max-content 26px minmax(0, 1fr) !important;
+  align-items: center !important;
+  column-gap: clamp(32px, 3.1vw, 46px) !important;
+  overflow: hidden !important;
+  padding: 19px 42px 19px 20px !important;
+  border-color: rgba(18, 104, 217, 0.16) !important;
+  background: linear-gradient(90deg, rgba(237, 247, 255, 0.88), rgba(255, 255, 255, 0.94)) !important;
+  counter-increment: paper-translation !important;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms ease, background-color 300ms ease !important;
+}
+
+.paper-capability-page .translation-grid span::before {
+  content: "" !important;
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  align-self: center !important;
+  justify-self: center !important;
+  width: 26px !important;
+  height: 10px !important;
+  margin-top: 0 !important;
+  background: linear-gradient(90deg, rgba(23, 117, 200, 0.34), #1775c8) !important;
+  clip-path: polygon(0 45%, 72% 45%, 72% 0, 100% 50%, 72% 100%, 72% 55%, 0 55%) !important;
+}
+
+.paper-capability-page .translation-grid span::after {
+  content: "0" counter(paper-translation) !important;
+  position: absolute !important;
+  top: 10px !important;
+  right: 12px !important;
+  color: rgba(18, 104, 217, 0.34) !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+.paper-capability-page .translation-grid b {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  color: #0f68b4 !important;
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+  align-self: center !important;
+  justify-self: start !important;
+  white-space: nowrap !important;
+}
+
+.paper-capability-page .translation-grid i {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  color: #173a5d !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 780 !important;
+  line-height: 1.45 !important;
+  align-self: center !important;
+  justify-self: start !important;
+}
+
+.paper-capability-page .translation-grid span:hover {
+  border-color: rgba(18, 104, 217, 0.28) !important;
+  background: linear-gradient(90deg, rgba(225, 242, 255, 0.96), rgba(255, 255, 255, 0.98)) !important;
+  transform: translateY(-2px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper-capability-page .paper-flow span,
+  .paper-capability-page .method-card-grid section,
+  .paper-capability-page .finding-list p,
+  .paper-capability-page .translation-grid span {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Publication source files ---------------------------------------------- */
+.paper-document-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.paper-document-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 15px;
+  border: 1px solid rgba(62, 145, 207, .38);
+  border-radius: 999px;
+  background: #fff;
+  color: #126ca7;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform 240ms cubic-bezier(.16, 1, .3, 1), background-color 220ms ease, border-color 220ms ease;
+}
+
+.paper-document-actions svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.paper-document-actions .paper-document-preview svg {
+  width: 17px;
+  height: 17px;
+}
+
+.paper-document-actions .paper-document-preview svg circle {
+  fill: currentColor;
+  stroke: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .paper-document-actions a:hover {
+    border-color: rgba(29, 121, 184, .68);
+    background: #fff;
+    transform: translateY(-1px);
+  }
+}
+
+.paper-document-actions a:focus-visible {
+  outline: 2px solid #1677b8;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper-document-actions a {
+    transition: none;
+  }
+}
+
+/* Paper source access sits in the quiet upper-right area of every panel. */
+@media (min-width: 1181px) {
+  .paper-panel-head {
+    position: relative;
+    padding-right: 175px;
+  }
+
+  .paper-document-actions {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    z-index: 2;
+    flex-wrap: nowrap;
+    margin-top: 0;
+  }
+
+  .paper-document-actions a {
+    min-height: 38px;
+    padding-inline: 14px;
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+}
+
+/* Project secondary page: paint the shared canvas once, not on three layers. */
+body.publication-page.project-process-page {
+  background:
+    radial-gradient(760px 520px at 6% 2%, rgba(198, 232, 255, 0.72), transparent 64%),
+    linear-gradient(var(--site-light-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--site-light-grid) 1px, transparent 1px),
+    linear-gradient(180deg, var(--site-light-bg), var(--site-light-bg-soft) 72%, #ffffff) !important;
+  background-size: auto, 88px 88px, 88px 88px, auto !important;
+}
+
+body.publication-page.project-process-page > .project-process-main,
+body.publication-page.project-process-page .project-process-stage {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Academic evidence table v2: a restrained three-column report table that
+   matches the research section instead of mixing dashboard and timeline UI. */
+.support-matrix {
+  display: block;
+  overflow: visible;
+  margin-top: 92px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.support-matrix::before {
+  content: none;
+  display: none !important;
+}
+
+.support-matrix-head {
+  display: block;
+  min-height: 0;
+  padding: 0 0 22px;
+  border: 0;
+  background: transparent;
+}
+
+.support-matrix-head::after {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 3px;
+  margin-top: 15px;
+  border-radius: 999px;
+  background: #6da9df;
+}
+
+.support-matrix-head strong {
+  display: block;
+  color: #0b294b;
+  font-size: 25px;
+  font-weight: 860;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.support-matrix-columns {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.24fr) minmax(0, 0.38fr) minmax(0, 0.38fr);
+  overflow: hidden;
+  border: 1px solid rgba(121, 174, 224, 0.34);
+  border-radius: 12px 12px 0 0;
+  background: rgba(226, 241, 255, 0.78);
+  color: #37658f;
+}
+
+.support-matrix-columns span {
+  padding: 13px 24px;
+  font-size: 12.5px;
+  font-weight: 780;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+}
+
+.support-matrix-columns span + span {
+  border-left: 1px solid rgba(121, 174, 224, 0.22);
+}
+
+.support-matrix > section,
+.dossier-grid .support-matrix > section:nth-child(7),
+.support-matrix > section:nth-of-type(1),
+.support-matrix > section:nth-of-type(2),
+.support-matrix > section:nth-of-type(3),
+.support-matrix > section:nth-of-type(4),
+.support-matrix > section:nth-of-type(5) {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(230px, 0.24fr) minmax(0, 0.76fr);
+  align-items: stretch;
+  gap: 0;
+  min-height: 82px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid rgba(121, 174, 224, 0.30);
+  border-bottom: 1px solid rgba(121, 174, 224, 0.26);
+  border-left: 1px solid rgba(121, 174, 224, 0.30);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: none;
+  transition: background-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.support-matrix > section:nth-of-type(even) {
+  background: rgba(247, 251, 255, 0.78);
+}
+
+.support-matrix > section:last-child {
+  overflow: hidden;
+  border-radius: 0 0 12px 12px;
+}
+
+.support-matrix > section:hover {
+  background: rgba(239, 247, 255, 0.84);
+  box-shadow: none;
+  transform: none;
+}
+
+.support-matrix > section::before,
+.dossier-grid .support-matrix > section::after,
+.dossier-grid .support-matrix > section.interactive-surface::after {
+  content: none;
+  display: none !important;
+}
+
+.support-matrix > section > span {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: 18px 24px;
+  background: rgba(232, 244, 255, 0.58);
+  color: #10375f;
+  font-size: 16.5px;
+  font-weight: 840;
+  line-height: 1.4;
+}
+
+.support-matrix > section > span::before {
+  content: "";
+  display: block;
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  margin-right: 13px;
+  border-radius: 2px;
+  background: #72a9dc;
+}
+
+.support-matrix > section ul,
+.dossier-grid .support-matrix > section:not(:first-child) ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid rgba(121, 174, 224, 0.20);
+  color: #294560;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.support-matrix > section li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: 17px 26px 17px 32px;
+}
+
+.support-matrix > section li:nth-child(even) {
+  border-left: 1px solid rgba(121, 174, 224, 0.18);
+}
+
+.support-matrix > section li::before,
+.support-matrix > section .compact-list li::before,
+.support-matrix > section li:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 17px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #72a9dc;
+  transform: translateY(-50%);
+}
+
+.support-matrix > section li + li,
+.dossier-grid .support-matrix > section:not(:first-child) li + li {
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support-matrix > section {
+    transition: none;
+  }
+}
+
+/* Give the research achievements section more breathing room below the previous chapter. */
+#evidence {
+  padding-top: clamp(58px, 5.2vw, 82px);
+}
+
+/* Final research support treatment: a quiet academic credentials ledger. */
+.support-matrix {
+  display: block;
+  overflow: visible;
+  margin-top: 104px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.support-matrix-head {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 28px;
+  min-height: 0;
+  padding: 0 0 24px;
+  border: 0;
+  background: transparent;
+}
+
+.support-matrix-head::after {
+  content: none;
+  display: none;
+}
+
+.support-matrix-head strong {
+  max-width: none;
+  color: #0b294b;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.support-matrix-head span {
+  max-width: none;
+  color: #52789d;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+.support-matrix > section,
+.dossier-grid .support-matrix > section:nth-child(6),
+.support-matrix > section:nth-of-type(1),
+.support-matrix > section:nth-of-type(2),
+.support-matrix > section:nth-of-type(3),
+.support-matrix > section:nth-of-type(4),
+.support-matrix > section:nth-of-type(5) {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.22fr) minmax(0, 0.78fr);
+  grid-column: auto;
+  grid-row: auto;
+  align-items: start;
+  gap: clamp(28px, 3vw, 52px);
+  min-height: 0;
+  margin: 0;
+  padding: 23px 0 24px;
+  border: 0;
+  border-top: 1px solid rgba(105, 157, 216, 0.30);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.support-matrix > section:hover {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.support-matrix > section::before,
+.dossier-grid .support-matrix > section::after,
+.dossier-grid .support-matrix > section.interactive-surface::after {
+  content: none;
+  display: none !important;
+}
+
+.support-matrix > section > span {
+  display: block;
+  margin: 0;
+  color: #10375f;
+  font-size: 17px;
+  font-weight: 840;
+  line-height: 1.4;
+}
+
+.support-matrix > section > span::before {
+  content: none;
+  display: none;
+}
+
+.support-matrix > section ul,
+.dossier-grid .support-matrix > section:not(:first-child) ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(26px, 3vw, 48px);
+  row-gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #2d455f;
+  font-size: 14.5px;
+  line-height: 1.62;
+}
+
+.support-matrix > section li {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding-left: 13px;
+}
+
+.support-matrix > section li::before,
+.support-matrix > section .compact-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #6c9dcc;
+}
+
+.support-matrix > section li + li,
+.dossier-grid .support-matrix > section:not(:first-child) li + li {
+  margin-top: 0;
+}
+
+@media (max-width: 980px) {
+  .support-matrix-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .support-matrix > section,
+  .dossier-grid .support-matrix > section:nth-child(6),
+  .support-matrix > section:nth-of-type(1),
+  .support-matrix > section:nth-of-type(2),
+  .support-matrix > section:nth-of-type(3),
+  .support-matrix > section:nth-of-type(4),
+  .support-matrix > section:nth-of-type(5) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .support-matrix > section ul,
+  .dossier-grid .support-matrix > section:not(:first-child) ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Final approved academic evidence matrix. */
+.support-matrix {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin-top: 96px;
+  border: 1px solid rgba(121, 174, 224, 0.38);
+  border-radius: 16px;
+  background: rgba(249, 252, 255, 0.84);
+  box-shadow: none;
+}
+
+.support-matrix::before {
+  content: "";
+  display: block !important;
+  position: absolute;
+  z-index: 3;
+  top: 108px;
+  bottom: 46px;
+  left: 27px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(92, 154, 211, 0.12),
+    rgba(92, 154, 211, 0.62) 12%,
+    rgba(92, 154, 211, 0.62) 88%,
+    rgba(92, 154, 211, 0.12)
+  );
+  pointer-events: none;
+}
+
+.support-matrix-head {
+  display: block;
+  min-height: 0;
+  padding: 24px 32px 22px 48px;
+  border: 0;
+  border-bottom: 1px solid rgba(121, 174, 224, 0.30);
+  background: linear-gradient(90deg, rgba(216, 236, 255, 0.88), rgba(241, 248, 255, 0.72) 58%, rgba(249, 252, 255, 0.32));
+}
+
+.support-matrix-head::after,
+.support-matrix-head span {
+  content: none;
+  display: none !important;
+}
+
+.support-matrix-head strong {
+  display: block;
+  max-width: none;
+  color: #0b294b;
+  font-size: 25px;
+  font-weight: 860;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.support-matrix > section,
+.dossier-grid .support-matrix > section:nth-child(6),
+.support-matrix > section:nth-of-type(1),
+.support-matrix > section:nth-of-type(2),
+.support-matrix > section:nth-of-type(3),
+.support-matrix > section:nth-of-type(4),
+.support-matrix > section:nth-of-type(5) {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(230px, 0.24fr) minmax(0, 0.76fr);
+  align-items: stretch;
+  gap: 0;
+  min-height: 88px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(121, 174, 224, 0.22);
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.48);
+  background-image: none;
+  box-shadow: none;
+  transition: background-color 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.support-matrix > section:nth-of-type(odd) {
+  background-color: rgba(237, 247, 255, 0.56);
+}
+
+.support-matrix > section:last-child {
+  border-bottom: 0;
+}
+
+.support-matrix > section:hover {
+  background-color: rgba(225, 241, 255, 0.76);
+  box-shadow: none;
+  transform: none;
+}
+
+.support-matrix > section::before {
+  content: "";
+  display: block !important;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 21px;
+  width: 12px;
+  height: 12px;
+  border: 3px solid rgba(249, 252, 255, 0.98);
+  border-radius: 50%;
+  background: #6da9df;
+  box-shadow: 0 0 0 1px rgba(74, 136, 192, 0.34);
+  transform: translateY(-50%);
+}
+
+.dossier-grid .support-matrix > section::after,
+.dossier-grid .support-matrix > section.interactive-surface::after {
+  content: none;
+  display: none !important;
+}
+
+.support-matrix > section > span {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: 22px 26px 22px 50px;
+  background: linear-gradient(90deg, rgba(218, 237, 255, 0.72), rgba(237, 247, 255, 0.28));
+  color: #10375f;
+  font-size: 17px;
+  font-weight: 850;
+  line-height: 1.4;
+}
+
+.support-matrix > section > span::before {
+  content: none;
+  display: none;
+}
+
+.support-matrix > section ul,
+.dossier-grid .support-matrix > section:not(:first-child) ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  column-gap: 0;
+  row-gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 17px 26px;
+  border-left: 1px solid rgba(121, 174, 224, 0.20);
+  color: #294560;
+  font-size: 14.5px;
+  line-height: 1.62;
+}
+
+.support-matrix > section li {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 5px 24px 5px 16px;
+}
+
+.support-matrix > section li:nth-child(even) {
+  border-left: 1px solid rgba(121, 174, 224, 0.18);
+  padding-left: 32px;
+}
+
+.support-matrix > section li:nth-child(even)::before {
+  left: 16px;
+}
+
+.support-matrix > section li::before,
+.support-matrix > section .compact-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.84em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #6da9df;
+}
+
+.support-matrix > section li + li,
+.dossier-grid .support-matrix > section:not(:first-child) li + li {
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support-matrix > section {
+    transition: none;
+  }
 }

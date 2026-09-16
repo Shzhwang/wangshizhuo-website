@@ -1,0 +1,250 @@
+/* Compact supporting-evidence board: one low-priority rounded surface with
+   five integrated information zones and no artificial table semantics. */
+.support-matrix {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(220px, 1.2fr) repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(126px, auto));
+  overflow: hidden;
+  margin-top: 80px;
+  border: 1px solid rgba(144, 188, 240, 0.72);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 20px 52px rgba(40, 96, 158, 0.11);
+}
+
+.support-matrix::before,
+.support-matrix-columns {
+  content: none;
+  display: none !important;
+}
+
+.support-matrix-head {
+  position: relative;
+  isolation: isolate;
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 0;
+  padding: 24px 30px;
+  border: 0;
+  border-right: 1px solid rgba(144, 188, 240, 0.44);
+  background:
+    radial-gradient(circle at 15% 86%, rgba(255, 255, 255, 0.78), transparent 34%),
+    linear-gradient(145deg, rgba(224, 240, 255, 0.92), rgba(242, 249, 255, 0.72));
+}
+
+.support-matrix-head::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: auto;
+  right: -54px;
+  bottom: -18px;
+  width: 126px;
+  height: 126px;
+  border: 1px solid rgba(86, 149, 211, 0.18);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 22px rgba(86, 149, 211, 0.08),
+    0 0 0 44px rgba(86, 149, 211, 0.045);
+  animation: evidenceOrbit 13s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+  pointer-events: none;
+}
+
+.support-matrix-head strong {
+  position: relative;
+  z-index: 1;
+  display: block;
+  max-width: 7em;
+  color: #0b294b;
+  font-size: 24px;
+  font-weight: 860;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.support-matrix-head strong::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  margin-top: 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #5f9ed8 0 72%, rgba(95, 158, 216, 0.18) 72% 100%);
+}
+
+.support-matrix-head::after {
+  content: none;
+  display: none;
+}
+
+.support-matrix-note {
+  position: relative;
+  z-index: 1;
+  max-width: 15em;
+  margin: 16px 0 0;
+  color: #4b6f90;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.support-matrix > section,
+.dossier-grid .support-matrix > section:nth-child(6),
+.dossier-grid .support-matrix > section:nth-child(7),
+.support-matrix > section:nth-of-type(1),
+.support-matrix > section:nth-of-type(2),
+.support-matrix > section:nth-of-type(3),
+.support-matrix > section:nth-of-type(4),
+.support-matrix > section:nth-of-type(5) {
+  position: relative;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 20px 22px;
+  border: 0;
+  border-left: 1px solid rgba(144, 188, 240, 0.40);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: none;
+  transition: background-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.support-matrix > section:nth-of-type(1) {
+  grid-column: 2 / 4;
+  grid-row: 1;
+}
+
+.support-matrix > section:nth-of-type(2) {
+  grid-column: 4 / 6;
+  grid-row: 1;
+}
+
+.support-matrix > section:nth-of-type(3) {
+  grid-column: 6 / 8;
+  grid-row: 1;
+}
+
+.support-matrix > section:nth-of-type(4) {
+  grid-column: 2 / 5;
+  grid-row: 2;
+  border-top: 1px solid rgba(144, 188, 240, 0.40);
+}
+
+.support-matrix > section:nth-of-type(5),
+.dossier-grid .support-matrix > section:nth-child(6) {
+  grid-column: 5 / 8;
+  grid-row: 2;
+  border-top: 1px solid rgba(144, 188, 240, 0.40);
+}
+
+.support-matrix > section:hover {
+  background: rgba(235, 246, 255, 0.86);
+  box-shadow: none;
+  transform: none;
+}
+
+.support-matrix > section::before,
+.dossier-grid .support-matrix > section::after,
+.dossier-grid .support-matrix > section.interactive-surface::after {
+  content: none;
+  display: none !important;
+}
+
+.support-matrix > section > span {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: #10375f;
+  font-size: 15.5px;
+  font-weight: 840;
+  line-height: 1.4;
+}
+
+.support-matrix > section > span::before {
+  content: "";
+  display: block;
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  margin-right: 11px;
+  border-radius: 2px;
+  background: #73a9dc;
+  transform: rotate(45deg);
+  transition:
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.support-matrix > section:hover > span::before {
+  background: #4f92cf;
+  transform: rotate(45deg) scale(1.28);
+}
+
+.support-matrix > section ul,
+.dossier-grid .support-matrix > section:not(:first-child) ul {
+  display: block;
+  min-width: 0;
+  margin: 12px 0 0;
+  padding: 0;
+  border: 0;
+  color: #35516c;
+  font-size: 13.5px;
+  line-height: 1.56;
+}
+
+.support-matrix > section li,
+.support-matrix > section li:nth-child(even) {
+  position: relative;
+  display: block;
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 0 13px;
+  border: 0;
+}
+
+.support-matrix > section li + li,
+.dossier-grid .support-matrix > section:not(:first-child) li + li {
+  margin-top: 5px;
+}
+
+.support-matrix > section li::before,
+.support-matrix > section .compact-list li::before,
+.support-matrix > section li:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  top: 0.76em;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #78a8d3;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support-matrix-head::before {
+    animation: none;
+  }
+
+  .support-matrix > section {
+    transition: none;
+  }
+}
+
+@keyframes evidenceOrbit {
+  from {
+    transform: translate3d(-4px, -3px, 0) scale(0.98);
+  }
+
+  to {
+    transform: translate3d(7px, 6px, 0) scale(1.04);
+  }
+}

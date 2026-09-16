@@ -1,0 +1,1573 @@
+/* Research Lab interactions v2
+   A restrained motion system for an academic portfolio: reveal, focus, slide, and drag. */
+
+:root {
+  --lab-blue: #2f82bd;
+  --lab-blue-deep: #155d91;
+  --lab-blue-soft: #eaf5fc;
+  --lab-line: rgba(77, 146, 194, 0.26);
+  --lab-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Remove the rejected auxiliary navigation and unintended trace line. */
+.section-rail { display: none !important; }
+#research .research-chain::before,
+#research .research-chain::after { display: none !important; content: none !important; }
+#research .method-card > .surface-sheen { display: none !important; }
+
+/* Evidence cards: focus behaves like a compact elastic carousel without reflow. */
+.paper-list {
+  isolation: isolate;
+}
+
+.paper-list li {
+  transform-origin: 50% 62%;
+  transition:
+    transform 460ms var(--lab-ease),
+    opacity 300ms ease,
+    filter 360ms ease,
+    border-color 220ms ease,
+    box-shadow 360ms var(--lab-ease) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .paper-list:hover li:not(:hover) {
+    opacity: .78;
+    filter: saturate(.78);
+    transform: translateY(3px) scale(.975);
+  }
+
+  .paper-list li:hover {
+    z-index: 8;
+    opacity: 1;
+    filter: none;
+    transform: translateY(-9px) scale(1.026);
+    border-color: rgba(50, 132, 193, .42) !important;
+    box-shadow: 0 30px 70px rgba(36, 86, 126, .16) !important;
+  }
+}
+
+/* Support board: every cell, including Languages & Tools, gets the same response. */
+.support-matrix > section {
+  isolation: isolate;
+  transition: background-color 260ms ease, box-shadow 320ms var(--lab-ease), border-color 260ms ease !important;
+}
+
+.support-matrix > section:hover {
+  z-index: 2;
+  background: linear-gradient(145deg, rgba(238, 248, 255, .96), rgba(252, 254, 255, .98)) !important;
+  box-shadow: inset 3px 0 0 rgba(65, 145, 204, .52), 0 14px 34px rgba(45, 94, 132, .08) !important;
+}
+
+/* Project chapter: direction-aware editorial slides. */
+.studio-shell::before,
+.studio-shell::after { display: none !important; content: none !important; }
+
+.studio-shell {
+  isolation: isolate;
+  box-shadow: 0 24px 68px rgba(37, 83, 119, .10) !important;
+}
+
+.studio {
+  transform-origin: 50% 30%;
+}
+
+.studio.is-entering-right { animation: studioSlideFromRight 560ms var(--lab-ease) both !important; }
+.studio.is-entering-left { animation: studioSlideFromLeft 560ms var(--lab-ease) both !important; }
+.studio.is-leaving-right,
+.studio.is-leaving-left {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid !important;
+  pointer-events: none;
+}
+.studio.is-leaving-right { animation: studioSlideToLeft 520ms var(--lab-ease) both !important; }
+.studio.is-leaving-left { animation: studioSlideToRight 520ms var(--lab-ease) both !important; }
+
+.studio.is-entering-left .studio-copy,
+.studio.is-entering-right .studio-copy,
+.studio.is-entering-left .studio-gallery button,
+.studio.is-entering-right .studio-gallery button {
+  animation: studioDetailIn 560ms var(--lab-ease) both;
+  animation-delay: calc(var(--stagger-delay, 0ms) + 60ms);
+}
+
+@keyframes studioSlideFromRight {
+  from { opacity: 0; transform: translateX(7%) scale(.985); clip-path: inset(0 0 0 18% round 14px); }
+  to { opacity: 1; transform: none; clip-path: inset(0 round 14px); }
+}
+@keyframes studioSlideFromLeft {
+  from { opacity: 0; transform: translateX(-7%) scale(.985); clip-path: inset(0 18% 0 0 round 14px); }
+  to { opacity: 1; transform: none; clip-path: inset(0 round 14px); }
+}
+@keyframes studioSlideToLeft { to { opacity: 0; transform: translateX(-4%) scale(.985); } }
+@keyframes studioSlideToRight { to { opacity: 0; transform: translateX(4%) scale(.985); } }
+@keyframes studioDetailIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Proposal chapter: a brief dossier unseal, then clean directional switching. */
+.proposal-stage {
+  position: relative;
+  isolation: isolate;
+}
+
+.proposal-dossier-reveal {
+  position: absolute;
+  z-index: 40;
+  inset: 0;
+  min-height: 31rem;
+  overflow: hidden;
+  border: 1px solid rgba(73, 144, 196, .25);
+  border-radius: 14px;
+  pointer-events: auto;
+}
+
+.dossier-sheet {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  color: #174d74;
+  background:
+    linear-gradient(rgba(81, 149, 196, .06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(81, 149, 196, .06) 1px, transparent 1px),
+    linear-gradient(145deg, rgba(248, 252, 255, .98), rgba(222, 241, 253, .98));
+  background-size: 56px 56px, 56px 56px, auto;
+  transition: transform 780ms var(--lab-ease), filter 680ms ease;
+}
+
+.dossier-sheet-left {
+  clip-path: polygon(0 0, 59% 0, 49% 100%, 0 100%);
+  align-items: flex-start;
+}
+.dossier-sheet-right {
+  clip-path: polygon(59% 0, 100% 0, 100% 100%, 49% 100%);
+  align-items: flex-end;
+}
+.dossier-sheet span {
+  font-size: .72rem;
+  font-weight: 820;
+  letter-spacing: .18em;
+}
+.dossier-sheet strong {
+  margin-top: .7rem;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1;
+}
+.dossier-sheet i {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-style: normal;
+  font-weight: 880;
+  color: rgba(42, 118, 173, .12);
+}
+.dossier-seal {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 54%;
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgba(255, 255, 255, .82);
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(145deg, #67a9d5, #287db9);
+  box-shadow: 0 14px 34px rgba(31, 96, 143, .22), 0 0 0 8px rgba(102, 173, 219, .12);
+  transform: translate(-50%, -50%);
+  transition: transform 460ms var(--lab-ease), opacity 260ms ease;
+}
+.dossier-seal span { font-size: .65rem; font-weight: 850; letter-spacing: .16em; }
+.proposal-dossier-reveal:hover .dossier-seal { transform: translate(-50%, -50%) rotate(-7deg) scale(1.07); }
+.proposal-dossier-reveal.is-unsealed { pointer-events: none; }
+.proposal-dossier-reveal.is-unsealed .dossier-sheet-left { transform: translateX(-105%); filter: brightness(1.04); }
+.proposal-dossier-reveal.is-unsealed .dossier-sheet-right { transform: translateX(105%); filter: brightness(1.04); }
+.proposal-dossier-reveal.is-unsealed .dossier-seal { opacity: 0; transform: translate(-50%, -50%) rotate(18deg) scale(.76); }
+
+.proposal-screen.proposal-enter-right { animation: proposalFromRight 600ms var(--lab-ease) both !important; }
+.proposal-screen.proposal-enter-left { animation: proposalFromLeft 600ms var(--lab-ease) both !important; }
+.proposal-screen.proposal-exit-right,
+.proposal-screen.proposal-exit-left {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block !important;
+  pointer-events: none;
+}
+.proposal-screen.proposal-exit-right { animation: proposalToLeft 500ms var(--lab-ease) both !important; }
+.proposal-screen.proposal-exit-left { animation: proposalToRight 500ms var(--lab-ease) both !important; }
+
+@keyframes proposalFromRight {
+  from { opacity: 0; transform: translateX(44px); clip-path: inset(0 0 0 12% round 12px); }
+  to { opacity: 1; transform: none; clip-path: inset(0 round 12px); }
+}
+@keyframes proposalFromLeft {
+  from { opacity: 0; transform: translateX(-44px); clip-path: inset(0 12% 0 0 round 12px); }
+  to { opacity: 1; transform: none; clip-path: inset(0 round 12px); }
+}
+@keyframes proposalToLeft { to { opacity: 0; transform: translateX(-28px); } }
+@keyframes proposalToRight { to { opacity: 0; transform: translateX(28px); } }
+
+.research-memo {
+  display: grid;
+  gap: .38rem;
+  width: 100%;
+  margin-top: .9rem;
+  border: 1px dashed rgba(48, 128, 186, .34);
+  border-radius: 9px;
+  padding: .65rem .75rem;
+  color: #296f9f;
+  text-align: left;
+  background: rgba(237, 248, 255, .76);
+  cursor: pointer;
+  transition: background-color 220ms ease, transform 260ms var(--lab-ease), box-shadow 260ms ease;
+}
+.research-memo span { font-size: .68rem; font-weight: 820; letter-spacing: .08em; }
+.research-memo strong {
+  max-height: 0;
+  overflow: hidden;
+  color: #173f5f;
+  font-size: .78rem;
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height 340ms var(--lab-ease), opacity 220ms ease, transform 340ms var(--lab-ease);
+}
+.research-memo:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(39, 98, 139, .10); }
+.research-memo.is-open { background: #f7fcff; }
+.research-memo.is-open strong { max-height: 5rem; opacity: 1; transform: none; }
+
+#proposal .phase-card,
+#proposal .contribution-grid section {
+  transition: transform 320ms var(--lab-ease), border-color 220ms ease, box-shadow 320ms var(--lab-ease), background-color 220ms ease !important;
+}
+@media (hover: hover) and (pointer: fine) {
+  #proposal .phase-card:hover,
+  #proposal .contribution-grid section:hover {
+    z-index: 2;
+    transform: translateY(-5px);
+    border-color: rgba(57, 137, 195, .36) !important;
+    box-shadow: 0 22px 48px rgba(42, 90, 127, .11) !important;
+    background-color: rgba(248, 252, 255, .98) !important;
+  }
+}
+
+/* Reader: direct manipulation, visual tension, and inertial release. */
+.reader-carousel {
+  transform: translateX(var(--reader-drag-x, 0px));
+  transition: transform 420ms var(--lab-ease);
+}
+.reader-carousel.is-dragging { transition: none; cursor: grabbing; }
+.reader-carousel.is-settling { transition: transform 420ms var(--lab-ease); }
+.reader-carousel::after {
+  content: "拖动浏览  DRAG TO EXPLORE";
+  position: absolute;
+  z-index: 20;
+  right: 1rem;
+  top: 1rem;
+  border: 1px solid rgba(67, 139, 190, .22);
+  border-radius: 999px;
+  padding: .42rem .7rem;
+  color: rgba(31, 92, 134, .68);
+  background: rgba(248, 252, 255, .82);
+  backdrop-filter: blur(8px);
+  font-size: .63rem;
+  font-weight: 760;
+  letter-spacing: .08em;
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 260ms var(--lab-ease);
+}
+.reader-carousel.is-dragging::after { opacity: .35; transform: scale(.94); }
+
+@media (prefers-reduced-motion: reduce) {
+  .paper-list li,
+  .studio,
+  .studio-copy,
+  .studio-gallery button,
+  .proposal-screen,
+  .dossier-sheet,
+  .dossier-seal,
+  .research-memo,
+  .research-memo strong,
+  .reader-carousel {
+    animation: none !important;
+    transition: none !important;
+  }
+  .proposal-dossier-reveal { display: none !important; }
+  .paper-list:hover li,
+  .paper-list li:hover,
+  #proposal .phase-card:hover,
+  #proposal .contribution-grid section:hover { transform: none !important; opacity: 1 !important; filter: none !important; }
+}
+
+/* Motion polish v3 ---------------------------------------------------------
+   One motion channel per interaction, staged entrances, no drag-only affordance. */
+
+/* The evidence axis remains; the decorative midpoint icon does not. */
+.support-matrix > section::before {
+  content: none !important;
+  display: none !important;
+}
+
+.support-matrix > section > span {
+  padding-left: 34px !important;
+  transition: color 220ms ease, transform 420ms var(--lab-ease), background-color 260ms ease;
+}
+
+.support-matrix > section li {
+  transition: color 220ms ease, transform 420ms var(--lab-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .support-matrix > section:hover > span {
+    color: #0e5f97;
+    transform: translateX(4px);
+  }
+
+  .support-matrix > section:hover li {
+    transform: translateX(3px);
+  }
+
+  .support-matrix > section:hover li:nth-child(2) { transition-delay: 45ms; }
+  .support-matrix > section:hover li:nth-child(3) { transition-delay: 80ms; }
+  .support-matrix > section:hover li:nth-child(4) { transition-delay: 115ms; }
+}
+
+/* Method trace: labels are UI markers, not selectable document text. */
+#research .method-card > span {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#research .method-card h3,
+#research .method-card small {
+  transition: color 220ms ease, transform 440ms var(--lab-ease), opacity 320ms ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #research .method-card:hover > span { transform: translateY(-3px); }
+  #research .method-card:hover h3 { transform: translateY(-2px); }
+  #research .method-card:hover small { transform: translateY(2px); opacity: .86; }
+}
+
+/* Projects: a single editorial page-turn. No extra fade or nested reveal. */
+.studio-shell { perspective: 1800px; }
+.studio.active { animation: none !important; }
+.studio-shell.reveal.visible .studio-gallery button { animation: none !important; }
+.studio.is-entering-left .studio-copy,
+.studio.is-entering-right .studio-copy,
+.studio.is-entering-left .studio-gallery button,
+.studio.is-entering-right .studio-gallery button {
+  animation: none !important;
+}
+
+.studio.is-entering-right {
+  z-index: 2;
+  transform-origin: 100% 50%;
+  animation: studioPageFromRight 680ms var(--lab-ease) both !important;
+}
+.studio.is-entering-left {
+  z-index: 2;
+  transform-origin: 0 50%;
+  animation: studioPageFromLeft 680ms var(--lab-ease) both !important;
+}
+.studio.is-leaving-right {
+  transform-origin: 0 50%;
+  animation: studioPageToLeft 620ms var(--lab-ease) both !important;
+}
+.studio.is-leaving-left {
+  transform-origin: 100% 50%;
+  animation: studioPageToRight 620ms var(--lab-ease) both !important;
+}
+
+@keyframes studioPageFromRight {
+  from { transform: translateX(4.5%) rotateY(-3deg); clip-path: inset(0 0 0 100% round 14px); }
+  to { transform: none; clip-path: inset(0 round 14px); }
+}
+@keyframes studioPageFromLeft {
+  from { transform: translateX(-4.5%) rotateY(3deg); clip-path: inset(0 100% 0 0 round 14px); }
+  to { transform: none; clip-path: inset(0 round 14px); }
+}
+@keyframes studioPageToLeft {
+  from { transform: none; clip-path: inset(0 round 14px); }
+  to { transform: translateX(-3%) rotateY(2deg); clip-path: inset(0 100% 0 0 round 14px); }
+}
+@keyframes studioPageToRight {
+  from { transform: none; clip-path: inset(0 round 14px); }
+  to { transform: translateX(3%) rotateY(-2deg); clip-path: inset(0 0 0 100% round 14px); }
+}
+
+/* Proposal: remove the split cover and use a calm, staggered editorial reveal. */
+.proposal-dossier-reveal { display: none !important; }
+
+.proposal-screen.proposal-enter-right,
+.proposal-screen.proposal-enter-left {
+  animation: proposalSoftIn 640ms ease both !important;
+}
+.proposal-screen.proposal-exit-right,
+.proposal-screen.proposal-exit-left {
+  animation: proposalSoftOut 300ms ease both !important;
+}
+
+.proposal-screen.proposal-first-enter > *,
+.proposal-screen.proposal-enter-right > *,
+.proposal-screen.proposal-enter-left > * {
+  animation: proposalLayerIn 760ms var(--lab-ease) both;
+}
+
+.proposal-screen.proposal-first-enter > *:nth-child(1),
+.proposal-screen.proposal-enter-right > *:nth-child(1),
+.proposal-screen.proposal-enter-left > *:nth-child(1) { animation-delay: 70ms; }
+.proposal-screen.proposal-first-enter > *:nth-child(2),
+.proposal-screen.proposal-enter-right > *:nth-child(2),
+.proposal-screen.proposal-enter-left > *:nth-child(2) { animation-delay: 170ms; }
+.proposal-screen.proposal-first-enter > *:nth-child(3),
+.proposal-screen.proposal-enter-right > *:nth-child(3),
+.proposal-screen.proposal-enter-left > *:nth-child(3) { animation-delay: 280ms; }
+
+.proposal-topic-card.proposal-first-enter .proposal-topic-copy,
+.proposal-topic-card.proposal-enter-right .proposal-topic-copy,
+.proposal-topic-card.proposal-enter-left .proposal-topic-copy { animation-delay: 80ms; }
+.proposal-topic-card.proposal-first-enter .system-map,
+.proposal-topic-card.proposal-enter-right .system-map,
+.proposal-topic-card.proposal-enter-left .system-map { animation: proposalLayerIn 820ms var(--lab-ease) 190ms both; }
+.proposal-topic-card.proposal-first-enter .system-node,
+.proposal-topic-card.proposal-enter-right .system-node,
+.proposal-topic-card.proposal-enter-left .system-node { animation: proposalNodeIn 680ms var(--lab-ease) both; }
+.proposal-topic-card.proposal-first-enter .system-node:nth-of-type(1),
+.proposal-topic-card.proposal-enter-right .system-node:nth-of-type(1),
+.proposal-topic-card.proposal-enter-left .system-node:nth-of-type(1) { animation-delay: 260ms; }
+.proposal-topic-card.proposal-first-enter .system-node:nth-of-type(2),
+.proposal-topic-card.proposal-enter-right .system-node:nth-of-type(2),
+.proposal-topic-card.proposal-enter-left .system-node:nth-of-type(2) { animation-delay: 320ms; }
+.proposal-topic-card.proposal-first-enter .system-node:nth-of-type(3),
+.proposal-topic-card.proposal-enter-right .system-node:nth-of-type(3),
+.proposal-topic-card.proposal-enter-left .system-node:nth-of-type(3) { animation-delay: 380ms; }
+.proposal-topic-card.proposal-first-enter .system-node:nth-of-type(4),
+.proposal-topic-card.proposal-enter-right .system-node:nth-of-type(4),
+.proposal-topic-card.proposal-enter-left .system-node:nth-of-type(4) { animation-delay: 440ms; }
+.proposal-topic-card.proposal-first-enter .system-node:nth-of-type(5),
+.proposal-topic-card.proposal-enter-right .system-node:nth-of-type(5),
+.proposal-topic-card.proposal-enter-left .system-node:nth-of-type(5) { animation-delay: 500ms; }
+
+@keyframes proposalSoftIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes proposalSoftOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes proposalLayerIn {
+  from { opacity: 0; transform: translateY(18px); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes proposalNodeIn {
+  from { opacity: 0; transform: translateY(10px) scale(.96); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Undergraduate story: restore card-first reveal and stagger its inner hierarchy. */
+.undergraduate-foundation .foundation-card {
+  opacity: .01;
+  transform: translateY(42px) scale(.985);
+  filter: blur(5px);
+  transition:
+    opacity 820ms var(--lab-ease),
+    transform 920ms var(--lab-ease),
+    filter 720ms ease,
+    border-color 220ms ease,
+    box-shadow 360ms var(--lab-ease) !important;
+}
+
+.undergraduate-foundation .foundation-card.visible {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+.undergraduate-foundation .foundation-card.visible .foundation-num,
+.undergraduate-foundation .foundation-card.visible h3,
+.undergraduate-foundation .foundation-card.visible .foundation-subtitle,
+.undergraduate-foundation .foundation-card.visible p:not(.foundation-note),
+.undergraduate-foundation .foundation-card.visible li,
+.undergraduate-foundation .foundation-card.visible .foundation-tags,
+.undergraduate-foundation .foundation-card.visible .foundation-note {
+  animation: foundationLayerIn 700ms var(--lab-ease) both;
+}
+.undergraduate-foundation .foundation-card.visible h3 { animation-delay: 90ms; }
+.undergraduate-foundation .foundation-card.visible .foundation-subtitle { animation-delay: 150ms; }
+.undergraduate-foundation .foundation-card.visible p:not(.foundation-note) { animation-delay: 210ms; }
+.undergraduate-foundation .foundation-card.visible li:nth-child(1) { animation-delay: 270ms; }
+.undergraduate-foundation .foundation-card.visible li:nth-child(2) { animation-delay: 325ms; }
+.undergraduate-foundation .foundation-card.visible li:nth-child(3) { animation-delay: 380ms; }
+.undergraduate-foundation .foundation-card.visible .foundation-tags { animation-delay: 430ms; }
+.undergraduate-foundation .foundation-card.visible .foundation-note { animation-delay: 500ms; }
+
+@keyframes foundationLayerIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Reader is button-operated only: no drag state, wheel capture, or drag prompt. */
+.reader-carousel,
+.reader-carousel.is-dragging,
+.reader-carousel.is-settling {
+  cursor: default !important;
+  touch-action: auto !important;
+  transform: none !important;
+  transition: none !important;
+}
+.reader-carousel::after {
+  content: none !important;
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .undergraduate-foundation .foundation-card,
+  .undergraduate-foundation .foundation-card.visible,
+  .proposal-screen.proposal-first-enter > *,
+  .proposal-screen.proposal-enter-right > *,
+  .proposal-screen.proposal-enter-left > *,
+  .proposal-topic-card .system-map,
+  .proposal-topic-card .system-node {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Motion polish v5 ---------------------------------------------------------
+   Rebuilt from a single visible state: no pointer sheen, no overlapping
+   proposal panels, and no parent opacity animation that can flash. */
+
+/* Support board: quiet typographic response only. */
+.support-matrix > section::before,
+.support-matrix > section::after,
+.support-matrix > section > .surface-sheen {
+  content: none !important;
+  display: none !important;
+}
+
+.support-matrix > section,
+.support-matrix > section:hover,
+.support-matrix > section:focus-within {
+  z-index: auto !important;
+  background: rgba(255, 255, 255, .74) !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  transform: none !important;
+}
+
+.support-matrix > section > span,
+.support-matrix > section li {
+  background: none !important;
+  transform: none !important;
+}
+
+.support-matrix > section > span:not(.surface-sheen) {
+  transition: color 240ms ease !important;
+}
+
+.support-matrix > section li {
+  transition: color 240ms ease, opacity 240ms ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .support-matrix > section:hover > span:not(.surface-sheen) {
+    color: #0c6199 !important;
+  }
+
+  .support-matrix > section:hover li {
+    color: #244a68 !important;
+    opacity: .96;
+  }
+
+  .support-matrix > section:hover li:nth-child(2) { transition-delay: 35ms !important; }
+  .support-matrix > section:hover li:nth-child(3) { transition-delay: 70ms !important; }
+  .support-matrix > section:hover li:nth-child(4) { transition-delay: 105ms !important; }
+}
+
+/* Proposal: exactly one panel is present; only its internal layers settle. */
+#proposal .proposal-stage {
+  isolation: isolate;
+}
+
+#proposal .proposal-screen:not(.active) {
+  display: none !important;
+}
+
+#proposal .proposal-stage.reveal.visible .proposal-screen.active,
+#proposal .proposal-screen.active,
+#proposal .proposal-screen.proposal-first-enter,
+#proposal .proposal-screen.proposal-enter-left,
+#proposal .proposal-screen.proposal-enter-right,
+#proposal .proposal-screen.proposal-exit-left,
+#proposal .proposal-screen.proposal-exit-right {
+  position: relative !important;
+  inset: auto !important;
+  z-index: 1 !important;
+  display: block !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  animation: none !important;
+}
+
+#proposal .proposal-screen.proposal-arriving > *,
+#proposal .proposal-screen.proposal-settling > * {
+  opacity: 1 !important;
+  animation: proposalLayerComposeV5 540ms var(--lab-ease) both !important;
+}
+
+#proposal .proposal-screen.proposal-arriving > *:nth-child(1),
+#proposal .proposal-screen.proposal-settling > *:nth-child(1) {
+  animation-delay: 0ms !important;
+}
+
+#proposal .proposal-screen.proposal-arriving > *:nth-child(2),
+#proposal .proposal-screen.proposal-settling > *:nth-child(2) {
+  animation-delay: 55ms !important;
+}
+
+#proposal .proposal-screen.proposal-arriving > *:nth-child(3),
+#proposal .proposal-screen.proposal-settling > *:nth-child(3) {
+  animation-delay: 105ms !important;
+}
+
+#proposal .proposal-screen.proposal-arriving .system-node,
+#proposal .proposal-screen.proposal-settling .system-node {
+  opacity: 1 !important;
+  animation: proposalNodeComposeV5 460ms var(--lab-ease) both !important;
+}
+
+#proposal .proposal-screen.proposal-arriving .system-node:nth-of-type(1),
+#proposal .proposal-screen.proposal-settling .system-node:nth-of-type(1) { animation-delay: 70ms !important; }
+#proposal .proposal-screen.proposal-arriving .system-node:nth-of-type(2),
+#proposal .proposal-screen.proposal-settling .system-node:nth-of-type(2) { animation-delay: 105ms !important; }
+#proposal .proposal-screen.proposal-arriving .system-node:nth-of-type(3),
+#proposal .proposal-screen.proposal-settling .system-node:nth-of-type(3) { animation-delay: 140ms !important; }
+#proposal .proposal-screen.proposal-arriving .system-node:nth-of-type(4),
+#proposal .proposal-screen.proposal-settling .system-node:nth-of-type(4) { animation-delay: 175ms !important; }
+#proposal .proposal-screen.proposal-arriving .system-node:nth-of-type(5),
+#proposal .proposal-screen.proposal-settling .system-node:nth-of-type(5) { animation-delay: 210ms !important; }
+
+@keyframes proposalLayerComposeV5 {
+  from { transform: translateY(9px) scale(.998); filter: blur(1px); }
+  to { transform: none; filter: none; }
+}
+
+@keyframes proposalNodeComposeV5 {
+  from { transform: translateY(5px) scale(.988); filter: saturate(.9); }
+  to { transform: none; filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support-matrix > section > span:not(.surface-sheen),
+  .support-matrix > section li,
+  #proposal .proposal-screen.proposal-arriving > *,
+  #proposal .proposal-screen.proposal-settling > *,
+  #proposal .proposal-screen.proposal-arriving .system-node,
+  #proposal .proposal-screen.proposal-settling .system-node {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Interaction refinement v4 ---------------------------------------------- */
+
+/* Publication cards: one hover, five deliberately staggered responses. */
+.paper-list li::before,
+.paper-list li strong,
+.paper-list li strong::after,
+.paper-list li em,
+.paper-list li .paper-meta {
+  transition:
+    color 240ms ease,
+    background-color 260ms ease,
+    border-color 260ms ease,
+    opacity 260ms ease,
+    transform 460ms var(--lab-ease) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .paper-list li:hover::before {
+    transform: translateY(-3px);
+  }
+
+  .paper-list li:hover strong {
+    transform: translateY(-4px);
+    transition-delay: 45ms !important;
+  }
+
+  .paper-list li:hover strong::after {
+    transform: scaleX(.92);
+    transform-origin: left center;
+    transition-delay: 80ms !important;
+  }
+
+  .paper-list li:hover em {
+    transform: translateY(-3px);
+    transition-delay: 115ms !important;
+  }
+
+  .paper-list li:hover .paper-meta {
+    color: #183b5b;
+    transform: translateY(-4px);
+    transition-delay: 155ms !important;
+  }
+}
+
+/* Hover feedback without colored rectangular fills. */
+.support-matrix > section:hover {
+  border-left-color: rgba(144, 188, 240, .40) !important;
+  background: rgba(255, 255, 255, .74) !important;
+  box-shadow: none !important;
+}
+
+.support-matrix > section:hover > span {
+  background: none !important;
+}
+
+#research .method-lab,
+#research .method-card,
+#research .method-card * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+#research .method-card.is-trace-past,
+#research .method-card.is-trace-active {
+  border-color: inherit !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#research .method-card.is-trace-past > span,
+#research .method-card.is-trace-active > span {
+  border-color: transparent !important;
+  color: var(--lab-blue-deep) !important;
+  background: transparent !important;
+}
+
+#research .method-card.is-trace-active h3 {
+  color: var(--lab-blue-deep) !important;
+}
+
+/* Project switching: overlapping editorial slide, without a clipped white bar. */
+.studio-shell {
+  overflow: hidden;
+}
+
+.studio.is-entering-right,
+.studio.is-entering-left,
+.studio.is-leaving-right,
+.studio.is-leaving-left {
+  backface-visibility: hidden;
+  clip-path: none !important;
+}
+
+.studio.is-entering-right {
+  animation: studioGlideFromRight 580ms var(--lab-ease) both !important;
+}
+.studio.is-entering-left {
+  animation: studioGlideFromLeft 580ms var(--lab-ease) both !important;
+}
+.studio.is-leaving-right {
+  animation: studioGlideToLeft 440ms var(--lab-ease) both !important;
+}
+.studio.is-leaving-left {
+  animation: studioGlideToRight 440ms var(--lab-ease) both !important;
+}
+
+@keyframes studioGlideFromRight {
+  from { opacity: .82; transform: translateX(34px) scale(.996); filter: saturate(.94); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes studioGlideFromLeft {
+  from { opacity: .82; transform: translateX(-34px) scale(.996); filter: saturate(.94); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes studioGlideToLeft {
+  from { opacity: 1; transform: none; }
+  to { opacity: .28; transform: translateX(-22px) scale(.994); }
+}
+@keyframes studioGlideToRight {
+  from { opacity: 1; transform: none; }
+  to { opacity: .28; transform: translateX(22px) scale(.994); }
+}
+
+/* Proposal switching: the incoming surface never disappears, so no white flash. */
+.proposal-screen.proposal-enter-right,
+.proposal-screen.proposal-enter-left {
+  opacity: 1 !important;
+  animation: none !important;
+}
+
+.proposal-screen.proposal-exit-right,
+.proposal-screen.proposal-exit-left {
+  z-index: 3;
+  animation: proposalSurfaceOut 320ms ease both !important;
+}
+
+.proposal-screen.proposal-enter-right > *,
+.proposal-screen.proposal-enter-left > * {
+  opacity: 1;
+  animation: proposalLayerSettle 500ms var(--lab-ease) both !important;
+}
+
+.proposal-screen.proposal-enter-right > *:nth-child(1),
+.proposal-screen.proposal-enter-left > *:nth-child(1) { animation-delay: 0ms !important; }
+.proposal-screen.proposal-enter-right > *:nth-child(2),
+.proposal-screen.proposal-enter-left > *:nth-child(2) { animation-delay: 45ms !important; }
+.proposal-screen.proposal-enter-right > *:nth-child(3),
+.proposal-screen.proposal-enter-left > *:nth-child(3) { animation-delay: 90ms !important; }
+
+.proposal-topic-card.proposal-enter-right .system-map,
+.proposal-topic-card.proposal-enter-left .system-map {
+  opacity: 1;
+  animation: proposalLayerSettle 520ms var(--lab-ease) 45ms both !important;
+}
+
+.proposal-topic-card.proposal-enter-right .system-node,
+.proposal-topic-card.proposal-enter-left .system-node {
+  opacity: 1;
+  animation: proposalNodeSettle 460ms var(--lab-ease) both !important;
+}
+.proposal-topic-card.proposal-enter-right .system-node:nth-of-type(1),
+.proposal-topic-card.proposal-enter-left .system-node:nth-of-type(1) { animation-delay: 60ms !important; }
+.proposal-topic-card.proposal-enter-right .system-node:nth-of-type(2),
+.proposal-topic-card.proposal-enter-left .system-node:nth-of-type(2) { animation-delay: 90ms !important; }
+.proposal-topic-card.proposal-enter-right .system-node:nth-of-type(3),
+.proposal-topic-card.proposal-enter-left .system-node:nth-of-type(3) { animation-delay: 120ms !important; }
+.proposal-topic-card.proposal-enter-right .system-node:nth-of-type(4),
+.proposal-topic-card.proposal-enter-left .system-node:nth-of-type(4) { animation-delay: 150ms !important; }
+.proposal-topic-card.proposal-enter-right .system-node:nth-of-type(5),
+.proposal-topic-card.proposal-enter-left .system-node:nth-of-type(5) { animation-delay: 180ms !important; }
+
+@keyframes proposalSurfaceOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes proposalLayerSettle {
+  from { opacity: 1; transform: translateY(8px); filter: blur(1.2px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes proposalNodeSettle {
+  from { opacity: 1; transform: translateY(5px) scale(.985); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper-list li::before,
+  .paper-list li strong,
+  .paper-list li strong::after,
+  .paper-list li em,
+  .paper-list li .paper-meta,
+  .studio.is-entering-right,
+  .studio.is-entering-left,
+  .studio.is-leaving-right,
+  .studio.is-leaving-left,
+  .proposal-screen.proposal-enter-right > *,
+  .proposal-screen.proposal-enter-left > *,
+  .proposal-topic-card .system-map,
+  .proposal-topic-card .system-node {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* v5 cascade lock: legacy interaction blocks above cannot re-enter. */
+.support-matrix > section::before,
+.support-matrix > section::after,
+.support-matrix > section > .surface-sheen {
+  content: none !important;
+  display: none !important;
+}
+
+.support-matrix > section,
+.support-matrix > section:hover,
+  .support-matrix > section:focus-within {
+  background: rgba(255, 255, 255, .74) !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  transform: none !important;
+}
+
+/* Interaction polish: evidence cards feel gently pressed, never cursor-lit. */
+.foundation-card > .surface-sheen,
+.paper-list li > .surface-sheen {
+  display: none !important;
+}
+
+.foundation-card,
+.paper-list li {
+  will-change: translate, box-shadow;
+  transition:
+    translate 360ms var(--lab-ease),
+    border-color 260ms ease,
+    box-shadow 360ms var(--lab-ease),
+    background-color 260ms ease !important;
+}
+
+.foundation-card:hover,
+.paper-list li:hover {
+  translate: 0 3px;
+  border-color: rgba(72, 151, 238, 0.34) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 15px 34px rgba(36, 86, 126, 0.13) !important;
+}
+
+.foundation-card:active,
+.paper-list li:active {
+  translate: 0 4px;
+}
+
+.foundation-card:hover .foundation-node {
+  transform: translateX(-50%) scale(1.04) !important;
+  box-shadow: 0 8px 22px rgba(30, 111, 234, 0.22) !important;
+}
+
+.foundation-card:hover .foundation-num {
+  transform: none !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .paper-list:hover li:not(:hover) {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+
+  .paper-list li:hover {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+
+/* Project tabs: one restrained cross-slide, with both surfaces kept visible to avoid flashes. */
+.studio-shell {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.studio.is-entering-right,
+.studio.is-entering-left,
+.studio.is-leaving-right,
+.studio.is-leaving-left {
+  backface-visibility: hidden;
+  clip-path: none !important;
+  will-change: opacity, transform;
+}
+
+.studio.is-entering-right {
+  animation: studioPolishInRight 520ms var(--lab-ease) both !important;
+}
+
+.studio.is-entering-left {
+  animation: studioPolishInLeft 520ms var(--lab-ease) both !important;
+}
+
+.studio.is-leaving-right {
+  animation: studioPolishOutLeft 400ms var(--lab-ease) both !important;
+}
+
+.studio.is-leaving-left {
+  animation: studioPolishOutRight 400ms var(--lab-ease) both !important;
+}
+
+.studio.is-entering-right .studio-copy,
+.studio.is-entering-left .studio-copy,
+.studio.is-entering-right .studio-gallery button,
+.studio.is-entering-left .studio-gallery button {
+  animation: none !important;
+}
+
+@keyframes studioPolishInRight {
+  from { opacity: .86; transform: translate3d(28px, 0, 0) scale(.992); filter: saturate(.96); }
+  72% { opacity: 1; transform: translate3d(-2px, 0, 0) scale(1.001); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+@keyframes studioPolishInLeft {
+  from { opacity: .86; transform: translate3d(-28px, 0, 0) scale(.992); filter: saturate(.96); }
+  72% { opacity: 1; transform: translate3d(2px, 0, 0) scale(1.001); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+@keyframes studioPolishOutLeft {
+  from { opacity: 1; transform: none; }
+  to { opacity: .94; transform: translate3d(-18px, 0, 0) scale(.998); }
+}
+
+@keyframes studioPolishOutRight {
+  from { opacity: 1; transform: none; }
+  to { opacity: .94; transform: translate3d(18px, 0, 0) scale(.998); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .foundation-card,
+  .paper-list li,
+  .studio.is-entering-right,
+  .studio.is-entering-left,
+  .studio.is-leaving-right,
+  .studio.is-leaving-left {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    translate: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+}
+
+#proposal .proposal-screen:not(.active) {
+  display: none !important;
+}
+
+#proposal .proposal-stage.reveal.visible .proposal-screen.active,
+#proposal .proposal-screen.active {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  animation: none !important;
+}
+
+#proposal .proposal-screen.proposal-arriving > *,
+#proposal .proposal-screen.proposal-settling > * {
+  opacity: 1 !important;
+  animation-name: proposalLayerComposeV5 !important;
+}
+
+/* Supporting evidence v6: clipped ornament and a restrained cell tint. */
+.support-matrix-head {
+  overflow: hidden !important;
+}
+
+.support-matrix > section,
+.support-matrix > section:focus-within {
+  background: rgba(255, 255, 255, .74) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .support-matrix > section:hover {
+    background: rgba(232, 245, 255, .90) !important;
+  }
+}
+
+/* One-shot evidence counters: tabular figures prevent horizontal jitter. */
+.countup-metric,
+.countup-inline {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* Annotation pass: keep the foundation number stable while the card surface
+   follows the pointer-pressure interaction. */
+.undergraduate-foundation .foundation-card:hover .foundation-num,
+.undergraduate-foundation .foundation-card:focus-within .foundation-num,
+.undergraduate-foundation .foundation-card.is-pointer-pressed .foundation-num {
+  color: var(--foundation-blue) !important;
+}
+
+/* Supporting evidence: compact title + body pairs replace fragmented bullets. */
+.support-matrix {
+  grid-template-rows: repeat(2, minmax(108px, auto)) !important;
+}
+
+.support-matrix-head {
+  padding: 18px 22px !important;
+}
+
+.support-matrix-head strong {
+  font-size: 23px !important;
+}
+
+.support-matrix-note {
+  margin-top: 11px !important;
+  font-size: 12.5px !important;
+  line-height: 1.62 !important;
+}
+
+.support-matrix > section,
+.dossier-grid .support-matrix > section:nth-child(6),
+.dossier-grid .support-matrix > section:nth-child(7) {
+  padding: 12px 16px !important;
+}
+
+.support-matrix > section > span {
+  font-size: 14.5px !important;
+}
+
+.support-copy-list {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.support-copy-list > div {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.support-copy-list dt,
+.support-copy-list dd {
+  min-width: 0;
+  margin: 0;
+}
+
+.support-copy-list dt {
+  color: #1770ba;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: .02em;
+}
+
+.support-copy-list dd {
+  color: #35516c;
+  font-size: 11.5px;
+  line-height: 1.42;
+}
+
+.support-copy-list-honors > div:first-child dd {
+  white-space: nowrap;
+}
+
+@media (max-width: 1180px) {
+  .support-copy-list > div {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .support-copy-list-honors > div:first-child dd {
+    white-space: normal;
+  }
+}
+
+.signal-grid .countup-metric {
+  width: max-content;
+  min-width: 3ch;
+  transform-origin: 0 70%;
+}
+
+/* Application documents --------------------------------------------------
+   Keep supporting labels aligned to their category heading, and place the
+   proposal PDF controls inside the existing research-position card. */
+.support-copy-list {
+  margin: 8px 0 0 34px;
+}
+
+.proposal-document-actions {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(91, 158, 211, .24);
+}
+
+.proposal-document-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border: 1px solid rgba(76, 151, 210, .34);
+  color: #0d639e;
+  text-decoration: none;
+  transition: transform 240ms cubic-bezier(.16, 1, .3, 1), background-color 220ms ease, border-color 220ms ease;
+}
+
+.proposal-document-view {
+  flex: 1 1 auto;
+  gap: 9px;
+  padding: 0 14px 0 16px;
+  border-radius: 10px;
+  background: rgba(230, 244, 255, .82);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.proposal-document-download {
+  flex: 0 0 40px;
+  width: 40px;
+  border-radius: 10px;
+  background: rgba(250, 253, 255, .9);
+}
+
+.proposal-document-actions svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Approved support board: readable type, full-width header, 3+2 evidence grid.
+   The board keeps the page-wide content edges established by its parent grid. */
+@media (min-width: 1181px) {
+  .support-matrix {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    grid-template-rows: minmax(124px, auto) repeat(2, minmax(104px, auto)) !important;
+  }
+
+  .support-matrix-head {
+    display: flex !important;
+    flex-direction: column;
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    min-height: 124px;
+    padding: 18px 22px 16px !important;
+  }
+
+  .support-matrix-head strong {
+    font-size: 22px !important;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .support-matrix-head strong::after {
+    width: 42px;
+    height: 3px;
+    margin-top: 9px;
+  }
+
+  .support-matrix-note {
+    max-width: none;
+    margin: 7px 0 0 !important;
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    white-space: nowrap;
+  }
+
+  .support-matrix > section:nth-of-type(1) {
+    grid-column: 1 / 3 !important;
+    grid-row: 2 !important;
+  }
+
+  .support-matrix > section:nth-of-type(2) {
+    grid-column: 3 / 5 !important;
+    grid-row: 2 !important;
+  }
+
+  .support-matrix > section:nth-of-type(3) {
+    grid-column: 5 / 7 !important;
+    grid-row: 2 !important;
+  }
+
+  .support-matrix > section:nth-of-type(4) {
+    grid-column: 1 / 4 !important;
+    grid-row: 3 !important;
+  }
+
+  .support-matrix > section:nth-of-type(5) {
+    grid-column: 4 / 7 !important;
+    grid-row: 3 !important;
+  }
+
+  .support-matrix > section,
+  .dossier-grid .support-matrix > section:nth-child(6),
+  .dossier-grid .support-matrix > section:nth-child(7) {
+    padding: 14px 18px !important;
+    transition: background-color 220ms cubic-bezier(.16, 1, .3, 1) !important;
+  }
+
+  .support-matrix > section > span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 20px;
+    padding-left: 18px !important;
+    font-size: 15px !important;
+    line-height: 1.35;
+  }
+
+  .support-matrix > section > span::before {
+    content: "";
+    display: block !important;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 7px !important;
+    height: 7px !important;
+    border-radius: 2px;
+    background: #6da9df;
+    transform: translateY(-50%) rotate(45deg) !important;
+    transition: none !important;
+  }
+
+  .support-matrix > section > span:not(.surface-sheen),
+  .support-copy-list dt,
+  .support-copy-list dd {
+    transition: none !important;
+  }
+
+  .support-copy-list {
+    gap: 5px;
+    margin: 8px 0 0 18px;
+  }
+
+  .support-copy-list > div {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .support-copy-list dt {
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+
+  .support-copy-list dd {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: -.012em;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .support-matrix > section:hover {
+      background: rgba(232, 245, 255, .90) !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+
+    .support-matrix > section:hover > span:not(.surface-sheen) {
+      color: #0b2d55 !important;
+    }
+
+    .support-matrix > section:hover .support-copy-list dt {
+      color: #1770ba !important;
+    }
+
+    .support-matrix > section:hover .support-copy-list dd {
+      color: #35516c !important;
+      opacity: 1 !important;
+    }
+
+    .support-matrix > section:hover > span::before {
+      width: 7px !important;
+      height: 7px !important;
+      background: #6da9df !important;
+      transform: translateY(-50%) rotate(45deg) !important;
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .proposal-document-actions a:hover {
+    border-color: rgba(31, 123, 188, .56);
+    background: rgba(214, 237, 255, .96);
+    transform: translateY(-2px);
+  }
+}
+
+.proposal-document-actions a:focus-visible {
+  outline: 2px solid #1677b8;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proposal-document-actions a {
+    transition: none;
+  }
+}
+
+.signal-grid article:first-child .countup-metric {
+  min-width: 7ch;
+}
+
+.countup-inline {
+  display: inline-block;
+  min-width: 1ch;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+}
+
+[data-countup].is-counting {
+  animation: countup-settle var(--countup-duration, 900ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes countup-settle {
+  0% {
+    opacity: .52;
+    filter: blur(2.5px);
+    transform: translate3d(0, 8px, 0);
+  }
+  42% {
+    opacity: .9;
+    filter: blur(.7px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-countup].is-counting {
+    animation: none;
+  }
+}
+
+/* Final interaction precedence: preserve reveal-on-scroll, then follow the pointer with a quiet 3D press. */
+.undergraduate-foundation .foundation-card {
+  --press-rx: 0deg;
+  --press-ry: 0deg;
+  transition:
+    opacity 820ms var(--lab-ease),
+    transform 920ms var(--lab-ease),
+    filter 720ms ease,
+    border-color 260ms ease,
+    box-shadow 360ms var(--lab-ease),
+    background-color 260ms ease !important;
+}
+
+.undergraduate-foundation .foundation-card.pointer-pressure-card.visible {
+  transition:
+    transform 220ms var(--lab-ease),
+    border-color 260ms ease,
+    box-shadow 360ms var(--lab-ease),
+    background-color 260ms ease !important;
+}
+
+.undergraduate-foundation .foundation-card.pointer-pressure-card.visible,
+.paper-list li.pointer-pressure-card {
+  translate: none !important;
+  transform:
+    perspective(1100px)
+    rotateX(var(--press-rx, 0deg))
+    rotateY(var(--press-ry, 0deg))
+    translateZ(0) !important;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, box-shadow;
+}
+
+.undergraduate-foundation .foundation-card.pointer-pressure-card.is-pointer-pressed,
+.paper-list li.pointer-pressure-card.is-pointer-pressed {
+  border-color: rgba(72, 151, 238, 0.34) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 8px 18px rgba(36, 86, 126, 0.11) !important;
+}
+
+.paper-list li {
+  --press-rx: 0deg;
+  --press-ry: 0deg;
+  transition:
+    transform 180ms var(--lab-ease),
+    opacity 300ms ease,
+    filter 300ms ease,
+    border-color 260ms ease,
+    box-shadow 360ms var(--lab-ease),
+    background-color 260ms ease !important;
+}
+
+.paper-list li.pointer-pressure-card:hover {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .undergraduate-foundation .foundation-card.pointer-pressure-card.visible,
+  .paper-list li.pointer-pressure-card {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Project switch v3: out-in sequencing keeps titles and imagery from ever overlapping. */
+.studio-shell {
+  background: rgba(255, 255, 255, 0.94);
+  overflow: hidden;
+}
+
+.studio.active {
+  animation: none !important;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition:
+    opacity 330ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 330ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.studio.studio-exit-right,
+.studio.studio-exit-left {
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 150ms ease-in,
+    transform 170ms cubic-bezier(0.4, 0, 1, 1) !important;
+}
+
+.studio.studio-exit-right {
+  transform: translate3d(-14px, 0, 0) scale(0.997);
+}
+
+.studio.studio-exit-left {
+  transform: translate3d(14px, 0, 0) scale(0.997);
+}
+
+.studio.studio-enter-from-right {
+  opacity: 0;
+  transform: translate3d(22px, 0, 0) scale(0.994);
+}
+
+.studio.studio-enter-from-left {
+  opacity: 0;
+  transform: translate3d(-22px, 0, 0) scale(0.994);
+}
+
+.studio.studio-entering {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.studio-shell.is-switching .studio-gallery button,
+.studio-shell.is-switching .studio-copy {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio.active,
+  .studio.studio-exit-right,
+  .studio.studio-exit-left,
+  .studio.studio-enter-from-right,
+  .studio.studio-enter-from-left,
+  .studio.studio-entering {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

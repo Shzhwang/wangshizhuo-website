@@ -1,0 +1,273 @@
+/* Project detail editorial grid: one spacing system for all three projects. */
+body.project-process-page {
+  --project-inset: clamp(36px, 3.2vw, 48px);
+  --project-rule: rgba(102, 161, 214, 0.24);
+  --project-ink: #102b49;
+  --project-muted: #49657e;
+  --project-blue: #176fb5;
+}
+
+body.project-process-page .project-process-main {
+  width: min(1480px, calc(100% - 96px));
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 32px;
+}
+
+body.project-process-page .project-process-nav {
+  padding-top: 40px;
+}
+
+body.project-process-page .project-process-intro {
+  margin-bottom: 22px;
+}
+
+body.project-process-page .project-process-intro h1 {
+  margin: 12px 0 16px;
+  font-size: 46px;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+body.project-process-page .project-process-intro p {
+  max-width: 29ch;
+  color: var(--project-muted);
+  line-height: 1.72;
+}
+
+body.project-process-page .project-process-nav button {
+  padding: 18px 20px 19px;
+  border-color: rgba(112, 168, 218, 0.28);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: none;
+  transform: none;
+}
+
+body.project-process-page .project-process-nav button.active {
+  border-color: rgba(49, 128, 198, 0.48);
+  background: rgba(230, 243, 254, 0.92);
+}
+
+body.project-process-page .project-process-nav button:hover {
+  border-color: rgba(49, 128, 198, 0.42);
+  background: rgba(239, 248, 255, 0.94);
+  transform: translateY(-1px);
+}
+
+body.project-process-page .project-process-stage {
+  min-width: 0;
+}
+
+body.project-process-page .project-panel {
+  --panel-inner-width: min(100%, 980px);
+  overflow: hidden;
+  border-color: rgba(112, 168, 218, 0.34) !important;
+  border-radius: 14px !important;
+  background: rgba(252, 254, 255, 0.94) !important;
+  box-shadow: 0 6px 8px rgba(28, 86, 145, 0.05) !important;
+}
+
+body.project-process-page .project-panel-head {
+  padding: 40px var(--project-inset) 38px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.project-process-page .project-panel-head > p,
+body.project-process-page .project-storyline > span,
+body.project-process-page .project-panel > .process-block > span {
+  width: 100%;
+  margin: 0;
+  color: var(--project-blue);
+  font-size: 12px;
+  font-weight: 820;
+  line-height: 1.35;
+  letter-spacing: 0.075em;
+}
+
+body.project-process-page .project-panel-head h2 {
+  max-width: 960px;
+  margin: 12px 0 8px;
+  color: var(--project-ink);
+  font-size: clamp(38px, 3vw, 50px);
+  font-weight: 860;
+  line-height: 1.08;
+  letter-spacing: -0.032em;
+  text-wrap: balance;
+}
+
+body.project-process-page .project-panel-head h3 {
+  margin: 0 0 14px;
+  color: #36536d;
+  font-size: 20px;
+  font-weight: 740;
+  line-height: 1.35;
+}
+
+body.project-process-page .project-process-tags {
+  margin-bottom: 12px;
+}
+
+body.project-process-page .project-lead {
+  max-width: 92ch;
+  margin: 0;
+  color: var(--project-muted);
+  font-size: 15px;
+  line-height: 1.72;
+  text-wrap: pretty;
+}
+
+body.project-process-page .project-storyline {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--project-rule);
+  border-bottom: 1px solid var(--project-rule);
+}
+
+body.project-process-page .project-storyline > span {
+  padding: 22px var(--project-inset) 13px;
+}
+
+body.project-process-page .project-storyline ol {
+  width: 100%;
+  margin: 0;
+  padding: 0 var(--project-inset) 30px;
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+body.project-process-page .project-storyline li {
+  min-height: 142px;
+  padding: 15px 24px 20px;
+  gap: 9px;
+  background: transparent;
+}
+
+body.project-process-page .project-storyline li:first-child {
+  padding-left: 0;
+}
+
+body.project-process-page .project-storyline li:last-child {
+  padding-right: 0;
+}
+
+body.project-process-page .project-storyline li + li {
+  border-left: 1px solid var(--project-rule);
+}
+
+body.project-process-page .project-storyline li::before {
+  color: var(--project-blue);
+  font-size: 12px;
+}
+
+body.project-process-page .project-storyline li:not(:last-child)::after {
+  content: none;
+}
+
+body.project-process-page .project-storyline b {
+  color: var(--project-ink);
+  font-size: 19px;
+  line-height: 1.22;
+}
+
+body.project-process-page .project-storyline small {
+  color: var(--project-muted);
+  font-size: 13.5px;
+  line-height: 1.62;
+}
+
+body.project-process-page .project-panel > .process-block {
+  margin: 0;
+  padding: 32px var(--project-inset) 36px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--project-rule) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+body.project-process-page .project-panel > .process-block > span {
+  margin-bottom: 13px;
+}
+
+body.project-process-page .project-panel > .process-block > p {
+  max-width: 94ch;
+  margin: 0;
+  color: var(--project-muted);
+  font-size: 15px;
+  line-height: 1.76;
+  text-wrap: pretty;
+}
+
+body.project-process-page .project-panel > .process-block:last-child {
+  border-bottom: 0 !important;
+}
+
+body.project-process-page .question-grid,
+body.project-process-page .capability-grid {
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.project-process-page .project-process-nav button {
+    transition: none;
+  }
+}
+
+/* Keep all three project switches visible in common desktop-height viewports. */
+@media (min-width: 900px) and (max-height: 1100px) {
+  body.project-process-page .project-process-nav {
+    padding-top: 8px;
+  }
+
+  body.project-process-page .project-process-intro {
+    margin-bottom: 18px;
+  }
+
+  body.project-process-page .project-process-intro span {
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  body.project-process-page .project-process-intro h1 {
+    margin: 11px 0 14px;
+    font-size: 38px;
+    line-height: 1.02;
+  }
+
+  body.project-process-page .project-process-intro p {
+    max-width: 31ch;
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.56;
+  }
+
+  body.project-process-page .project-process-nav button {
+    margin-bottom: 8px;
+    padding: 12px 14px 13px;
+  }
+
+  body.project-process-page .project-process-nav button span {
+    font-size: 10.5px;
+  }
+
+  body.project-process-page .project-process-nav button strong {
+    margin: 6px 0 7px;
+    font-size: 15.5px;
+    line-height: 1.28;
+  }
+
+  body.project-process-page .project-process-nav button small {
+    display: none;
+  }
+
+  body.project-process-page .project-process-nav button em {
+    margin: 6px 4px 0 0;
+    padding: 4px 7px;
+    font-size: 10.5px;
+    line-height: 1.2;
+  }
+}

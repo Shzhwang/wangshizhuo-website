@@ -1,0 +1,15 @@
+/* Preserve the approved whole-board pointer response independently of research layout. */
+#support-matrix.pointer-pressure-card {
+  transform: perspective(1800px) rotateX(var(--press-rx, 0deg)) rotateY(var(--press-ry, 0deg)) translateY(var(--board-press-y, 0px)) scale(var(--board-press-scale, 1)) !important;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  transition: transform 220ms cubic-bezier(.2,.7,.2,1), box-shadow 220ms ease-out !important;
+}
+#support-matrix.pointer-pressure-card.is-pointer-pressed {
+  --board-press-y: 2px;
+  --board-press-scale: .998;
+  box-shadow: 0 5px 8px rgba(28, 78, 123, .12) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #support-matrix.pointer-pressure-card { transform: none !important; transition: none !important; }
+}

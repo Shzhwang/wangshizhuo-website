@@ -1,0 +1,369 @@
+/* Secondary project pages: restrained interaction layer for desktop readers. */
+body.project-process-page {
+  --project-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --project-hover-fill: rgba(228, 243, 254, 0.62);
+  --project-hover-line: rgba(36, 128, 204, 0.68);
+}
+
+body.project-process-page .project-process-nav button,
+body.project-process-page .project-storyline li,
+body.project-process-page .question-grid section,
+body.project-process-page .capability-grid section,
+body.project-process-page .process-flow i,
+body.project-process-page .evidence-grid figure {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+body.project-process-page .project-process-nav button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform 280ms var(--project-ease-out),
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+body.project-process-page .project-process-nav button::before {
+  content: "";
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(23, 111, 181, 0.42);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 0 0 0 rgba(23, 111, 181, 0);
+  transition:
+    transform 320ms var(--project-ease-out),
+    background-color 220ms ease,
+    box-shadow 320ms var(--project-ease-out);
+}
+
+body.project-process-page .project-process-nav button span,
+body.project-process-page .project-process-nav button strong,
+body.project-process-page .project-process-nav button small,
+body.project-process-page .project-process-nav button em {
+  position: relative;
+  z-index: 1;
+  transition:
+    transform 320ms var(--project-ease-out),
+    color 200ms ease,
+    background-color 200ms ease;
+}
+
+body.project-process-page .project-process-nav button.active::before {
+  background: var(--project-blue);
+  box-shadow: 0 0 0 5px rgba(23, 111, 181, 0.10);
+}
+
+body.project-process-page .project-process-nav button:focus-visible,
+body.project-process-page .process-flow i:focus-visible {
+  outline: 2px solid rgba(23, 111, 181, 0.72);
+  outline-offset: 3px;
+}
+
+body.project-process-page .project-panel.active {
+  animation: projectPanelEditorialIn 460ms var(--project-ease-out) both;
+}
+
+@keyframes projectPanelEditorialIn {
+  from {
+    opacity: 0.58;
+    transform: translateY(10px);
+    clip-path: inset(0 0 18px 0 round 14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: inset(0 round 14px);
+  }
+}
+
+body.project-process-page .project-storyline li {
+  isolation: isolate;
+  transition:
+    transform 300ms var(--project-ease-out),
+    background-color 240ms ease;
+}
+
+body.project-process-page .project-storyline li::after,
+body.project-process-page .project-storyline li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 0;
+  top: auto;
+  z-index: 2;
+  width: auto;
+  height: 2px;
+  border: 0;
+  background: linear-gradient(90deg, var(--project-hover-line), rgba(36, 128, 204, 0.08));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 360ms var(--project-ease-out);
+}
+
+body.project-process-page .project-storyline li:first-child::after {
+  left: 0;
+}
+
+body.project-process-page .project-storyline li:last-child::after {
+  right: 0;
+}
+
+body.project-process-page .project-storyline li::before,
+body.project-process-page .project-storyline li b,
+body.project-process-page .project-storyline li small {
+  transition:
+    transform 320ms var(--project-ease-out),
+    color 220ms ease;
+}
+
+body.project-process-page .question-grid section,
+body.project-process-page .capability-grid section,
+body.project-process-page .process-flow i {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 280ms var(--project-ease-out),
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+body.project-process-page .question-grid section::after,
+body.project-process-page .capability-grid section::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 20px;
+  height: 1px;
+  background: rgba(23, 111, 181, 0.28);
+  transform: scaleX(0.4);
+  transform-origin: right center;
+  transition:
+    transform 320ms var(--project-ease-out),
+    background-color 220ms ease;
+}
+
+body.project-process-page .question-grid strong,
+body.project-process-page .capability-grid strong,
+body.project-process-page .question-grid p,
+body.project-process-page .capability-grid p {
+  position: relative;
+  z-index: 1;
+  transition:
+    transform 300ms var(--project-ease-out),
+    color 220ms ease;
+}
+
+body.project-process-page .process-flow i::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(23, 111, 181, 0.16);
+  border-radius: 50%;
+  transform: scale(0.65);
+  opacity: 0;
+  transition:
+    transform 340ms var(--project-ease-out),
+    opacity 180ms ease;
+}
+
+body.project-process-page .evidence-grid figure {
+  transition:
+    transform 360ms var(--project-ease-out),
+    border-color 220ms ease;
+}
+
+body.project-process-page .evidence-grid img {
+  transform: scale(1.001);
+  transform-origin: center center;
+  transition: transform 520ms var(--project-ease-out), filter 300ms ease;
+}
+
+body.project-process-page .evidence-grid figcaption,
+body.project-process-page .evidence-grid figcaption b {
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    transform 300ms var(--project-ease-out);
+}
+
+body.project-process-page .process-table tbody tr {
+  transition: background-color 220ms ease;
+}
+
+body.project-process-page .process-table tbody td {
+  transition:
+    color 220ms ease,
+    transform 260ms var(--project-ease-out);
+}
+
+body.project-process-page .related-block {
+  background-size: 118% 118% !important;
+  background-position: 50% 50% !important;
+  transition: background-position 480ms var(--project-ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.project-process-page .project-process-nav button:hover {
+    transform: translateY(-3px);
+  }
+
+  body.project-process-page .project-process-nav button:hover::before {
+    transform: scale(1.18);
+    background: var(--project-blue);
+    box-shadow: 0 0 0 6px rgba(23, 111, 181, 0.09);
+  }
+
+  body.project-process-page .project-process-nav button:hover strong,
+  body.project-process-page .project-process-nav button:hover small {
+    transform: translateX(3px);
+  }
+
+  body.project-process-page .project-process-nav button:hover em:nth-of-type(1) {
+    transform: translateY(-1px);
+  }
+
+  body.project-process-page .project-process-nav button:hover em:nth-of-type(2) {
+    transform: translateY(-1px);
+    transition-delay: 35ms;
+  }
+
+  body.project-process-page .project-process-nav button:hover em:nth-of-type(3) {
+    transform: translateY(-1px);
+    transition-delay: 70ms;
+  }
+
+  body.project-process-page .project-storyline li:hover {
+    z-index: 2;
+    background: var(--project-hover-fill);
+    transform: translateY(-3px);
+  }
+
+  body.project-process-page .project-storyline li:hover::after {
+    transform: scaleX(1);
+  }
+
+  body.project-process-page .project-storyline li:hover::before {
+    color: #0a5e9e;
+    transform: translateY(-2px) scale(1.08);
+  }
+
+  body.project-process-page .project-storyline li:hover b {
+    color: #0c5d99;
+    transform: translateY(-1px);
+  }
+
+  body.project-process-page .project-storyline li:hover small {
+    transform: translateY(1px);
+  }
+
+  body.project-process-page .question-grid section:hover,
+  body.project-process-page .capability-grid section:hover {
+    border-color: rgba(23, 111, 181, 0.34);
+    background: rgba(230, 244, 254, 0.84);
+    transform: translateY(-3px);
+  }
+
+  body.project-process-page .question-grid section:hover::after,
+  body.project-process-page .capability-grid section:hover::after {
+    background: rgba(23, 111, 181, 0.62);
+    transform: scaleX(1);
+  }
+
+  body.project-process-page .question-grid section:hover strong,
+  body.project-process-page .capability-grid section:hover strong {
+    color: #0c5d99;
+    transform: translateY(-2px);
+  }
+
+  body.project-process-page .question-grid section:hover p,
+  body.project-process-page .capability-grid section:hover p {
+    transform: translateY(1px);
+  }
+
+  body.project-process-page .process-flow i:hover {
+    border-color: rgba(23, 111, 181, 0.36);
+    color: #0c5d99;
+    background: rgba(229, 244, 254, 0.92);
+    transform: translateY(-3px);
+  }
+
+  body.project-process-page .process-flow i:hover::before {
+    color: #0a5e9e;
+  }
+
+  body.project-process-page .process-flow i:hover::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  body.project-process-page .evidence-grid figure:hover {
+    border-color: rgba(23, 111, 181, 0.36) !important;
+    transform: translateY(-4px);
+  }
+
+  body.project-process-page .evidence-grid figure:hover img {
+    filter: saturate(1.035) contrast(1.015);
+    transform: scale(1.012);
+  }
+
+  body.project-process-page .evidence-grid figure:hover figcaption {
+    background: rgba(235, 246, 254, 0.96) !important;
+  }
+
+  body.project-process-page .evidence-grid figure:hover figcaption b {
+    color: #0c5d99 !important;
+    transform: translateX(2px);
+  }
+
+  body.project-process-page .process-table tbody tr:hover {
+    background: rgba(230, 244, 254, 0.56);
+  }
+
+  body.project-process-page .process-table tbody tr:hover td:first-child {
+    color: #0c5d99;
+    transform: translateX(3px);
+  }
+
+  body.project-process-page .related-block:hover {
+    background-position: 58% 46% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.project-process-page .project-panel.active {
+    animation: none !important;
+  }
+
+  body.project-process-page .project-process-nav button,
+  body.project-process-page .project-process-nav button *,
+  body.project-process-page .project-storyline li,
+  body.project-process-page .project-storyline li::before,
+  body.project-process-page .project-storyline li::after,
+  body.project-process-page .project-storyline li *,
+  body.project-process-page .question-grid section,
+  body.project-process-page .question-grid section *,
+  body.project-process-page .capability-grid section,
+  body.project-process-page .capability-grid section *,
+  body.project-process-page .process-flow i,
+  body.project-process-page .process-flow i::after,
+  body.project-process-page .evidence-grid figure,
+  body.project-process-page .evidence-grid img,
+  body.project-process-page .process-table tbody tr,
+  body.project-process-page .process-table tbody td,
+  body.project-process-page .related-block {
+    transition: none !important;
+    transform: none !important;
+  }
+}

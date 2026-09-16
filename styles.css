@@ -2638,21 +2638,6 @@ body[data-section="research"] .side-index a.active span {
   line-height: 1.5;
 }
 
-.console-flow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 18px;
-  color: rgba(255, 255, 255, 0.70);
-  font-size: 12px;
-}
-
-.console-flow i {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.58));
-}
-
 .section-heading {
   width: min(1160px, calc(100% - 52px));
   margin: 0 auto 28px;
@@ -4747,16 +4732,6 @@ body[data-section="research"] .side-index a.active span {
 
   .button {
     width: 100%;
-  }
-
-  .console-flow {
-    display: grid;
-  }
-
-  .console-flow i {
-    width: 1px;
-    height: 16px;
-    margin-left: 8px;
   }
 
   .profile-card.main {
