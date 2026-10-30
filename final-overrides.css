@@ -4127,7 +4127,7 @@
 }
 
 .paper-list li:nth-child(5)::before {
-  content: "省级论文";
+  content: "期刊论文";
 }
 
 .paper-list li:nth-child(4)::before {
@@ -5954,7 +5954,7 @@ html {
 }
 
 .paper-capability-page .paper-deep-grid::before {
-  content: "申博支撑区";
+  content: "研究补充资料";
   position: absolute;
   left: 0;
   top: -40px;

@@ -1,8 +1,10 @@
 if ("scrollRestoration" in history) {
-  history.scrollRestoration = "manual";
+  history.scrollRestoration = "auto";
 }
 
-const resetDefaultEntry = () => {
+const historyEntry = performance.getEntriesByType("navigation")[0]?.type === "back_forward";
+const resetDefaultEntry = (event) => {
+  if (event?.persisted || historyEntry) return;
   if (!location.hash || location.hash === "#top") {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }
@@ -28,21 +30,21 @@ const canAnimate = !motionQuery.matches;
 const focusData = {
   human: {
     kicker: "RESEARCH LOGIC",
-    title: "研究路径逻辑",
-    text: "我的研究围绕“问题如何被识别、变量如何被提取、设计如何被验证”逐步推进。农业机械研究强调产品形态与感知评价，循环家具研究强调用户需求与服务系统，医疗共享研究强调多主体信息关系与原型验证。三类项目共同构成由产品形态、产品服务系统到复杂信息系统的研究递进。",
-    methods: ["产品形态评价", "用户需求转译", "服务系统建模", "信息交互验证"]
+    title: "我的研究路径",
+    text: "我的研究从使用者的问题出发，通过分析提出设计方案，再评价方案的表现。农业机械项目关注外观形态与感性意象，循环家具项目关注用户需求与服务流程，医疗共享项目关注信息组织与共享操作。这些项目分别涉及产品形态、产品服务系统和信息交互设计。",
+    methods: ["产品形态评价", "用户需求分析", "服务系统建模", "交互原型测试"]
   },
   machine: {
     kicker: "RESEARCH LOGIC",
-    title: "研究路径逻辑",
-    text: "我的研究围绕“问题如何被识别、变量如何被提取、设计如何被验证”逐步推进。农业机械研究强调产品形态与感知评价，循环家具研究强调用户需求与服务系统，医疗共享研究强调多主体信息关系与原型验证。三类项目共同构成由产品形态、产品服务系统到复杂信息系统的研究递进。",
-    methods: ["产品形态评价", "用户需求转译", "服务系统建模", "信息交互验证"]
+    title: "我的研究路径",
+    text: "我的研究从使用者的问题出发，通过分析提出设计方案，再评价方案的表现。农业机械项目关注外观形态与感性意象，循环家具项目关注用户需求与服务流程，医疗共享项目关注信息组织与共享操作。这些项目分别涉及产品形态、产品服务系统和信息交互设计。",
+    methods: ["产品形态评价", "用户需求分析", "服务系统建模", "交互原型测试"]
   },
   context: {
     kicker: "RESEARCH LOGIC",
-    title: "研究路径逻辑",
-    text: "我的研究围绕“问题如何被识别、变量如何被提取、设计如何被验证”逐步推进。农业机械研究强调产品形态与感知评价，循环家具研究强调用户需求与服务系统，医疗共享研究强调多主体信息关系与原型验证。三类项目共同构成由产品形态、产品服务系统到复杂信息系统的研究递进。",
-    methods: ["产品形态评价", "用户需求转译", "服务系统建模", "信息交互验证"]
+    title: "我的研究路径",
+    text: "我的研究从使用者的问题出发，通过分析提出设计方案，再评价方案的表现。农业机械项目关注外观形态与感性意象，循环家具项目关注用户需求与服务流程，医疗共享项目关注信息组织与共享操作。这些项目分别涉及产品形态、产品服务系统和信息交互设计。",
+    methods: ["产品形态评价", "用户需求分析", "服务系统建模", "交互原型测试"]
   }
 };
 
@@ -50,22 +52,22 @@ const methodData = {
   need: {
     kicker: "Method Layer 01",
     title: "需求识别",
-    text: "先确认使用者、任务阻力和设计回应。"
+    text: "了解使用者在具体任务中遇到的问题。"
   },
   model: {
     kicker: "Method Layer 02",
-    title: "变量建模",
-    text: "把前期问题整理为可比较的设计变量。"
+    title: "分析与建模",
+    text: "分析需求优先级及形态与意象的关系，为设计提供依据。"
   },
   translate: {
     kicker: "Method Layer 03",
-    title: "参数转译",
-    text: "把研究判断转化为形态、界面和流程决策。"
+    title: "设计转译",
+    text: "根据研究结果确定产品形态、界面功能与服务流程。"
   },
   verify: {
     kicker: "Method Layer 04",
-    title: "原型验证",
-    text: "回到场景中检验方案是否回应问题。"
+    title: "方案评价",
+    text: "通过感性意象评价、可用性量表或原型任务测试评价方案。"
   }
 };
 
@@ -116,6 +118,7 @@ function pagePath(kind, page) {
 }
 
 function renderPages() {
+  if (!pageGrid) return;
   pageGrid.innerHTML = "";
   if (readerCarousel) {
     readerCarousel.innerHTML = "";
@@ -985,9 +988,9 @@ function initHeroTypewriter() {
     "2027年设计学博士申请",
     "智能产品设计研究",
     "用户研究与系统分析",
-    "量化设计与参数转译",
+    "感性评价与产品造型",
     "产品服务系统研究",
-    "复杂场景协同设计"
+    "医疗信息交互设计"
   ];
 
   const target = document.querySelector("[data-hero-typewriter]");
@@ -1081,6 +1084,10 @@ const scrollToSection = (target) => {
 };
 
 window.addEventListener("load", () => {
+  if (historyEntry) {
+    updateChrome();
+    return;
+  }
   const target = location.hash ? document.querySelector(location.hash) : null;
   if (target) {
     setTimeout(() => {
@@ -1096,7 +1103,7 @@ backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smo
 
 renderPages();
 applyStaggerIndexes();
-selectReaderPage(1, { scrollThumb: false });
+if (readerSection) selectReaderPage(1, { scrollThumb: false });
 initInteractiveSurfaces();
 initResearchTrace();
 initHeroConsoleGlow();
