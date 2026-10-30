@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="王世卓博士研究计划：面向2型糖尿病患者的生成式人工智能饮食建议信息设计研究。研究依据、关键事件访谈、理由解释实验、来源查阅实验及预期贡献。">
+  <meta name="description" content="王世卓博士研究计划：面向2型糖尿病患者的生成式人工智能饮食建议信息设计研究。研究依据、关键事件访谈、理由解释实验及来源查阅实验。">
   <title>研究设计与实验 · 王世卓博士研究计划</title>
   <link rel="stylesheet" href="research-plan.css?v=editorial-final-20261030">
-  <script src="research-plan.js?v=language-final-20261030" defer></script>
+  <link rel="stylesheet" href="research-demo.css?v=measurement-final-20261030">
+  <script src="research-demo.js?v=three-studies-20261030" defer></script>
+  <script src="research-measures.js?v=measurement-design-20261030" defer></script>
 </head>
 <body class="rp-document">
   <a class="rp-skip" href="#rp-content">跳至研究计划正文</a>
@@ -18,10 +20,9 @@
   <div class="rp-shell">
     <nav class="rp-chapters" aria-label="研究计划章节">
       <p class="rp-chapters-label">研究设计与实验</p>
-      <a href="#questions" data-rp-chapter="questions"><span>01</span><strong>患者如何判断</strong></a>
-      <a href="#explanation" data-rp-chapter="explanation"><span>02</span><strong>推荐理由如何组织</strong></a>
-      <a href="#sources" data-rp-chapter="sources"><span>03</span><strong>来源原文如何呈现</strong></a>
-      <a href="#outcomes" data-rp-chapter="outcomes"><span>04</span><strong>预期贡献与安排</strong></a>
+      <a href="#questions" data-rp-chapter="questions"><span>01</span><strong>建议评价与采纳过程</strong></a>
+      <a href="#explanation" data-rp-chapter="explanation"><span>02</span><strong>推荐理由解释实验</strong></a>
+      <a href="#sources" data-rp-chapter="sources"><span>03</span><strong>来源查阅支持实验</strong></a>
       <p class="rp-chapters-note">面向2型糖尿病患者的<br>生成式人工智能<br>饮食建议信息设计研究</p>
       <span class="rp-plan-status">拟开展研究</span>
     </nav>
@@ -29,8 +30,8 @@
     <main class="rp-content" id="rp-content" tabindex="-1">
       <section class="rp-chapter" id="questions" data-rp-panel="questions" aria-labelledby="rp-questions-title">
         <header class="rp-chapter-heading">
-          <small>01 / 研究依据与关键事件访谈</small>
-          <h1 id="rp-questions-title">患者如何判断建议是否适用，<br>并决定采用哪些内容？</h1>
+          <small>01 / 研究一 · 关键事件访谈</small>
+          <h1 id="rp-questions-title">餐食咨询中的<br>建议评价与采纳过程</h1>
           <p>安排一餐需要确定食物、份量和搭配，并兼顾膳食要求与生活条件。本研究拟通过关键事件访谈，了解成年2型糖尿病患者使用生成式 AI 咨询餐食安排时，如何评价建议、查阅依据并作出选择。</p>
         </header>
 
@@ -66,129 +67,210 @@
       <section class="rp-chapter" id="explanation" data-rp-panel="explanation" aria-labelledby="rp-explanation-title">
         <header class="rp-chapter-heading">
           <small>02 / 研究二 · 单因素组间随机实验</small>
-          <h1 id="rp-explanation-title">推荐理由的解释方式，<br>如何影响采纳与适用性判断？</h1>
-          <p>拟比较“特点说明”与“关联解释”，观察患者是否采用建议，以及餐食条件变化后如何判断原方案能否沿用。两版的推荐方案、基础事实与必要适用条件保持一致。</p>
+          <h1 id="rp-explanation-title">推荐理由解释实验</h1>
+          <p>拟比较“特点说明”与“关联解释”，通过阅读前后的食物选择记录建议采纳，通过条件变化题评价参与者运用推荐理由作出判断的表现。两版的推荐方案、基础事实与必要适用条件保持一致。</p>
         </header>
 
-        <div class="rp-reason-controls" role="tablist" aria-label="查看两种理由组织方式">
-          <button type="button" id="rp-reason-feature" role="tab" aria-selected="true" aria-controls="rp-reason-illustration" data-rp-reason="feature"><span>特点说明</span><small>介绍食物的相关特点</small></button>
-          <button type="button" id="rp-reason-relation" role="tab" aria-selected="false" aria-controls="rp-reason-illustration" data-rp-reason="relation"><span>关联解释</span><small>说明特点与当次情境的关系</small></button>
-        </div>
-        <div class="rp-stage rp-reason-stage" id="rp-reason-illustration" data-rp-reason-state="feature">
-          <div class="rp-stage-caption"><span>理由组织结构示意</span><strong>推荐方案、基础事实与必要适用条件一致</strong></div>
-          <div class="rp-reason-graphic">
-            <div class="rp-reason-food"><span>相同的基础事实</span><h3>食物特点</h3><p>营养特点 · 备餐特点</p></div>
-            <div class="rp-reason-connection" aria-hidden="true"><span>联系到</span><i>↔</i></div>
-            <div class="rp-reason-context"><span>案例中的当次条件</span><h3>膳食要求</h3><h3>生活条件</h3></div>
+        <section class="rd-choice-flow" aria-labelledby="rd-choice-title">
+          <h2 id="rd-choice-title">先记录初始选择，再呈现 AI 建议</h2>
+          <ol>
+            <li><span>阅读回答前</span><strong>独立提交初始方案</strong><p>只看案例，自行安排食物、份量与搭配。此时尚未看到 AI 回答。</p></li>
+            <li><span>随机分组后</span><strong>阅读一种解释版本</strong><p>每人只阅读所属组的“特点说明”或“关联解释”。</p></li>
+            <li><span>阅读回答后</span><strong>提交最终方案</strong><p>在同一案例条件下决定保留或调整，再与初始方案比较。</p></li>
+          </ol>
+          <p class="rd-flow-note"><strong>初始选择</strong>指初始方案中选定的食物，用于识别参与者在阅读建议之前是否已经作出相同选择。</p>
+        </section>
+        <section class="rd-demo rd-reason-demo" aria-label="理由解释的材料演示">
+          <header class="rd-demo-heading"><div><span class="rd-demo-label">可交互的材料示例</span><h2>一份早餐建议，两种解释。</h2></div><span class="rd-draft">实验材料示例</span></header>
+          <div class="rd-reason-workbench">
+            <aside class="rd-case" aria-labelledby="rd-case-title">
+              <div class="rd-case-top"><span>共同情境</span><span aria-hidden="true">↗</span></div>
+              <h3 id="rd-case-title">明早的主食，<br>怎样安排？</h3>
+              <p>陈女士需要安排明早的早餐。原有膳食安排要求<strong>主食定量、增加全谷物选择</strong>；明早只有<strong>5 分钟，没有加热设备</strong>。</p><p>家中有已按原安排分装、可直接食用的全麦面包，也有需要加热准备的燕麦。两种主食的份量都按既定膳食安排取用。她希望保持其余搭配，先确定主食。</p>
+              <div class="rd-case-bottom"><span>同一案例</span><span>同一推荐</span><span>同一适用条件</span></div>
+            </aside>
+            <div class="rd-material-area">
+              <div class="rd-material-tools">
+                <div class="rd-reason-tabs" role="tablist" aria-label="切换理由解释版本">
+                  <button type="button" role="tab" id="rd-feature-tab" aria-selected="true" aria-controls="rd-feature-panel" data-rp-reason="feature"><span>A</span>特点说明</button>
+                  <button type="button" role="tab" id="rd-relation-tab" aria-selected="false" aria-controls="rd-relation-panel" data-rp-reason="relation"><span>B</span>关联解释</button>
+                </div>
+                <button class="rd-compare-toggle" type="button" data-rd-compare aria-pressed="false">标出组织差异 <span aria-hidden="true">＋</span></button>
+              </div>
+              <article class="rd-answer rd-reason-answer" aria-label="参与者看到的建议示例">
+                <header class="rd-paper-heading"><span class="rd-paper-symbol" aria-hidden="true">✦</span><div><span>模拟餐食咨询</span><h3>饮食建议</h3></div><span class="rd-paper-corner" aria-hidden="true">↗</span></header>
+                <section class="rd-answer-section"><h4>推荐方案</h4><p>明早可选择全麦面包作为主食，份量沿用案例中的既定安排，其余搭配保持不变。</p></section>
+                <section class="rd-answer-section rd-reason-copy"><h4>推荐理由</h4>
+                  <div class="rd-reason-panel" id="rd-feature-panel" role="tabpanel" aria-labelledby="rd-feature-tab" tabindex="0" data-rd-reason-panel="feature"><p>全麦制品属于可供选择的全谷物主食，<mark>保留了膳食纤维等成分</mark>。案例中的面包已经按份分装，<mark>可以直接食用，不需要加热</mark>；这些是它的食物与备餐特点。</p></div>
+                  <div class="rd-reason-panel" id="rd-relation-panel" role="tabpanel" aria-labelledby="rd-relation-tab" tabindex="0" data-rd-reason-panel="relation"><p>全麦制品保留了膳食纤维等成分，<mark>符合本案例增加全谷物选择的安排</mark>。面包已经按份分装、可直接食用且无需加热，<mark>因此适合明早只有 5 分钟、没有加热设备的准备条件</mark>。</p></div>
+                </section>
+                <section class="rd-answer-section"><h4>适用条件</h4><p>这项建议以案例给定的膳食安排、食物和备餐条件为前提。更换主食种类不表示增加主食总量，具体份量仍按原有安排执行。</p></section>
+                <footer class="rd-paper-citation"><span>资料依据</span><p>中国疾控中心《芒种节气话饮食》；国家卫生健康委《成人糖尿病食养指南（2023 年版）》问答。</p></footer>
+              </article>
+              <div class="rd-compare-note" data-rd-compare-note hidden><strong data-rd-compare-title>介绍食物与备餐特点</strong><p data-rd-compare-copy>共同情境仍然提供，但理由段不逐项连接到“为什么适合这一次”。</p><small>标记仅用于汇报讲解，不属于参与者材料。</small></div>
+            </div>
           </div>
-          <div class="rp-reason-description" aria-live="polite"><strong data-rp-reason-title>两种理由组织方式</strong><p data-rp-reason-description>特点说明介绍食物特点；关联解释说明这些特点与当次情境的关系。两者均保留必要适用条件。</p></div>
-          <p class="rp-stage-note">两版的来源信息和页面布局相同，篇幅与语言难度接近。</p>
-        </div>
-
-        <ol class="rp-procedure rp-explanation-procedure" aria-label="理由解释实验的主要过程">
-          <li><span>01</span><strong>提交初始餐食方案</strong></li><li><span>02</span><strong>分层随机分至两组</strong></li><li><span>03</span><strong>阅读回答并提交最终方案</strong></li><li><span>04</span><strong>判断条件变化后能否沿用</strong></li>
-        </ol>
+          <footer class="rd-demo-note"><span aria-hidden="true">↔</span><p>两版改变理由的组织方式，情境、推荐、适用条件和出处保持一致。</p></footer>
+          <p class="rd-sr-only" data-rd-reason-status role="status"></p>
+        </section>
         <div class="rp-measurement">
-          <h3>测量什么</h3>
-          <dl><div><dt>新增采纳</dt><dd>仅统计初始未选择推荐食物的任务，记录阅读建议后是否改选该食物。</dd></div><div><dt>适用性判断得分</dt><dd>在关键条件变化或无关细节变化后，判断原方案能否沿用，并说明理由。根据判断及理由评分。</dd></div></dl>
-          <p class="rp-measure-note">新增采纳反映食物选择的变化；最终餐食方案是否符合案例的膳食要求，另行评分。</p>
+          <h3>分别评价<br>选择与判断</h3>
+          <dl><div><dt>新增采纳</dt><dd>初始没有选推荐食物，阅读回答后是否改选了它？按每个案例记录；初始已经选了的任务另行分析。</dd></div><div><dt>适用性判断得分</dt><dd>在后续条件变化题中，能否联系食物特点与案例条件，说明原方案能否沿用？按判断、条件识别与理由应用评分。</dd></div></dl>
+          <p class="rp-measure-note">两项结果分别比较：选择记录反映建议采用，后续答题反映理由应用；最终餐食方案的适宜性另行评价。</p>
         </div>
+        <details class="rd-question-preview rd-adoption" id="reason-adoption">
+          <summary><span>选择记录</span><strong>哪些情况计为“新增采纳”？</strong><span aria-hidden="true">＋</span></summary>
+          <div class="rd-question-body">
+            <table class="rd-adoption-table"><caption>同一个案例，比较阅读 AI 回答前后的选择</caption><thead><tr><th scope="col">阅读前</th><th scope="col">阅读后</th><th scope="col">如何记录</th></tr></thead><tbody><tr><td>未选推荐食物</td><td>改选推荐食物</td><td><strong>计为新增采纳</strong></td></tr><tr><td>未选推荐食物</td><td>仍未选推荐食物</td><td>未新增采纳</td></tr><tr><td>已选推荐食物</td><td>维持或改变选择</td><td>另行分析，不计入新增采纳的任务范围</td></tr></tbody></table>
+            <p class="rd-question-explainer">在初始未选推荐食物的任务中，比较两组新增采纳的概率。</p>
+          </div>
+        </details>
+
+        <section class="rd-assessment" aria-labelledby="rd-reason-assessment-title">
+          <header class="rd-assessment-heading"><span>题目示例 · 适用性判断</span><h2 id="rd-reason-assessment-title">条件改变后，你会如何安排？</h2></header>
+          <p class="rd-assessment-timing">各题都从最初的早餐情境出发，彼此独立。可回看前面的建议。</p>
+          <div class="rd-task-set" id="reason-question" data-measure-set>
+            <div class="rd-task-tabs" role="tablist" aria-label="切换判断题目">
+              <button type="button" role="tab" id="measure-time-tab" aria-controls="measure-time" aria-selected="true" data-measure-tab>情境一 · 准备时间</button>
+              <button type="button" role="tab" id="measure-ready-tab" aria-controls="measure-ready" aria-selected="false" data-measure-tab>情境二 · 食物准备状态</button>
+              <button type="button" role="tab" id="measure-neutral-tab" aria-controls="measure-neutral" aria-selected="false" data-measure-tab>情境三 · 包装外观</button>
+            </div>
+            <section class="rd-task-panel" id="measure-time" role="tabpanel" aria-labelledby="measure-time-tab" data-measure-panel tabindex="0">
+              <header><span>01</span><h3>准备时间变成 20 分钟</h3></header>
+              <p class="rd-task-prompt">陈女士明早有了 20 分钟准备时间，仍没有加热设备，食物和其余安排不变。原来的面包方案能否保留？燕麦是否也可以考虑？请说明理由。</p>
+              <label class="rd-response-label" for="response-time">你的判断与理由</label><textarea class="rd-response" id="response-time" rows="3" placeholder="可用简短句或要点回答。"></textarea>
+              <details class="rd-score-details"><summary>查看拟定评分与回答示例 <span aria-hidden="true">＋</span></summary><div class="rd-score-body">
+                <dl class="rd-rubric"><div><dt>判断 · 1 分</dt><dd>面包方案可以保留；现有条件仍不满足这份燕麦的准备要求。</dd></div><div><dt>条件识别 · 1 分</dt><dd>指出准备时间增加，加热设备仍然缺少。</dd></div><div><dt>理由应用 · 1 分</dt><dd>联系面包可直接吃、燕麦仍需加热的特点，说明增加时间没有解除燕麦的加热要求。</dd></div></dl>
+                <table class="rd-score-table"><caption>拟定评分 · 每项 0 或 1 分</caption><thead><tr><th scope="col">回答示例</th><th scope="col">判断</th><th scope="col">条件识别</th><th scope="col">理由应用</th><th scope="col">合计</th></tr></thead><tbody><tr><td>面包可以保留，燕麦还不能准备。</td><td>1</td><td>0</td><td>0</td><td>1 / 3</td></tr><tr><td>面包可保留，燕麦还不能准备。现在有 20 分钟，仍没有加热设备。</td><td>1</td><td>1</td><td>0</td><td>2 / 3</td></tr><tr><td>面包可直接吃，仍可保留；虽然时间多了，但燕麦需要加热，现有设备条件仍不能满足。</td><td>1</td><td>1</td><td>1</td><td>3 / 3</td></tr></tbody></table>
+                <p class="rd-task-hint">按表达的意思评分，接受简短回答及含义相同的表述。</p>
+              </div></details>
+            </section>
+            <section class="rd-task-panel" id="measure-ready" role="tabpanel" aria-labelledby="measure-ready-tab" data-measure-panel tabindex="0">
+              <header><span>02</span><h3>燕麦已经准备好了</h3></header>
+              <p class="rd-task-prompt">陈女士明早仍只有 5 分钟，也没有加热设备。那份原本需要加热准备的燕麦，现在已经按既定份量做好，早餐时可直接取食。其余安排不变。原来的面包方案能否保留？你会怎样考虑这两种主食？请说明理由。</p>
+              <label class="rd-response-label" for="response-ready">你的判断与理由</label><textarea class="rd-response" id="response-ready" rows="3" placeholder="可用简短句或要点回答。"></textarea>
+              <details class="rd-score-details"><summary>查看拟定评分与回答示例 <span aria-hidden="true">＋</span></summary><div class="rd-score-body">
+                <dl class="rd-rubric"><div><dt>判断 · 1 分</dt><dd>面包可以保留，已准备好的燕麦也可考虑。</dd></div><div><dt>条件识别 · 1 分</dt><dd>指出燕麦现在可直接取食，时间与设备条件未变。</dd></div><div><dt>理由应用 · 1 分</dt><dd>说明燕麦原来的备餐限制已消除，面包方便食用的依据也仍然成立。</dd></div></dl>
+                <blockquote class="rd-written-answer"><span>3 / 3 分回答示例</span>可以继续选面包，也可以考虑已经做好的燕麦。现在两者都能直接取食，适合只有 5 分钟、没有加热设备的情况；面包原来的方便食用特点没有改变。</blockquote>
+                <p class="rd-task-hint">选择面包或燕麦均可，按是否说明两者与当前条件的关系评分。</p>
+              </div></details>
+            </section>
+            <section class="rd-task-panel" id="measure-neutral" role="tabpanel" aria-labelledby="measure-neutral-tab" data-measure-panel tabindex="0">
+              <header><span>03</span><h3>面包换了包装外观</h3></header>
+              <p class="rd-task-prompt">面包换了外包装颜色。食物、份量和准备方式均未改变，陈女士明早仍只有 5 分钟且没有加热设备。原来的早餐安排是否需要因此调整？请说明理由。</p>
+              <label class="rd-response-label" for="response-neutral">你的判断与理由</label><textarea class="rd-response" id="response-neutral" rows="3" placeholder="可用简短句或要点回答。"></textarea>
+              <details class="rd-score-details"><summary>查看拟定评分与回答示例 <span aria-hidden="true">＋</span></summary><div class="rd-score-body">
+                <dl class="rd-rubric"><div><dt>判断 · 1 分</dt><dd>不需要因包装颜色变化调整原安排。</dd></div><div><dt>条件识别 · 1 分</dt><dd>指出食物准备方式及时间、设备条件均未变化。</dd></div><div><dt>理由应用 · 1 分</dt><dd>说明面包可直接食用与当前备餐条件的对应关系仍成立。</dd></div></dl>
+                <blockquote class="rd-written-answer"><span>3 / 3 分回答示例</span>不需要因此调整。面包仍能直接吃，明早仍只有 5 分钟且无法加热，包装颜色没有改变原来的备餐理由。</blockquote>
+              </div></details>
+            </section>
+          </div>
+          <details class="rd-question-preview"><summary><span>研究安排</span><strong>何时作答，如何比较两组？</strong><span aria-hidden="true">＋</span></summary><div class="rd-question-body">
+            <dl class="rd-record-lines"><div><dt>作答时机</dt><dd>全部最终餐食方案和选择理由提交后，再完成条件变化题。可回看所属组别的 AI 回答。</dd></div><div><dt>评价内容</dt><dd>是否识别条件的变化，并根据推荐理由作出相符判断。新增采纳另由前后方案记录。</dd></div><div><dt>组间比较</dt><dd>两组完成相同题目，按统一规则评分，比较多题汇总的适用性判断得分。评分者不知分组。</dd></div></dl>
+            <p>拟编制 8 个案例，每人完成其中 4 个。每例设置关键条件与无关细节变化，题池覆盖食物、份量、搭配及备餐条件。上方三个变式用于展示同一案例的任务形式。</p>
+            <p class="rd-task-hint">预测试检查题目是否需要运用推荐理由、难度是否适当，再确定正式题目与评分规则。</p>
+          </div></details>
+        </section>
 
         <details class="rp-details">
           <summary>实验对象、任务安排与分析方案 <span aria-hidden="true">＋</span></summary>
           <div class="rp-details-body">
             <div><h3>对象与材料</h3><p>拟招募确诊为2型糖尿病、曾使用生成式 AI 获取健康信息的成年人。根据访谈结果编制 8 个模拟餐食案例，每人按预设组合完成其中 4 个，依据案例人物的膳食要求与生活条件安排餐食。每个案例预先确定推荐方案，依据统一资料生成 AI 回答初稿，再编制为两个版本。</p><p>特点说明版介绍推荐食物的营养或备餐特点；关联解释版将这些特点与案例中的膳食要求、生活条件联系起来，说明推荐原因。</p></div>
-            <div><h3>任务顺序</h3><p>参与者先提交各案例的初始方案与判断信心。研究者根据初始选择与预设推荐食物的差异，将参与者分层随机分至两组。参与者再按随机次序阅读所属组别的回答，提交最终方案及判断信心。全部方案提交后，收集各案例的选择理由。回答适用性判断题时，可回看所属组别的回答。</p></div>
+            <div><h3>任务顺序</h3><p>参与者先阅读案例，在尚未看到 AI 回答时，独立提交各案例的初始餐食方案与判断信心。研究者根据初始选择与预设推荐食物的差异，将参与者分层随机分至两组。参与者再按随机次序阅读所属组别的回答，在原案例条件下提交最终方案及判断信心。全部方案提交后，收集各案例的选择理由，再完成条件变化后的适用性判断题。作答时可回看所属组别的回答。</p></div>
             <div><h3>评分与补充记录</h3><p>对于初始已选择推荐食物的任务，另行分析参与者是否维持原有选择。结合最终方案与选择理由，分析份量和搭配建议的采用情况；依据案例的膳食要求，对最终餐食方案评分。任务结束后，收集推荐理由相关性与信息有用性评价。</p></div>
             <div><h3>分析方案</h3><p>拟用二项广义估计方程（GEE）分析新增采纳，以参与者为聚类单位，调整案例及预设基线因素，再通过边际标准化估计组间采纳概率差。适用性判断得分拟采用线性回归，调整任务集合、分层因素和基线饮食知识。正式材料、样本量与分析方案将在预测试后确定。</p></div>
           </div>
         </details>
-        <footer class="rp-chapter-footnote"><p>实验评价模拟餐食任务中的选择与判断，不直接测量日常饮食执行或健康变化。</p><a href="#sources" data-rp-chapter="sources">查看来源查阅实验 <span aria-hidden="true">→</span></a></footer>
+        <footer class="rp-chapter-footnote"><p>分别报告两种解释下的选择变化与理由应用表现。</p><a href="#sources" data-rp-chapter="sources">查看来源查阅实验 <span aria-hidden="true">→</span></a></footer>
       </section>
 
       <section class="rp-chapter" id="sources" data-rp-panel="sources" aria-labelledby="rp-sources-title">
         <header class="rp-chapter-heading">
           <small>03 / 研究三 · 2 × 2 组间随机因子实验</small>
-          <h1 id="rp-sources-title">查阅来源原文时，<br>段落定位与并排呈现有何作用？</h1>
+          <h1 id="rp-sources-title">来源查阅支持实验</h1>
           <p>分别改变原文打开位置和阅读布局，组合成四种界面条件。四组的 AI 回答、出处信息、来源入口与完整原文相同，推荐理由统一采用关联解释。</p>
         </header>
 
-        <div class="rp-source-controls">
-          <div role="group" aria-label="原文打开位置"><span>原文打开位置</span><button type="button" data-rp-location="home" aria-pressed="true">原文首页</button><button type="button" data-rp-location="located" aria-pressed="false">相关段落</button></div>
-          <div role="group" aria-label="建议与原文的阅读布局"><span>阅读布局</span><button type="button" data-rp-layout="switch" aria-pressed="true">切换查看</button><button type="button" data-rp-layout="parallel" aria-pressed="false">并排查看</button></div>
-        </div>
-        <div class="rp-stage rp-source-stage" data-rp-location-state="home" data-rp-layout-state="switch" data-rp-document-state="source">
-          <div class="rp-stage-caption"><span>界面结构示意</span><strong data-rp-source-condition>两份材料：建议与完整原文</strong></div>
-          <div class="rp-source-tabs" role="tablist" aria-label="切换查看建议或原文"><button type="button" id="rp-document-answer-tab" role="tab" aria-selected="false" aria-controls="rp-answer-document" data-rp-document="answer">AI 建议</button><button type="button" id="rp-document-source-tab" role="tab" aria-selected="true" aria-controls="rp-source-document" data-rp-document="source">来源原文</button></div>
-          <div class="rp-source-window">
-            <article class="rp-answer-sheet" id="rp-answer-document" aria-labelledby="rp-answer-document-title">
-              <header><small>材料示意</small><h3 id="rp-answer-document-title">AI 饮食建议</h3></header>
-              <div class="rp-answer-block"><span>推荐内容</span><p>食物选择 · 份量 · 搭配</p></div>
-              <div class="rp-answer-block"><span>关联解释</span><p>食物特点与案例条件的关系</p></div>
-              <div class="rp-answer-citation"><span aria-hidden="true">↗</span><p>出处信息 · 来源入口</p></div>
-            </article>
-            <article class="rp-source-sheet" id="rp-source-document" aria-labelledby="rp-source-document-title">
-              <header><small>材料示意</small><h3 id="rp-source-document-title">完整来源原文</h3></header>
-              <div class="rp-source-scroll" data-rp-source-scroll tabindex="0" aria-label="来源原文结构示意，可滚动查看">
-                <section class="rp-source-opening" data-rp-source-home><span>原文起始位置</span><h4>首页与前文</h4><p>标题、作者与出处信息</p><div class="rp-text-lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div></section>
-                <section class="rp-source-passage" data-rp-source-passage><span>与当前建议有关</span><h4>相关原文段落</h4><p>推荐依据与适用条件</p><div class="rp-text-lines" aria-hidden="true"><i></i><i></i><i></i></div></section>
-                <section class="rp-source-continuation"><span>后续内容</span><h4>其余原文</h4><p>完整原文仍可查阅</p><div class="rp-text-lines" aria-hidden="true"><i></i><i></i><i></i></div></section>
-              </div>
-            </article>
+        <section class="rd-choice-flow" aria-labelledby="rd-source-choice-title">
+          <h2 id="rd-source-choice-title">先记录初始选择，再比较不同查阅界面</h2>
+          <ol>
+            <li><span>阅读回答前</span><strong>独立提交初始方案</strong><p>依据案例安排食物、份量与搭配，记录尚未看到 AI 回答时的选择。</p></li>
+            <li><span>随机分组后</span><strong>阅读建议，按需查阅来源</strong><p>每人使用分配到的一种界面，自主决定是否打开原文。</p></li>
+            <li><span>阅读回答后</span><strong>提交最终方案</strong><p>比较同一案例中阅读前后的选择。全部方案提交后，再完成原文理解题。</p></li>
+          </ol>
+        </section>
+        <section class="rd-demo rd-source-demo" aria-label="四种来源查阅方式演示">
+          <header class="rd-demo-heading"><div><span class="rd-demo-label">可操作的查阅示例</span><h2>点开同一份原文，体验四种方式。</h2></div><button class="rd-reset" type="button" data-rd-reset><span aria-hidden="true">↺</span> 重新体验</button></header>
+          <div class="rd-factor-bar">
+            <fieldset><legend>打开位置</legend><div class="rd-segment"><button type="button" data-rp-location="home" aria-pressed="true">原文首页</button><button type="button" data-rp-location="located" aria-pressed="false">相关段落</button></div></fieldset>
+            <span class="rd-factor-times" aria-hidden="true">×</span>
+            <fieldset><legend>阅读布局</legend><div class="rd-segment"><button type="button" data-rp-layout="switch" aria-pressed="true">切换查看</button><button type="button" data-rp-layout="parallel" aria-pressed="false">并排查看</button></div></fieldset>
+            <p class="rd-condition-caption"><span>当前条件</span><strong data-rd-condition>普通查阅</strong></p>
           </div>
-          <p class="rp-source-description" data-rp-source-description aria-live="polite">此处并列展示建议与原文的结构；实验将分别比较原文打开位置和阅读布局。</p>
+          <div class="rd-source-context"><span>演示情境</span><p>沿用前页的早餐例子：主食定量、增加全谷物选择；明早只有 5 分钟且无法加热。<small>共用案例便于演示；正式研究三另编案例，并招募独立样本。</small></p></div>
+          <div class="rd-reader" data-rd-open="false" data-rd-layout="switch" data-rd-document="answer">
+            <div class="rd-reader-top"><span class="rd-reader-indicator" aria-hidden="true"></span><span data-rd-reader-instruction>先阅读建议，再从资料依据打开原文</span><span class="rd-reader-count" data-rd-reader-count></span></div>
+            <div class="rd-reading-canvas">
+              <article class="rd-answer rd-source-answer" id="rd-source-answer" aria-labelledby="rd-source-answer-title">
+                <header class="rd-paper-heading"><span class="rd-paper-symbol" aria-hidden="true">✦</span><div><span>模拟餐食咨询</span><h3 id="rd-source-answer-title">饮食建议</h3></div></header>
+                <section class="rd-answer-section"><h4>推荐方案</h4><p>明早可选择全麦面包作为主食，份量沿用案例中的既定安排，其余搭配保持不变。</p></section>
+                <section class="rd-answer-section"><h4>推荐理由</h4><p>全麦制品保留了膳食纤维等成分，符合本案例增加全谷物选择的安排。面包已经按份分装、可直接食用且无需加热，因此适合明早只有 5 分钟、没有加热设备的准备条件。</p></section>
+                <section class="rd-answer-section"><h4>适用条件</h4><p>这项建议以案例给定的膳食安排、食物和备餐条件为前提。更换主食种类不表示增加主食总量，具体份量仍按原有安排执行。</p></section>
+                <footer class="rd-paper-citation"><span>资料依据</span><p>国家卫生健康委《成人糖尿病食养指南（2023 年版）》问答：主食选择与适用条件。</p><button class="rd-open-source" type="button" data-rd-open-source aria-controls="rd-source-document"><span>查阅依据</span><span aria-hidden="true">↗</span></button></footer>
+              </article>
+              <article class="rd-source-document" id="rd-source-document" aria-label="完整官方来源原文" hidden>
+                <header class="rd-document-toolbar"><button type="button" class="rd-back" data-rd-back>← 返回建议</button><span>国家卫生健康委 · 2023</span><a href="assets/research-plan/demo/diabetes-guide-qa-2023.pdf" target="_blank" rel="noopener" aria-label="在新标签页打开完整原文PDF">原文 PDF ↗</a></header>
+                <div class="rd-source-scroll" data-rd-source-scroll tabindex="0" role="region" aria-label="完整来源原文，共5页，可上下滚动">
+                  <figure class="rd-pdf-page" data-rd-page="1"><img src="assets/research-plan/demo/diabetes-guide-qa-2023-page-01.webp" width="1400" height="1980" alt="国家卫生健康委《成人糖尿病食养指南（2023年版）》问答，第1页。可使用上方原文文件链接阅读可选择文字的PDF。" decoding="async"><figcaption>第 1 页 / 共 5 页</figcaption></figure><figure class="rd-pdf-page" data-rd-page="2"><img src="assets/research-plan/demo/diabetes-guide-qa-2023-page-02.webp" width="1400" height="1980" alt="国家卫生健康委《成人糖尿病食养指南（2023年版）》问答，第2页。可使用上方原文文件链接阅读可选择文字的PDF。" decoding="async"><figcaption>第 2 页 / 共 5 页</figcaption></figure><figure class="rd-pdf-page" data-rd-page="3"><img src="assets/research-plan/demo/diabetes-guide-qa-2023-page-03.webp" width="1400" height="1980" alt="国家卫生健康委《成人糖尿病食养指南（2023年版）》问答，第3页。可使用上方原文文件链接阅读可选择文字的PDF。" decoding="async"><figcaption>第 3 页 / 共 5 页</figcaption></figure><figure class="rd-pdf-page" data-rd-page="4"><span class="rd-passage-target" data-rd-passage aria-hidden="true"></span><img src="assets/research-plan/demo/diabetes-guide-qa-2023-page-04.webp" width="1400" height="1980" alt="国家卫生健康委《成人糖尿病食养指南（2023年版）》问答，第4页。可使用上方原文文件链接阅读可选择文字的PDF。" decoding="async"><figcaption>第 4 页 / 共 5 页</figcaption></figure><figure class="rd-pdf-page" data-rd-page="5"><img src="assets/research-plan/demo/diabetes-guide-qa-2023-page-05.webp" width="1400" height="1980" alt="国家卫生健康委《成人糖尿病食养指南（2023年版）》问答，第5页。可使用上方原文文件链接阅读可选择文字的PDF。" decoding="async"><figcaption>第 5 页 / 共 5 页</figcaption></figure>
+                </div>
+                <footer class="rd-document-footer"><span>完整 5 页 · 可向前后滚动查阅</span><button type="button" data-rd-zoom aria-pressed="false">放大原文 ＋</button></footer>
+              </article>
+            </div>
+          </div>
+          <footer class="rd-demo-note"><span aria-hidden="true">↗</span><p data-rd-source-description role="status">点击“查阅依据”，从原文首页开始查找；建议与原文切换阅读。</p></footer>
+          <p class="rd-demo-provenance">原文：国家卫生健康委《成人糖尿病食养指南（2023 年版）》问答，完整 5 页。</p>
+        </section>
+        <div class="rp-measurement">
+          <h3>分别评价<br>选择与理解</h3>
+          <dl><div><dt>新增采纳</dt><dd>初始没有选推荐食物，阅读建议后是否改选了它？沿用研究二的规则；初始已经选了的任务另行分析。</dd></div><div><dt>原文理解得分</dt><dd>查阅原文后，能否准确解释其中的信息，并用于新的餐食情境？按原文含义与情境应用分别评分。</dd></div></dl>
+          <p class="rp-measure-note">另记决策阶段的来源查阅；理解任务中记录依据定位与查找用时，任务结束后评价主观负担。</p>
         </div>
 
-        <div class="rp-measurement">
-          <h3>测量什么</h3>
-          <dl><div><dt>新增采纳</dt><dd>仅统计初始未选择推荐食物的任务，记录阅读建议后是否改选该食物。</dd></div><div><dt>原文理解得分</dt><dd>解释原文中的膳食原则，判断其在另一餐食情境中是否适用。根据回答的结论与理由评分。</dd></div></dl>
-          <p class="rp-measure-note">题目涉及 AI 回答未直接提供的信息，作答时可查阅原文。另行记录段落选择的正确性、查找时间和主观负担。</p>
-        </div>
+        <section class="rd-assessment" aria-labelledby="rd-source-assessment-title">
+          <header class="rd-assessment-heading"><span>题目示例 · 原文理解</span><h2 id="rd-source-assessment-title">查阅原文后，如何判断两位家人的情况？</h2></header>
+          <div class="rd-task-panel rd-source-task" id="source-question">
+            <p class="rd-task-prompt">陈女士想把上面的早餐建议转给两位同样患有 2 型糖尿病的老年家人。</p>
+            <dl class="rd-fact-pair"><div><dt>甲</dt><dd>消化功能较差</dd></div><div><dt>乙</dt><dd>消化功能与胃肠道情况尚未提供</dd></div></dl>
+            <p class="rd-task-prompt">请查阅完整原文，用自己的话说明与这两位家人有关的主食安排原则，再分别说明用于甲、乙时应考虑什么。请指出支持回答的原文依据。</p>
+            <label class="rd-response-label" for="response-meaning">原文中的相关原则</label><textarea class="rd-response" id="response-meaning" rows="2" placeholder="请用自己的话概括。"></textarea>
+            <label class="rd-response-label" for="response-source">对甲、乙的判断与理由</label><textarea class="rd-response" id="response-source" rows="3" placeholder="分别说明用于甲、乙时应考虑什么。"></textarea>
+            <label class="rd-response-label" for="response-passage">原文依据</label><textarea class="rd-response rd-response-short" id="response-passage" rows="2" placeholder="写出相关语句、页码或段落位置。"></textarea>
+            <details class="rd-score-details"><summary>查看拟定评分与回答示例 <span aria-hidden="true">＋</span></summary><div class="rd-score-body">
+              <dl class="rd-rubric rd-rubric-two"><div><dt>原文含义 · 1 分</dt><dd>准确说明原文的适用对象，以及“可适当减少粗杂粮比例”的含义。</dd></div><div><dt>情境应用 · 1 分</dt><dd>说明甲符合这一条件，乙还需核对相关情况，不能仅凭年龄直接套用。</dd></div></dl>
+              <blockquote class="rd-written-answer"><span>2 / 2 分回答示例</span>原文允许消化功能较差的老年患者适当减少粗杂粮比例，并没有要求所有老年人都减少。甲符合这一条件，可考虑适当减少；乙的消化和胃肠道情况还不清楚，需要补充这些信息后再判断。</blockquote>
+              <table class="rd-score-table rd-source-score-table"><caption>拟定评分 · 每项 0 或 1 分</caption><thead><tr><th scope="col">回答示例</th><th scope="col">原文含义</th><th scope="col">情境应用</th><th scope="col">合计</th></tr></thead><tbody><tr><td>准确解释了适用条件及“可适当减少”的意思，但没有分析甲、乙。</td><td>1</td><td>0</td><td>1 / 2</td></tr><tr><td>两人年纪大，都必须减少粗粮。</td><td>0</td><td>0</td><td>0 / 2</td></tr><tr><td>上方完整回答：说明原文含义，并分别用于甲、乙。</td><td>1</td><td>1</td><td>2 / 2</td></tr></tbody></table>
+              <p class="rd-task-hint">本例依据：<a href="assets/research-plan/demo/diabetes-guide-qa-2023.pdf#page=4" target="_blank" rel="noopener">食养指南问答，第 4 页第七问 ↗</a></p>
+            </div></details>
+          </div>
+          <details class="rd-question-preview"><summary><span>研究安排</span><strong>理解、定位与用时分别记录</strong><span aria-hidden="true">＋</span></summary><div class="rd-question-body">
+            <dl class="rd-record-lines"><div><dt>原文理解</dt><dd>按原文含义与情境应用评分，汇总各案例得分；题目使用 AI 回答未直接提供的信息。</dd></div><div><dt>依据定位</dt><dd>记录所选段落是否支持回答。选中段落本身不计入理解得分。</dd></div><div><dt>查找与确认时间</dt><dd>从题目呈现到首次确认依据，保留选择结果、改选与未完成记录；这一用时包含阅读和判断。</dd></div></dl>
+            <p>全部最终餐食方案和选择理由提交后作答，可继续使用所属界面。四组同题、同标准，评分者不知分组。拟编制 8 个案例，每人完成其中 4 个；理解题覆盖不同膳食原则和适用条件。题目数量与组合经预测试确定。</p>
+            <p class="rd-task-hint">评分与计时规则经预测试后确定。原文理解和此前的新增采纳分别分析。</p>
+          </div></details>
+        </section>
 
         <details class="rp-details">
           <summary>独立样本、实验程序与分析方案 <span aria-hidden="true">＋</span></summary>
           <div class="rp-details-body">
             <div><h3>样本与材料</h3><p>按研究二的入组条件另行招募独立样本，另编 8 个模拟餐食案例，每人按预设组合完成其中 4 个。来源资料选自中文指南和健康教育资料，四组提供相同的完整原文。关联解释是本实验预设的共同条件。</p></div>
             <div><h3>四种条件</h3><dl class="rp-condition-key"><div><dt>普通查阅</dt><dd>原文首页 ＋ 切换查看</dd></div><div><dt>仅段落定位</dt><dd>相关段落 ＋ 切换查看</dd></div><div><dt>仅并排呈现</dt><dd>原文首页 ＋ 并排同时查看</dd></div><div><dt>两项功能同时提供</dt><dd>相关段落 ＋ 并排同时查看</dd></div></dl></div>
-            <div><h3>程序与评分</h3><p>参与者先提交初始餐食方案，再按研究二的分层原则随机分至四组。随后按随机次序阅读 AI 回答，自主决定是否查阅来源，并提交最终方案。全部方案提交后，收集各案例的选择理由，再使用所属组别的界面完成原文理解题。建议采纳的判定，以及份量、搭配建议采用情况的分析，沿用研究二的规则。</p></div>
+            <div><h3>程序与评分</h3><p>参与者先阅读案例，在尚未看到 AI 回答时独立提交初始餐食方案，再按研究二的分层原则随机分至四组。随后按随机次序阅读 AI 回答，自主决定是否查阅来源，并在原案例条件下提交最终方案。全部方案提交后，收集各案例的选择理由，再使用所属组别的界面完成原文理解题。建议采纳的判定，以及份量、搭配建议采用情况的分析，沿用研究二的规则。</p><p>决策阶段记录是否主动打开来源及查阅位置；后续理解任务记录借助所属界面解释和应用原文的表现。新增采纳与原文理解分别分析。</p></div>
             <div><h3>分析方案</h3><p>拟用二项广义估计方程（GEE）分析新增采纳，用线性回归分析原文理解得分，分别估计段落定位与并排呈现的平均效应，并对交互作用作探索性分析。来源材料与测验题目经审核、预测试后，再确定正式实验方案。</p></div>
           </div>
         </details>
-        <footer class="rp-chapter-footnote"><p>以上为界面结构示意，正式实验材料将在访谈和预测试后确定。</p><a href="#outcomes" data-rp-chapter="outcomes">查看预期贡献 <span aria-hidden="true">→</span></a></footer>
+        <footer class="rp-chapter-footnote"><p>结合两项实验与访谈，形成信息设计建议。</p><a href="portfolio.html#proposal">返回研究计划总览 <span aria-hidden="true">↗</span></a></footer>
       </section>
 
-      <section class="rp-chapter" id="outcomes" data-rp-panel="outcomes" aria-labelledby="rp-outcomes-title">
-        <header class="rp-chapter-heading">
-          <small>04 / 预期贡献与研究安排</small>
-          <h1 id="rp-outcomes-title">如何依据研究结果，<br>改进饮食建议的信息设计？</h1>
-          <p>拟结合访谈和两项实验，分析患者在具体餐食任务中如何取舍建议，据此提出推荐理由的组织原则与来源资料的呈现方式。</p>
-        </header>
-
-        <div class="rp-stage rp-outcomes-stage">
-          <div class="rp-stage-caption"><span>预期研究产出</span><strong>设计需求、实验证据与界面方案</strong></div>
-          <ol class="rp-contribution-track">
-            <li><span>01</span><div><h3>明确患者需要哪些信息</h3><p>归纳患者取舍建议的依据，分析膳食要求与生活条件的作用，明确推荐理由中需要解释什么，以及查阅来源时需要核对什么。</p></div></li>
-            <li><span>02</span><div><h3>检验信息设计的影响</h3><p>分析解释方式对建议采纳与适用性判断的影响，分别估计段落定位和并排呈现对原文理解与建议采纳的作用。</p></div></li>
-            <li><span>03</span><div><h3>提出策略，完善界面原型</h3><p>依据研究结果提出理由组织原则与来源呈现建议，完善界面原型，并整理餐食案例、回答材料和评价规则。</p></div></li>
-          </ol>
-        </div>
-
-        <div class="rp-timeline">
-          <h3>四年安排</h3>
-          <ol><li><span>第一学年</span><strong>访谈与材料准备</strong></li><li><span>第二学年</span><strong>理由解释实验</strong></li><li><span>第三学年</span><strong>来源查阅实验</strong></li><li><span>第四学年</span><strong>结果整合与论文撰写</strong></li></ol>
-        </div>
-
-        <details class="rp-details">
-          <summary>各阶段工作与成果整合 <span aria-hidden="true">＋</span></summary>
-          <div class="rp-details-body">
-            <div><h3>第一学年</h3><p>梳理文献，细化研究方案并落实招募安排。开展关键事件访谈，根据分析结果编制餐食案例与理由解释材料，开发界面原型并开展预测试。</p></div>
-            <div><h3>第二学年</h3><p>根据预测试确定正式材料、样本量与分析方案，实施理由解释实验，分析结果并撰写相关论文。同期选取来源资料，开发四种查阅界面，编制原文理解测验。</p></div>
-            <div><h3>第三学年</h3><p>审核来源材料与测验题目，经预测试确定正式方案。另行招募参与者，开展来源查阅实验，分析两项功能各自及共同提供时的表现，再结合访谈中的判断依据讨论实验结果。</p></div>
-            <div><h3>第四学年</h3><p>综合访谈与实验结果，提出内容组织和来源呈现建议，完善界面原型的回答内容与查阅功能。整理研究材料和评价规则，完成博士学位论文统稿、修改与答辩准备。</p></div>
-          </div>
-        </details>
-        <footer class="rp-chapter-footnote"><p>具体设计策略需在访谈与实验完成后，结合研究结果提出。</p><a href="portfolio.html#proposal">回到研究计划总览 <span aria-hidden="true">↗</span></a></footer>
-      </section>
     </main>
   </div>
 </body>

@@ -50,7 +50,7 @@
   const legacy = {
     '#proposal-context': 'questions',
     '#proposal-studies': new URL(location.href).searchParams.get('rp-study') === 'sources' ? 'sources' : 'explanation',
-    '#proposal-outcomes': 'outcomes'
+    '#proposal-outcomes': 'questions'
   };
   if (legacy[location.hash]) location.replace('research-plan.html#' + legacy[location.hash]);
 

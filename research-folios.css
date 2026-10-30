@@ -9,29 +9,29 @@
   max-width: none; padding: 0 0 20px !important; margin: 0 !important;
 }
 #evidence .folio-heading::after { content: none; }
-#evidence .folio-heading-copy > span { color: #245cc2; font-size: 12px; letter-spacing: .13em; }
+#evidence .folio-heading-copy > span { color: #2257be; font-size: 12px; letter-spacing: .13em; }
 #evidence .folio-heading h2 {
   margin: 10px 0 0; color: #102e44; font-size: clamp(38px, 3.5vw, 56px);
   font-weight: 850; letter-spacing: -.035em; line-height: 1.2;
 }
-#evidence .folio-heading p { margin: 14px 0 0; max-width: 720px; font-size: 16px; color: #4c6982; }
+#evidence .folio-heading p { margin: 14px 0 0; max-width: 720px; font-size: 16px; color: #52616a; }
 #evidence .folio-collection {
   position: relative; isolation: isolate; display: grid; justify-items: center; align-content: center;
   width: 114px; height: 102px; margin-right: 24px; flex: 0 0 auto;
   border: 1px solid #b8cceb; border-radius: 4px; background: #fff; transform: rotate(6deg);
-  color: #2457b5; box-shadow: 0 4px 10px #16345508;
+  color: #2257be; box-shadow: 0 4px 10px #16345508;
 }
 #evidence .folio-collection b { font-size: 36px; line-height: 1.1; font-weight: 750; letter-spacing: -.04em; }
-#evidence .folio-collection > span { font-size: 11px; margin-top: 5px; letter-spacing: .12em; color: #426382; }
+#evidence .folio-collection > span { font-size: 11px; margin-top: 5px; letter-spacing: .12em; color: #52616a; }
 #evidence .folio-collection .folio-collection-pages { position: absolute; inset: 0; margin: 0; z-index: -1; pointer-events: none; }
-.folio-collection-pages i { position: absolute; inset: -4px 8px 4px -8px; border: 1px solid #cbd9ed; border-radius: 4px; background: #eef4ff; transform: rotate(-15deg); z-index: -2; }
+.folio-collection-pages i { position: absolute; inset: -4px 8px 4px -8px; border: 1px solid #cbd9ed; border-radius: 4px; background: #dce9ff; transform: rotate(-15deg); z-index: -2; }
 .folio-collection-pages i:last-child { inset: 5px -5px -5px 5px; transform: rotate(5deg); background: #fff; }
-#evidence .folio-collection > svg { position: absolute; top: -13px; right: -19px; width: 35px; height: 35px; fill: #72aa9e; transform: rotate(8deg); }
+#evidence .folio-collection > svg { position: absolute; top: -13px; right: -19px; width: 35px; height: 35px; fill: #76a6d8; transform: rotate(8deg); }
 #evidence .publication-shelf { overflow: visible; }
 #evidence .publication-shelf::before { content: none; }
 #evidence #paper-achievements { margin-top: 16px !important; gap: 20px; align-items: end; }
 #evidence #paper-achievements > .paper-folio {
-  --folio-ink: #265bc2; --folio-tint: #eef3ff; --folio-line: #c8d7f2; --folio-tape: #c5d8f9;
+  --folio-ink: #2257be; --folio-tint: #f3f7fe; --folio-line: #cfdcf4; --folio-tape: #b8d1ff;
   display: flex; flex-direction: column; gap: 0; order: initial !important;
   position: relative; overflow: visible; isolation: auto;
   padding: 0 !important; min-width: 0; height: auto !important; min-height: var(--paper-card-height) !important;
@@ -42,10 +42,10 @@
   transform-style: flat !important;
   backface-visibility: visible !important;
 }
-#evidence #paper-achievements > .folio-rural { --folio-ink: #826729; --folio-tint: #fbf7ec; --folio-line: #e4d8b8; --folio-tape: #e8dbaa; }
-#evidence #paper-achievements > .folio-umbrella { --folio-ink: #63519b; --folio-tint: #f5f1fc; --folio-line: #d9d0eb; --folio-tape: #d9ceef; }
-#evidence #paper-achievements > .folio-tractor { --folio-ink: #2d638b; --folio-tint: #eff6fb; --folio-line: #c8ddea; --folio-tape: #c1ddeb; }
-#evidence #paper-achievements > .folio-circular { --folio-ink: #176b60; --folio-tint: #edf7f3; --folio-line: #c2ded4; --folio-tape: #bcdfd3; }
+#evidence #paper-achievements > .folio-rural { --folio-ink: #2257be; --folio-tint: #f3f7fe; --folio-line: #cfdcf4; --folio-tape: #b8d1ff; }
+#evidence #paper-achievements > .folio-umbrella { --folio-ink: #2257be; --folio-tint: #f3f7fe; --folio-line: #cfdcf4; --folio-tape: #b8d1ff; }
+#evidence #paper-achievements > .folio-tractor { --folio-ink: #2257be; --folio-tint: #f3f7fe; --folio-line: #cfdcf4; --folio-tape: #b8d1ff; }
+#evidence #paper-achievements > .folio-circular { --folio-ink: #2257be; --folio-tint: #f3f7fe; --folio-line: #cfdcf4; --folio-tape: #b8d1ff; }
 #evidence #paper-achievements > .paper-folio::before,
 #evidence #paper-achievements > .paper-folio::after { content: none !important; display: none !important; }
 #evidence #paper-achievements > .paper-folio:is(:hover,:focus-within) {
@@ -60,7 +60,7 @@
 #paper-achievements span { text-transform: none; letter-spacing: normal; font-weight: inherit; font-size: inherit; line-height: inherit; color: inherit; }
 #paper-achievements .folio-topline { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
 #paper-achievements .folio-category { font-size: 12px; line-height: 1.5; color: var(--folio-ink); font-weight: 750; }
-#paper-achievements .folio-index { font-size: 13px; font-variant-numeric: tabular-nums; color: var(--folio-ink); opacity: .8; }
+#paper-achievements .folio-index { font-size: 13px; font-variant-numeric: tabular-nums; color: #15313d; opacity: .8; }
 #paper-achievements h3 { margin: 17px 0 0; padding: 0; color: #163449; font-size: clamp(20px, 1.5vw, 24px); font-weight: 800; line-height: 1.36; letter-spacing: -.025em; }
 #paper-achievements h3 a { color: inherit; background: none; text-decoration: none; }
 #paper-achievements h3 a:hover { color: var(--folio-ink); }
@@ -79,11 +79,11 @@
 #paper-achievements .folio-rural .folio-figure img { object-fit: cover; object-position: top; }
 #paper-achievements .folio-umbrella .folio-figure > a { transform: rotate(3deg); }
 #paper-achievements .folio-circular .folio-figure > a { transform: rotate(2deg); }
-#paper-achievements .folio-figure figcaption { margin-top: 14px; padding: 0; text-align: center; font-size: 11px; color: #5a6c7e; line-height: 1.3; }
+#paper-achievements .folio-figure figcaption { margin-top: 14px; padding: 0; text-align: center; font-size: 11px; color: #52616a; line-height: 1.3; }
 #paper-achievements .paper-folio:is(:hover,:focus-within) .folio-figure > a { transform: translateY(-4px) rotate(0); box-shadow: 0 9px 15px #2446661a; }
 #paper-achievements .folio-publication { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; font-size: 13px; line-height: 1.5; color: var(--folio-ink); font-weight: 750; }
 #paper-achievements .folio-publication time { font-size: 13px; font-variant-numeric: tabular-nums; font-weight: 500; }
-#paper-achievements .folio-topic { margin: 5px 0 0; padding: 0; color: #4c6175; font-size: 12px; line-height: 1.5; }
+#paper-achievements .folio-topic { margin: 5px 0 0; padding: 0; color: #52616a; font-size: 12px; line-height: 1.5; }
 #paper-achievements .folio-controls { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 7px; min-height: 53px; margin: 0 20px; padding: 8px 0 10px; border-top: 1px solid var(--folio-line); }
 #paper-achievements .folio-read { display: inline-flex; gap: 8px; align-items: center; color: #203e52; font-size: 12px; font-weight: 700; line-height: 1.5; text-decoration: none; background: none; white-space: nowrap; }
 #paper-achievements .folio-read > span { transition: transform 250ms ease; }
@@ -95,7 +95,7 @@
 #paper-achievements a:focus-visible, #paper-achievements button:focus-visible { outline: 2px solid var(--folio-ink); outline-offset: 4px; }
 #paper-achievements .folio-back { display: flex; flex-direction: column; gap: 0; background: color-mix(in srgb, var(--folio-tint) 25%, white); border-radius: 8px 16px 0 0; }
 #paper-achievements .folio-back h4 { margin: 16px 0 12px; color: #173448; font-size: 15px; font-weight: 750; line-height: 1.5; letter-spacing: -.01em; text-wrap: pretty; overflow-wrap: anywhere; }
-#paper-achievements .folio-citation { margin: 0; font-size: 12px; line-height: 1.65; color: #4c6175; }
+#paper-achievements .folio-citation { margin: 0; font-size: 12px; line-height: 1.65; color: #52616a; }
 #paper-achievements .folio-source { display: inline-block; color: var(--folio-ink); text-decoration: underline; text-underline-offset: 3px; }
 #paper-achievements .folio-notes { margin: auto 0 0; padding: 20px 0 0; }
 #paper-achievements .folio-notes > div { border-top: 1px solid var(--folio-line); padding: 11px 0 0; margin-top: 11px; }

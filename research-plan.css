@@ -280,7 +280,7 @@ body.rp-document .rp-chapter-footnote > a:hover > span { transform:translateX(3p
   body.rp-document .rp-brand { gap:9px; }
   body.rp-document .rp-brand > span { font-size:11px; }
   body.rp-document .rp-shell { width:calc(100% - 44px); grid-template-columns:minmax(0,1fr); gap:28px; padding-top:88px; }
-  body.rp-document .rp-chapters { position:static; max-height:none; overflow:visible; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; padding:0; }
+  body.rp-document .rp-chapters { position:static; max-height:none; overflow:visible; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding:0; }
   body.rp-document .rp-chapters-label { grid-column:1 / -1; margin-bottom:0; }
   body.rp-document .rp-chapters > a { display:flex; flex-direction:column; align-items:flex-start; gap:8px; padding:14px 0; min-height:83px; border-bottom:1px solid var(--rp-line); }
   body.rp-document .rp-chapters > a > span { font-size:19px; transform-origin:left bottom; }

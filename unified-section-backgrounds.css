@@ -60,22 +60,22 @@
 /* Undergraduate foundation: open contour lines. */
 #top > #profile {
   --closure-shift-x: -10px;
-  background-color: #edf7ff !important;
-  background-image: repeating-radial-gradient(ellipse 118% 76% at -12% 34%, transparent 0 92px, rgba(30, 111, 234, 0.034) 93px 94px, transparent 95px 132px) !important;
+  background-color: var(--practice-canvas, #f3f7fe) !important;
+  background-image: repeating-radial-gradient(ellipse 118% 76% at -12% 34%, transparent 0 92px, rgba(var(--practice-pattern-rgb, 34,87,190), 0.034) 93px 94px, transparent 95px 132px) !important;
 }
 
 #top > #profile::after {
   background-image:
-    radial-gradient(circle at 12% 70%, rgba(30, 111, 234, 0.16) 0 2px, transparent 3px),
-    radial-gradient(circle at 19% 49%, rgba(30, 111, 234, 0.12) 0 2px, transparent 3px),
-    repeating-radial-gradient(ellipse 42% 126% at 3% 124%, transparent 0 34px, rgba(30, 111, 234, 0.075) 35px 36px, transparent 37px 54px);
+    radial-gradient(circle at 12% 70%, rgba(var(--practice-pattern-rgb, 34,87,190), 0.16) 0 2px, transparent 3px),
+    radial-gradient(circle at 19% 49%, rgba(var(--practice-pattern-rgb, 34,87,190), 0.12) 0 2px, transparent 3px),
+    repeating-radial-gradient(ellipse 42% 126% at 3% 124%, transparent 0 34px, rgba(var(--practice-pattern-rgb, 34,87,190), 0.075) 35px 36px, transparent 37px 54px);
 }
 
 /* Academic evidence: horizontal ledger rhythm. */
 #top > #evidence {
   --closure-shift-x: 0px;
-  background-color: #f8fbfe !important;
-  background-image: repeating-linear-gradient(180deg, transparent 0 47px, rgba(30, 111, 234, 0.026) 48px 49px) !important;
+  background-color: #f3f7fe !important;
+  background-image: repeating-linear-gradient(180deg, transparent 0 47px, rgba(34, 87, 190, 0.026) 48px 49px) !important;
 }
 
 #top > #evidence::after {
