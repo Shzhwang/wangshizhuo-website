@@ -31,12 +31,12 @@
 #evidence .publication-shelf::before { content: none; }
 #evidence #paper-achievements { margin-top: 16px !important; gap: 20px; align-items: end; }
 #evidence #paper-achievements > .paper-folio {
-  --folio-ink: #2257be; --folio-tint: #f3f7fe; --folio-line: #cfdcf4; --folio-tape: #b8d1ff;
+  --folio-surface: #fff; --folio-ink: #2257be; --folio-tint: #f3f7fe; --folio-line: #cfdcf4; --folio-tape: #b8d1ff;
   display: flex; flex-direction: column; gap: 0; order: initial !important;
   position: relative; overflow: visible; isolation: auto;
   padding: 0 !important; min-width: 0; height: auto !important; min-height: var(--paper-card-height) !important;
   border: 1px solid var(--folio-line) !important; border-radius: 9px 17px 17px 9px;
-  background: var(--folio-tint); box-shadow: 0 12px 26px -13px #28496532, 3px 3px 0 #fff, 4px 4px 0 var(--folio-line);
+  background: var(--folio-surface); box-shadow: 0 12px 26px -13px #28496532, 3px 3px 0 #fff, 4px 4px 0 var(--folio-line);
   opacity: 1 !important; filter: none !important;
   /* The page reveal is composited before the independent pointer tilt. */
   transform-style: flat !important;
@@ -56,7 +56,7 @@
 #paper-achievements .folio-turn { position: relative; display: grid; min-width: 0; }
 #paper-achievements .folio-front,
 #paper-achievements .folio-back { min-width: 0; padding: 22px 20px 16px; color: #163449; }
-#paper-achievements .folio-front { display: flex; flex-direction: column; background: var(--folio-tint); border-radius: 8px 16px 0 0; }
+#paper-achievements .folio-front { display: flex; flex-direction: column; background: var(--folio-surface); border-radius: 8px 16px 0 0; }
 #paper-achievements span { text-transform: none; letter-spacing: normal; font-weight: inherit; font-size: inherit; line-height: inherit; color: inherit; }
 #paper-achievements .folio-topline { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
 #paper-achievements .folio-category { font-size: 12px; line-height: 1.5; color: var(--folio-ink); font-weight: 750; }
@@ -90,10 +90,10 @@
 #paper-achievements .folio-read:hover > span { transform: translate(2px,-2px); }
 #paper-achievements .folio-flip { display: none; }
 #paper-achievements.is-interactive .folio-flip { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-height: 32px; padding: 5px 6px; border: 0; border-radius: 4px; background: transparent; color: var(--folio-ink); font-family: inherit; font-size: 12px; font-weight: 650; line-height: 1.4; cursor: pointer; transition: background-color 180ms ease; }
-#paper-achievements .folio-flip:hover { background: #ffffffb8; }
+#paper-achievements .folio-flip:hover { background: var(--folio-tint); }
 #paper-achievements .folio-flip svg, #evidence .folio-shelf-note svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 #paper-achievements a:focus-visible, #paper-achievements button:focus-visible { outline: 2px solid var(--folio-ink); outline-offset: 4px; }
-#paper-achievements .folio-back { display: flex; flex-direction: column; gap: 0; background: color-mix(in srgb, var(--folio-tint) 25%, white); border-radius: 8px 16px 0 0; }
+#paper-achievements .folio-back { display: flex; flex-direction: column; gap: 0; background: var(--folio-surface); border-radius: 8px 16px 0 0; }
 #paper-achievements .folio-back h4 { margin: 16px 0 12px; color: #173448; font-size: 15px; font-weight: 750; line-height: 1.5; letter-spacing: -.01em; text-wrap: pretty; overflow-wrap: anywhere; }
 #paper-achievements .folio-citation { margin: 0; font-size: 12px; line-height: 1.65; color: #52616a; }
 #paper-achievements .folio-source { display: inline-block; color: var(--folio-ink); text-decoration: underline; text-underline-offset: 3px; }

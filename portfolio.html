@@ -16,10 +16,10 @@
   <link rel="stylesheet" href="desktop-adapt.css?v=4fabaf2221fd">
   <link rel="stylesheet" href="support-pressure.css?v=248d488c09d0">
   <link rel="stylesheet" href="research-playground.css?v=a97602cc77d7">
-  <link rel="stylesheet" href="support-notes.css?v=bright-blue-20261030">
+  <link rel="stylesheet" href="support-notes.css?v=blue-honor-20261031">
   <link rel="stylesheet" href="foundation-atlas.css?v=bright-blue-20261030">
-  <link rel="stylesheet" href="research-folios.css?v=bright-blue-20261030">
-  <link rel="stylesheet" href="proposal-report.css?v=editorial-final-20261030">
+  <link rel="stylesheet" href="research-folios.css?v=white-surfaces-20261031">
+  <link rel="stylesheet" href="proposal-report.css?v=route-visual-20261031">
   <link rel="stylesheet" href="navigation-glass.css?v=76fa20e8d9a4">
 </head>
 <body class="desktop-responsive">
@@ -564,55 +564,103 @@
     <section class="proposal-section proposal-report viewport-section" id="proposal" data-section="proposal" aria-labelledby="proposal-title">
       <div class="pe-inner">
         <header class="pe-heading">
-          <p class="pe-kicker"><span aria-hidden="true"></span> 博士研究计划 <span class="pe-status">拟开展</span></p>
+          <p class="pe-kicker"><span aria-hidden="true"></span> 博士研究计划</p>
           <h2 id="proposal-title">面向2型糖尿病患者的生成式人工智能饮食建议信息设计研究</h2>
         </header>
 
         <div class="pe-opening">
           <div class="pe-question">
-            <p class="pe-premise">推荐方案相同</p>
-            <h3>解释与查阅方式，<br>如何影响患者<span>判断？</span></h3>
-            <p class="pe-intro">以一次具体餐食咨询为情境，研究患者如何结合膳食要求与生活条件，判断建议是否适用，并决定采用哪些内容。</p>
+            <h3>推荐理由与来源查阅<br><span>对患者判断与采纳的影响</span></h3>
+            <p class="pe-intro">以一次餐食咨询为情境，在推荐方案一致的条件下，考察理由组织与来源查阅方式对建议采纳、适用性判断及原文理解的影响。</p>
             <a class="pe-primary" href="research-plan.html#questions"><span>进入研究计划</span><span aria-hidden="true">↗</span></a>
           </div>
 
           <div class="pe-exhibit" data-pe-mode="reason">
             <div class="pe-exhibit-tabs" role="tablist" aria-label="两项信息设计研究" hidden>
-              <button type="button" id="pe-tab-reason" role="tab" aria-selected="true" aria-controls="pe-panel-reason" data-pe-tab="reason"><span>01</span> 理由解释</button>
-              <button type="button" id="pe-tab-source" role="tab" aria-selected="false" aria-controls="pe-panel-source" tabindex="-1" data-pe-tab="source"><span>02</span> 来源查阅</button>
+              <button type="button" id="pe-tab-reason" role="tab" aria-selected="true" aria-controls="pe-panel-reason" data-pe-tab="reason">理由解释</button>
+              <button type="button" id="pe-tab-source" role="tab" aria-selected="false" aria-controls="pe-panel-source" tabindex="-1" data-pe-tab="source">来源查阅</button>
             </div>
-            <article class="pe-exhibit-panel" id="pe-panel-reason" role="tabpanel" aria-labelledby="pe-tab-reason" data-pe-panel="reason">
-              <div class="pe-reason-visual" aria-label="比较两种推荐理由：说明食物特点，或解释这些特点与当次情境的关系">
-                <div class="pe-visual-note pe-note-fact"><span>基础事实</span><strong>食物特点</strong><small>营养 · 备餐特点</small></div>
-                <div class="pe-relation-line" aria-hidden="true"><span></span><i>关联</i><span></span></div>
-                <div class="pe-visual-note pe-note-context"><span>适用条件</span><strong>当次情境</strong><small>膳食要求 · 生活条件</small></div>
-                <div class="pe-under-note">同一方案 · 相同事实与必要适用条件</div>
+            <div class="pe-exhibit-panels">
+            <article class="pe-exhibit-panel" id="pe-panel-reason" role="tabpanel" aria-labelledby="pe-tab-reason" data-pe-panel="reason" tabindex="0">
+              <h4 class="pe-study-title">推荐理由的两种组织方式</h4>
+              <div class="pe-reason-visual" role="group" aria-label="两组推荐理由对照，节选自相同早餐案例">
+                <div class="pe-example-context"><p><span>膳食安排</span>主食定量，增加全谷物选择</p><p><span>备餐条件</span>准备时间 5 分钟，无加热设备</p><p><span>共同推荐</span>按既定份量选择全麦面包</p></div>
+                <div class="pe-explanation-pair">
+                  <section class="pe-reason-version"><header><span aria-hidden="true">A</span><h5>特点说明</h5></header><p>全麦制品保留了<strong>膳食纤维等成分</strong>。面包已按份分装，<strong>可直接食用，无需加热</strong>。</p></section>
+                  <section class="pe-reason-version"><header><span aria-hidden="true">B</span><h5>关联解释</h5></header><p>全麦制品保留了膳食纤维等成分，<strong>符合增加全谷物选择的安排</strong>。面包按份分装、无需加热，<strong>适合只有 5 分钟、无加热设备的备餐条件</strong>。</p></section>
+                </div>
+                <p class="pe-reason-caption">理由节选 · 两版共用推荐方案、基础事实与必要适用条件</p>
               </div>
-              <div class="pe-exhibit-copy"><h4>说明特点，还是解释为何适合？</h4><p>通过阅读前后的方案变化记录建议采纳，再通过条件变化题评价推荐理由的应用表现，比较两种解释方式。</p><a href="research-plan.html#explanation">查看理由解释实验 <span aria-hidden="true">↗</span></a></div>
+              <dl class="pe-evaluation"><dt>评价指标</dt><dd>建议采纳</dd><dd>适用性判断</dd></dl>
             </article>
-            <article class="pe-exhibit-panel" id="pe-panel-source" role="tabpanel" aria-labelledby="pe-tab-source" data-pe-panel="source">
-              <div class="pe-source-visual" aria-label="原文打开位置与阅读布局是两个实验因素，组合成四种界面条件">
-                <div class="pe-source-axis"><span>原文打开位置</span><strong>首页 <i>／</i> 相关段落</strong></div>
-                <div class="pe-source-times" aria-hidden="true">×</div>
-                <div class="pe-source-axis"><span>阅读布局</span><strong>切换 <i>／</i> 并排</strong></div>
-                <div class="pe-under-note">相同 AI 回答 · 相同完整原文</div>
+            <article class="pe-exhibit-panel" id="pe-panel-source" role="tabpanel" aria-labelledby="pe-tab-source" data-pe-panel="source" tabindex="0">
+              <h4 class="pe-study-title">来源查阅的四种界面条件</h4>
+              <div class="pe-source-visual">
+                <table class="pe-condition-matrix">
+                  <caption>原文打开位置 × 建议与原文的阅读布局</caption>
+                  <thead><tr><td aria-hidden="true"></td><th scope="col">切换查看</th><th scope="col">并排查看</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">从首页打开</th>
+                      <td><div class="pe-window-pair pe-window-switch" aria-hidden="true"><span class="pe-window pe-window-answer">建议<i></i><i></i></span><span class="pe-window pe-window-source">原文<i></i><i></i><small>首页</small></span><span class="pe-window-swap">⇄</span></div><span class="pe-condition-name">首页 · 切换</span></td>
+                      <td><div class="pe-window-pair pe-window-parallel" aria-hidden="true"><span class="pe-window pe-window-answer">建议<i></i><i></i></span><span class="pe-window pe-window-source">原文<i></i><i></i><small>首页</small></span></div><span class="pe-condition-name">首页 · 并排</span></td>
+                    </tr>
+                    <tr><th scope="row">定位相关段落</th>
+                      <td><div class="pe-window-pair pe-window-switch pe-window-located" aria-hidden="true"><span class="pe-window pe-window-answer">建议<i></i><i></i></span><span class="pe-window pe-window-source">原文<i></i><i></i><small>相关段落</small></span><span class="pe-window-swap">⇄</span></div><span class="pe-condition-name">定位 · 切换</span></td>
+                      <td><div class="pe-window-pair pe-window-parallel pe-window-located" aria-hidden="true"><span class="pe-window pe-window-answer">建议<i></i><i></i></span><span class="pe-window pe-window-source">原文<i></i><i></i><small>相关段落</small></span></div><span class="pe-condition-name">定位 · 并排</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="pe-source-caption">四组共用 AI 回答与完整原文，比较打开位置和阅读布局的作用。</p>
               </div>
-              <div class="pe-exhibit-copy"><h4>段落定位与并排呈现各有何作用？</h4><p>通过前后方案记录建议采纳，通过后续答题评价原文理解，分别比较段落定位与并排呈现的作用。</p><a href="research-plan.html#sources">查看来源查阅实验 <span aria-hidden="true">↗</span></a></div>
+              <dl class="pe-evaluation"><dt>评价指标</dt><dd>建议采纳</dd><dd>原文理解</dd></dl>
             </article>
+            </div>
           </div>
         </div>
 
-        <div class="pe-route" id="proposal-design">
-          <div class="pe-route-heading"><h3>先访谈，再开展两项实验。</h3><p>探索性序列混合方法</p></div>
-          <div class="pe-route-track" aria-label="访谈用于完善实验材料；两项实验分别招募独立样本，再综合结果提出设计策略">
-            <a class="pe-route-start" href="research-plan.html#questions"><span class="pe-route-num">01</span><div><h4>关键事件访谈</h4><p>回顾一次咨询经历<br>归纳患者的判断依据</p></div><span class="pe-route-arrow" aria-hidden="true">↗</span></a>
-            <div class="pe-route-bridge"><span>案例与<br>评价题目</span><i aria-hidden="true">→</i></div>
-            <div class="pe-route-experiments"><span class="pe-route-caption">分别招募独立样本</span><a href="research-plan.html#explanation"><span>02</span><strong>理由解释实验</strong><i aria-hidden="true">↗</i></a><a href="research-plan.html#sources"><span>03</span><strong>来源查阅实验</strong><i aria-hidden="true">↗</i></a></div>
-            <div class="pe-route-merge" aria-hidden="true">→</div>
-            <div class="pe-route-end"><span class="pe-route-final">综合</span><div><h4>信息设计策略</h4><p>整合访谈与实验结果<br>完善原型与评价材料</p></div></div>
+        <section class="pe-route" id="proposal-design" aria-labelledby="pe-route-title">
+          <h3 id="pe-route-title">研究实施路径</h3>
+          <div class="pe-route-map">
+            <div class="pe-route-stage pe-route-origin">
+              <p class="pe-route-stage-label">质性探索</p>
+              <div class="pe-route-node">
+                <span class="pe-route-interview-mark" aria-hidden="true"><i></i><i></i></span>
+                <h4>关键事件访谈</h4>
+                <p>归纳建议评价与采纳依据</p>
+              </div>
+            </div>
+            <div class="pe-route-connector pe-route-split">
+              <svg viewBox="0 0 100 176" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path class="pe-route-wire" d="M 3 88 H 23 Q 39 88 39 72 V 56 Q 39 40 55 40 H 88 M 23 88 Q 39 88 39 104 V 120 Q 39 136 55 136 H 88"/>
+                <path class="pe-route-arrow" d="m 79 29 11 11 -11 11 M 79 125 l 11 11 -11 11"/>
+              </svg>
+              <p>完善案例<br>与评价题目</p>
+            </div>
+            <div class="pe-route-stage pe-route-studies">
+              <p class="pe-route-stage-label">实验检验</p>
+              <div class="pe-route-pair">
+                <div class="pe-route-study"><span class="pe-route-study-mark pe-route-reason-mark" aria-hidden="true"><i></i><i></i></span><h4>推荐理由解释实验</h4></div>
+                <div class="pe-route-study"><span class="pe-route-study-mark pe-route-source-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><h4>来源查阅支持实验</h4></div>
+              </div>
+              <p class="pe-route-note">两项实验分别招募独立样本</p>
+            </div>
+            <div class="pe-route-connector pe-route-merge">
+              <svg viewBox="0 0 100 176" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path class="pe-route-wire" d="M 3 40 H 25 Q 41 40 41 56 V 72 Q 41 88 57 88 H 88 M 3 136 H 25 Q 41 136 41 120 V 104 Q 41 88 57 88"/>
+                <path class="pe-route-arrow" d="m 79 77 11 11 -11 11"/>
+              </svg>
+              <p>综合访谈<br>与实验结果</p>
+            </div>
+            <div class="pe-route-stage pe-route-outcome">
+              <p class="pe-route-stage-label">设计转化</p>
+              <div class="pe-route-node">
+                <span class="pe-route-output-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+                <h4>信息设计策略</h4>
+                <p>理由组织与来源查阅支持</p>
+              </div>
+            </div>
           </div>
-        </div>
-        <footer class="pe-footer"><p>在模拟餐食任务中，比较阅读建议前后的方案，判断建议的采用情况。</p><a href="assets/research-plan/research-plan.docx" download>研究计划原文 <span aria-hidden="true">↓</span></a></footer>
+        </section>
       </div>
     </section>
   </main>
@@ -628,7 +676,7 @@
   </div>
 
   <button class="back-top" type="button" aria-label="返回顶部">↑</button>
-  <script src="proposal-report.js?v=three-studies-20261030" defer></script>
+  <script src="proposal-report.js?v=overview-final-20261031" defer></script>
   <script>if (location.hash === '#reader') location.replace(location.pathname + location.search + '#proposal');</script>
   <script>
     (function initHeroTypewriter() {
